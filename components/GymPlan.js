@@ -7,51 +7,76 @@ export default function GymPlan() {
       <StyledSection>
         <StyledHeadlineSection> Warm-Up </StyledHeadlineSection>
         <form>
-          <StyledInputNumber type="number" name="set" />
+          <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
           <StyledInputNumber type="number" name="volume" />
-          <StyledInputText type="text" name="exercise" autoComplete="off" />
-          <StyledInputForWeight type="number" name="kg" />
+          <StyledInputText
+            type="text"
+            name="exercise"
+            autoComplete="off"
+            placeholder="exercise"
+          />
+          <StyledInputForWeight type="number" name="kg" placeholder=" - " />
         </form>
       </StyledSection>
       <StyledSection>
         <StyledHeadlineSection> Squat </StyledHeadlineSection>
         <form>
-          <StyledInputNumber type="number" name="set" />
+          <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
-          <StyledInputNumber type="number" name="volume" />
-          <StyledInputText type="text" name="exercise" autoComplete="off" />
-          <StyledInputForWeight type="number" name="kg" />
+          <StyledInputNumber type="number" name="volume" placeholder="5" />
+          <StyledInputText
+            type="text"
+            name="exercise"
+            autoComplete="off"
+            placeholder="exercise"
+          />
+          <StyledInputForWeight type="number" name="kg" placeholder="50 kg" />
         </form>
       </StyledSection>
       <StyledSection>
         <StyledHeadlineSection> Bench </StyledHeadlineSection>
         <form>
-          <StyledInputNumber type="number" name="set" />
+          <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
           <StyledInputNumber type="number" name="volume" />
-          <StyledInputText type="text" name="exercise" autoComplete="off" />
-          <StyledInputForWeight type="number" name="kg" />
+          <StyledInputText
+            type="text"
+            name="exercise"
+            autoComplete="off"
+            placeholder="exercise"
+          />
+          <StyledInputForWeight type="number" name="kg" placeholder="30 kg" />
         </form>
       </StyledSection>
       <StyledSection>
         <StyledHeadlineSection> Deadlift </StyledHeadlineSection>
         <form>
-          <StyledInputNumber type="number" name="set" />
+          <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
           <StyledInputNumber type="number" name="volume" />
-          <StyledInputText type="text" name="exercise" autoComplete="off" />
-          <StyledInputForWeight type="number" name="kg" />
+          <StyledInputText
+            type="text"
+            name="exercise"
+            autoComplete="off"
+            placeholder="exercise"
+          />
+          <StyledInputForWeight type="number" name="kg" placeholder="50 kg" />
         </form>
       </StyledSection>
       <StyledSection>
         <StyledHeadlineSection> Assistant </StyledHeadlineSection>
         <form>
-          <StyledInputNumber type="number" name="set" />
+          <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
-          <StyledInputNumber type="number" name="volume" />
-          <StyledInputText type="text" name="exercise" autoComplete="off" />
-          <StyledInputForWeight type="number" name="kg" />
+          <StyledInputNumber type="number" name="volume" placeholder="5" />
+          <StyledInputText
+            type="text"
+            name="exercise"
+            autoComplete="off"
+            placeholder="exercise"
+          />
+          <StyledInputForWeight type="number" name="kg" placeholder="10 kg" />
         </form>
       </StyledSection>
     </>
