@@ -9,7 +9,7 @@ export default function GymPlan() {
         <form>
           <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
-          <StyledInputNumber type="number" name="volume" />
+          <StyledInputNumber type="number" name="volume" placeholder="5" />
           <StyledInputText
             type="text"
             name="exercise"
@@ -39,7 +39,7 @@ export default function GymPlan() {
         <form>
           <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
-          <StyledInputNumber type="number" name="volume" />
+          <StyledInputNumber type="number" name="volume" placeholder="5" />
           <StyledInputText
             type="text"
             name="exercise"
@@ -54,7 +54,7 @@ export default function GymPlan() {
         <form>
           <StyledInputNumber type="number" name="set" placeholder="2" />
           <StyledP> x </StyledP>
-          <StyledInputNumber type="number" name="volume" />
+          <StyledInputNumber type="number" name="volume" placeholder="5" />
           <StyledInputText
             type="text"
             name="exercise"
