@@ -1,9 +1,11 @@
 import GymPlan from "../components/GymPlan";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
     <>
       <GymPlan />
+      <Footer />
     </>
   );
 }
