@@ -98,6 +98,7 @@ const StyledSection = styled.section`
   border: 1px solid black;
   max-width: 500px;
   margin: 20px;
+  overflow: hidden;
 `;
 
 const StyledHeadlineSection = styled.h3`
@@ -111,11 +112,11 @@ const StyledP = styled.p`
 
 const StyledInputText = styled.input`
   height: 35px;
-  width: auto;
-
+  min-width: 105px;
+  width: 45%;
   border-radius: 5px;
   border: 0.5px solid grey;
-  margin: 5px;
+  //margin: 5px;
 `;
 
 const StyledInputNumber = styled.input`
@@ -128,14 +129,13 @@ const StyledInputNumber = styled.input`
   -moz-appearance: textfield;
   // normal styling
   height: 35px;
-  width: 55px;
-  align-content: center;
-  justify-content: center;
+  min-width: 30px;
+  width: 10%;
   background-color: lightgrey;
-  margin: 5px;
   border-radius: 5px;
   border: 0.5px solid transparent;
-  margin: 5px 10px 10px 10px;
+  margin: 5px;
+  text-align: center;
 `;
 
 const StyledInputForWeight = styled.input`
@@ -148,10 +148,12 @@ const StyledInputForWeight = styled.input`
   -moz-appearance: textfield;
   // normal styling
   height: 35px;
-  width: 70px;
+  min-width: 35px;
+  width: 17%;
   background-color: lightgrey;
   margin: 5px;
   border-radius: 5px;
   border: 0.5px solid transparent;
   margin: 5px 10px 10px 10px;
+  text-align: center;
 `;
