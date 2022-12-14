@@ -12,11 +12,12 @@ export default function Footer() {
 const StyledFooter = styled.footer`
   width: 100%;
   height: 80px;
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  display: flex;
   text-align: center;
   background: lightgrey;
-  display: flex;
+  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
