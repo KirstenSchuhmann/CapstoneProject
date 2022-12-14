@@ -15,11 +15,10 @@ const StyledFooter = styled.footer`
   position: fixed;
   bottom: 0;
   display: flex;
-  background: lightgrey;
-  flex-shrink: 0;
   justify-content: center;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
+  background: lightgrey;
 
   a {
     font-size: 2rem;

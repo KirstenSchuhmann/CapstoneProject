@@ -34,7 +34,7 @@ const StyledSection = styled.section`
   padding: 10px;
   margin: 0 1rem 1.5rem 1em;
   overflow: hidden;
-  min-width: 280px;
+  min-width: 265px;
   max-width: 600px;
 
   h3 {
@@ -50,6 +50,7 @@ const StyledSection = styled.section`
   input {
     height: 30px;
     border-radius: 5px;
+    border: 1.5px solid lightgray;
     margin: 8px;
     text-align: center;
   }
@@ -81,6 +82,5 @@ const StyledSection = styled.section`
 
   input[name="weight"] {
     min-width: 55px;
-    width: auto;
   }
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import GymPlan from "../components/GymPlan";
+import GymPlan from "../components/GymPlan/GymPlan";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 

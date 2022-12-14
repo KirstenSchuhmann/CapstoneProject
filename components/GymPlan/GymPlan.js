@@ -1,4 +1,3 @@
-import styled, { isStyledComponent } from "styled-components";
 import WorkoutSet from "./WorkoutSet";
 
 export default function GymPlan() {
