@@ -32,7 +32,7 @@ const StyledSection = styled.section`
   border: 1px solid black;
   border-radius: 15px;
   padding: 10px;
-  margin: 0 1rem 1.5rem 1em;
+  margin: 0 1rem 1.5rem 1rem;
   overflow: hidden;
   min-width: 265px;
   max-width: 600px;
