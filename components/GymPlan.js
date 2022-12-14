@@ -17,6 +17,7 @@ export default function GymPlan() {
             placeholder="exercise"
           />
           <StyledInputForWeight type="number" name="kg" placeholder=" - " />
+          <button> </button>
         </form>
       </StyledSection>
       <StyledSection>
