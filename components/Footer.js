@@ -12,7 +12,7 @@ export default function Footer() {
 const StyledFooter = styled.footer`
   width: 100%;
   height: 80px;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   text-align: center;
   background: lightgrey;
