@@ -19,7 +19,7 @@ const StyledFooter = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px 0px;
+  border-radius: 10px 10px 0px 0px;
 
   a {
     font-size: 2rem;
