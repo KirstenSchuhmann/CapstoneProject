@@ -5,11 +5,25 @@ export default function WorkoutSet({ setName }) {
     <>
       <StyledSection>
         <h3> {setName} </h3>
-        <form>
-          <input type="number" name="set" label="set" placeholder="2" />
-          <p> x </p>
-          <input type="number" name="volume" label="volume" placeholder="5" />
+
+        <StyledDiv>
           <input
+            id="number"
+            type="number"
+            name="set"
+            label="set"
+            placeholder="set"
+          />
+          <p> x </p>
+          <input
+            id="volume"
+            type="number"
+            name="volume"
+            label="volume"
+            placeholder="vol"
+          />
+          <input
+            id="exercise"
             type="text"
             name="exercise"
             label="exercise"
@@ -17,12 +31,13 @@ export default function WorkoutSet({ setName }) {
             placeholder="exercise"
           />
           <input
+            id="weight"
             type="number"
             name="weight"
             label="weight"
-            placeholder="10 kg"
+            placeholder="weight"
           />
-        </form>
+        </StyledDiv>
       </StyledSection>
     </>
   );
@@ -31,20 +46,25 @@ export default function WorkoutSet({ setName }) {
 const StyledSection = styled.section`
   border: 1px solid black;
   border-radius: 15px;
-  padding: 10px;
+  padding: 13px;
   margin: 0 1rem 1.5rem 1rem;
   overflow: hidden;
   min-width: 265px;
-  max-width: 600px;
 
   h3 {
-    margin: 8px;
+    margin: 2px;
+    padding-left: 5px;
   }
+`;
 
-  form {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: small;
+    grid-column: 2;
   }
 
   input {
@@ -67,6 +87,15 @@ const StyledSection = styled.section`
     // normal styling
     background-color: lightgrey;
     border: 0.5px solid transparent;
+
+    ::placeholder {
+      color: grey;
+      font-size: 15px;
+    }
+  }
+
+  input[name="set"] {
+    grid-column: 1;
   }
 
   input[name="set"],
