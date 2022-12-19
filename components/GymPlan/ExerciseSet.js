@@ -45,22 +45,23 @@ const StyledDiv = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  margin-left: 0;
+  margin-right: 0;
 
   p {
     font-size: small;
+    margin-right: 8px;
   }
 
   input {
     height: 30px;
     border-radius: 5px;
     border: 1.5px solid lightgray;
-
-    margin: 8px;
     text-align: center;
   }
 
   input[type="number"] {
-    width: 10%;
+    margin-right: 8px;
     //Chrome, Safari, Edge, Opera - hide arrows
     ::-webkit-outer-spin-button,
     ::-webkit-inner-spin-button {
@@ -83,16 +84,17 @@ const StyledDiv = styled.div`
   input[name="volume"] {
     min-width: 35px;
     flex-basis: 0;
-    flex-grow: 0.5;
+    flex-grow: 0.6;
   }
 
   input[name="weight"] {
-    min-width: 55px;
+    margin-left: 8px;
+    min-width: 45px;
     flex-basis: 0;
     flex-grow: 1;
   }
   input[name="exercise"] {
-    min-width: 70px;
+    min-width: 60px;
     flex-basis: 0;
     flex-grow: 3;
   }

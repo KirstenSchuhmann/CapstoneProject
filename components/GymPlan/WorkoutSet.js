@@ -24,29 +24,33 @@ export default function WorkoutSet({ setName }) {
 }
 
 const StyledSection = styled.section`
+  /* display: flex;
+  flex-flow: row wrap;
+  align-items: center; */
   border: 1px solid black;
   border-radius: 15px;
   padding: 13px;
+  width: auto;
   margin: 0 1rem 1.5rem 1rem;
-  display: flex;
-  flex-flow: wrap;
-  width: 600px;
-  flex-grow: 1;
 
   h3 {
+    flex-basis: 100%;
     margin: 2px;
     padding-left: 5px;
   }
 
   button {
-    height: 30px;
     width: 100%;
-    margin: 8px auto 2px;
+    flex-basis: 100%;
+    height: 30px;
+    flex-grow: 1;
+    margin: 5px auto 2px;
     border-radius: 5px;
     border: 1.5px solid lightgray;
     cursor: pointer;
     font-weight: 400;
     color: #423f3f;
+
     :first-of-type {
       background-color: #05b7ce;
       color: #f1fffa;
