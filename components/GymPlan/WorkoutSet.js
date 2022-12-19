@@ -28,8 +28,10 @@ const StyledSection = styled.section`
   border-radius: 15px;
   padding: 13px;
   margin: 0 1rem 1.5rem 1rem;
-  min-width: 300px;
-  max-width: 550px;
+  display: flex;
+  flex-flow: wrap;
+  width: 600px;
+  flex-grow: 1;
 
   h3 {
     margin: 2px;
