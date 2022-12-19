@@ -30,7 +30,7 @@ const StyledSection = styled.section`
   border: 1px solid black;
   border-radius: 15px;
   padding: 13px;
-  width: auto;
+  min-width: 300px;
   margin: 0 1rem 1.5rem 1rem;
 
   h3 {
