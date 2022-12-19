@@ -4,6 +4,7 @@ export default function GymPlan() {
   function handleSubmit(event) {
     event.preventDefault();
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <WorkoutSet setName="Warm-up" />

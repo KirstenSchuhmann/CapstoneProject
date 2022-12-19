@@ -6,7 +6,7 @@ export default function WorkoutSet({ setName }) {
   const [InputFields, setInputFields] = useState(0);
   const newSet = [];
 
-  for (let i = 0; i < InputFields; i++) {
+  for (let i = 1; i < InputFields; i++) {
     newSet.push(<ExerciseSet key={i} number={i} />);
   }
 
@@ -45,4 +45,15 @@ const StyledSection = styled.section`
     cursor: pointer;
     font-weight: 400;
     color: #423f3f;
+    :first-of-type {
+      background-color: #05b7ce;
+      color: #f1fffa;
+      border: 1px white;
+      box-shadow: 1px 1px 5px #e2e2e2, -1px -1px 5px #ffffff;
+      :hover {
+        background-color: #15aabf;
+        box-shadow: 1px 1px 5px rgba(10, 82, 92, 0.5);
+      }
+    }
+  }
 `;
