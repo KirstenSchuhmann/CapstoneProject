@@ -6,6 +6,7 @@ export default function WorkoutSet({ setName }) {
     <StyledSection>
       <h3> {setName} </h3>
       <ExerciseSet />
+      <button> add exercise </button>
     </StyledSection>
   );
 }
@@ -16,10 +17,29 @@ const StyledSection = styled.section`
   padding: 13px;
   margin: 0 1rem 1.5rem 1rem;
   min-width: 300px;
-  max-width: 700px;
+  max-width: 550px;
 
   h3 {
     margin: 2px;
     padding-left: 5px;
+  }
+
+  button {
+    height: 30px;
+    width: 100%;
+    margin: 8px auto 2px;
+    border-radius: 5px;
+    border: 1.5px solid lightgray;
+    cursor: pointer;
+    font-weight: 400;
+    color: #423f3f;
+    &:nth-child(odd) {
+      background-color: #05b7ce;
+      color: #f1fffa;
+      border: 1px white;
+      box-shadow: 1px 1px 5px #e2e2e2, -1px -1px 5px #ffffff;
+      :hover {
+        background-color: #15aabf;
+        box-shadow: 1px 1px 5px rgba(10, 82, 92, 0.5);
   }
 `;
