@@ -11,7 +11,7 @@ export default function ExerciseSet() {
         placeholder="set"
         min="0"
       />
-      <p> * </p>
+      <p> x </p>
       <input
         aria-label="set volume"
         type="number"
