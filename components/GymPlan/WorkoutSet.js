@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import ExerciseSet from "./ExerciseSet";
+import { useState } from "react";
 
 export default function WorkoutSet({ setName }) {
+  const [InputFields, setInputFields] = useState(0);
+  const newSet = [];
+
+  for (let i = 0; i < InputFields; i++) {
+    newSet.push(<ExerciseSet key={i} number={i} />);
+  }
+
+  function addComponent() {
+    setInputFields((count) => count + 1);
+  }
+
   return (
     <StyledSection>
       <h3> {setName} </h3>
-      <ExerciseSet />
-      <button> add exercise </button>
+      {newSet}
+      <button onClick={addComponent}> add exercise </button>
     </StyledSection>
   );
 }
@@ -33,13 +45,4 @@ const StyledSection = styled.section`
     cursor: pointer;
     font-weight: 400;
     color: #423f3f;
-    &:nth-child(odd) {
-      background-color: #05b7ce;
-      color: #f1fffa;
-      border: 1px white;
-      box-shadow: 1px 1px 5px #e2e2e2, -1px -1px 5px #ffffff;
-      :hover {
-        background-color: #15aabf;
-        box-shadow: 1px 1px 5px rgba(10, 82, 92, 0.5);
-  }
 `;

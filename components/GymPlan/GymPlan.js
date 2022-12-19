@@ -1,8 +1,11 @@
 import WorkoutSet from "./WorkoutSet";
 
 export default function GymPlan() {
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <WorkoutSet setName="Warm-up" />
       <WorkoutSet setName="Squat" />
       <WorkoutSet setName="Bench" />
