@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function WorkoutSet({ setName }) {
   const [InputFields, setInputFields] = useState(0);
+  // const [newSet, setNewSet] = useState([]);
   const newSet = [];
 
   for (let i = 1; i < InputFields; i++) {
