@@ -1,17 +1,20 @@
-import WorkoutSet from "./WorkoutSet";
+import ExerciseSet from './ExerciseSet';
+import WorkoutSet from './WorkoutSet';
 
-export default function GymPlan() {
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+export default function GymPlan({ sectionName }) {
+   function handleSubmit(event) {
+      event.preventDefault();
+   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <WorkoutSet setName="Warm-up" />
-      <WorkoutSet setName="Squat" />
-      <WorkoutSet setName="Bench" />
-      <WorkoutSet setName="Deadlift" />
-      <WorkoutSet setName="Assistant" />
-    </form>
-  );
+   return (
+      <>
+         <form onSubmit={handleSubmit}>
+            <WorkoutSet sectionName='Warm-up' />
+            <WorkoutSet sectionName='Squat' />
+            <WorkoutSet sectionName='Bench' />
+            <WorkoutSet sectionName='Deadlift' />
+            <WorkoutSet sectionName='Assistant' />
+         </form>
+      </>
+   );
 }
