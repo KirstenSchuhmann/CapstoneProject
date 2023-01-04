@@ -103,8 +103,7 @@ const Weight = styled.input`
 `;
 
 const Exercise = styled.input`
- min-width: 60px;
-      flex-basis: 0;
-      flex-grow: 3;
-   }
+   min-width: 60px;
+   flex-basis: 0;
+   flex-grow: 3;
 `;
