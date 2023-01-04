@@ -1,7 +1,7 @@
 import ExerciseSet from './ExerciseSet';
 import WorkoutSet from './WorkoutSet';
 
-export default function GymPlan({ sectionName }) {
+export default function GymPlan() {
    function handleSubmit(event) {
       event.preventDefault();
    }
