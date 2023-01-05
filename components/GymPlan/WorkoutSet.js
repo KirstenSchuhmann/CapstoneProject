@@ -4,19 +4,23 @@ import { nanoid } from 'nanoid';
 import ExerciseSet from './ExerciseSet';
 
 export default function WorkoutSet({ sectionName }) {
-   const [exerciseSets, setExerciseSets] = useState([]);
+   const [sections, setSections] = useState([]);
 
-   function addExerciseSet() {
-      const currentSets = [...exerciseSets];
-      currentSets.push({
+   function addSection(sectionName) {
+      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+   }
+
+   const addExerciseSet = (sectionIndex) => {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].exerciseSets.push({
          id: nanoid(),
          sets: '',
          reps: '',
          weight: '',
          exercise: '',
       });
-      setExerciseSets(() => currentSets);
-   }
+      setSections(() => updatedSections);
+   };
 
    return (
       <StyledSection>
