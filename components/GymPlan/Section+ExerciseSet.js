@@ -1,38 +1,18 @@
-import { nanoid } from 'nanoid';
+import { StyledSection, AddExerciseSet, StyledDiv } from './GymPlanStyling';
 
-import {
-   StyledSection,
-   AddSectionButton,
-   StyledForm,
-   AddExerciseSet,
-   SaveButton,
-} from './GymPlanStyling';
-
-export default function SectionAndExerciseSet({ sections }) {
-   const addExerciseSet = (sectionIndex) => {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].exerciseSets.push({
-         id: nanoid(),
-         sets: '',
-         reps: '',
-         weight: '',
-         exercise: '',
-      });
-      setSections(() => updatedSections);
-   };
-
+export default function SectionAndExerciseSet({ sections, addExerciseSet }) {
    return (
       <>
          {sections.map((section, sectionIndex) => (
             <StyledSection key={sectionIndex}>
                <h3> {section.name}</h3>
 
-               {section.exerciseSets.map((exerciseSet, setId) => (
+               {section.exerciseSets.map((exerciseSet) => (
                   <>
                      <StyledDiv key={exerciseSet.id}>
                         <input
                            type='number'
-                           aria-label='set number'
+                           aria-label='set sets'
                            label='set'
                            placeholder='set'
                            min='0'
@@ -41,8 +21,8 @@ export default function SectionAndExerciseSet({ sections }) {
                         <p>x</p>
                         <input
                            type='number'
-                           aria-label='set volume'
-                           label='volume'
+                           aria-label='set repitition'
+                           label='reps'
                            placeholder='reps'
                            min='0'
                            name={`${section.name}-${exerciseSet.id}-reps`}

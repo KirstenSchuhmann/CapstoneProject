@@ -1,14 +1,9 @@
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 import SectionAndExerciseSet from './Section+ExerciseSet';
 
-import {
-   StyledSection,
-   AddSectionButton,
-   StyledForm,
-   AddExerciseSet,
-   SaveButton,
-} from './GymPlanStyling';
+import { AddSectionButton, StyledForm, SaveButton } from './GymPlanStyling';
 
 export default function GymPlan() {
    const [sections, setSections] = useState([]);
@@ -16,6 +11,18 @@ export default function GymPlan() {
    function addSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
    }
+
+   const addExerciseSet = (sectionIndex) => {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(() => updatedSections);
+   };
 
    // Function storing input values
    function handleSubmit(event) {
@@ -71,6 +78,7 @@ export default function GymPlan() {
          <SectionAndExerciseSet
             sections={sections}
             addSection={addSection}
+            addExerciseSet={addExerciseSet}
          />
 
          <SaveButton type='submit'> Save Gym Plan </SaveButton>

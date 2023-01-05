@@ -6,6 +6,7 @@ export {
    StyledForm,
    AddExerciseSet,
    SaveButton,
+   StyledDiv,
 };
 
 const StyledForm = styled.form`
@@ -41,7 +42,6 @@ const AddSectionButton = styled.button`
 
 const AddExerciseSet = styled.button`
    width: 100%;
-   //flex-basis: 100%;
    height: 30px;
    //flex-grow: 1;
    margin: 5px auto 2px;
@@ -58,8 +58,69 @@ const AddExerciseSet = styled.button`
 `;
 
 const SaveButton = styled.button`
+   background-color: #d30077;
+   color: white;
    height: 2rem;
    width: 8rem;
    border-radius: 2rem;
    border: 1.5px solid lightgray;
+`;
+
+const StyledDiv = styled.div`
+   display: flex;
+   flex-flow: row wrap;
+   align-items: center;
+   margin-left: 0;
+   margin-right: 0;
+
+   p {
+      font-size: small;
+      margin-right: 8px;
+   }
+
+   input {
+      height: 30px;
+      border-radius: 5px;
+      border: 1.5px solid lightgray;
+      text-align: center;
+   }
+
+   input[type='number'] {
+      margin-right: 8px;
+      //Chrome, Safari, Edge, Opera - hide arrows
+      ::-webkit-outer-spin-button,
+      ::-webkit-inner-spin-button {
+         -webkit-appearance: none;
+      }
+      // Firefox - hide arrows (CSS - letters shouldn't be allowed! Needs to be fixed later!!!)
+      -moz-appearance: textfield;
+      // normal styling
+      background-color: #efefef;
+      border: 0.5px solid lightgrey;
+      font-weight: 600;
+
+      ::placeholder {
+         color: grey;
+         font-weight: 500;
+         font-size: 15px;
+      }
+   }
+   input[label='set'],
+   input[label='reps'] {
+      min-width: 35px;
+      flex-basis: 0;
+      flex-grow: 0.6;
+   }
+
+   input[label='weight'] {
+      margin-left: 8px;
+      min-width: 45px;
+      flex-basis: 0;
+      flex-grow: 1;
+   }
+   input[label='exercise'] {
+      min-width: 60px;
+      flex-basis: 0;
+      flex-grow: 3;
+   }
 `;
