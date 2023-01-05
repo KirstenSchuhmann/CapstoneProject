@@ -18,7 +18,8 @@ const StyledFooter = styled.footer`
   justify-content: center;
   align-items: center;
   border-radius: 10px 10px 0px 0px;
-  background: lightgrey;
+  background: white;
+  box-shadow: 0px -5px 5px rgb(32 33 36 / 10%);
   margin-top: auto;
 
   a {

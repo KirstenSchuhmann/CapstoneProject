@@ -1,117 +1,68 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
+import ExerciseSet from './ExerciseSet';
 
-export default function WorkoutSet({ setName }) {
-  return (
-    <StyledSection>
-      <h3> {setName} </h3>
+export default function WorkoutSet({ sectionName }) {
+   const [exerciseSets, setExerciseSets] = useState([]);
 
-      <StyledDiv>
-        <input
-          aria-label="set number"
-          type="number"
-          name="set"
-          label="set"
-          placeholder="set"
-          min="0"
-        />
-        <p> x </p>
-        <input
-          aria-label="set volume"
-          type="number"
-          name="volume"
-          label="volume"
-          placeholder="vol"
-          min="0"
-        />
+   function addExerciseSet() {
+      const currentSets = [...exerciseSets];
+      currentSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setExerciseSets(() => currentSets);
+   }
 
-        <input
-          aria-label="set weight"
-          type="number"
-          name="weight"
-          label="weight"
-          placeholder="weight"
-          min="0"
-        />
-        <input
-          aria-label="set exercise"
-          type="text"
-          name="exercise"
-          label="exercise"
-          autoComplete="off"
-          placeholder="exercise"
-        />
-      </StyledDiv>
-    </StyledSection>
-  );
+   return (
+      <StyledSection>
+         <h3>{sectionName} </h3>
+         <ExerciseSet exerciseSets={exerciseSets} />
+         <button
+            type='button'
+            onClick={addExerciseSet}>
+            add exercise
+         </button>
+      </StyledSection>
+   );
 }
 
 const StyledSection = styled.section`
-  border: 1px solid black;
-  border-radius: 15px;
-  padding: 13px;
-  margin: 0 1rem 1.5rem 1rem;
-  min-width: 300px;
-  max-width: 700px;
+   border: 1px solid black;
+   border-radius: 15px;
+   padding: 13px;
+   min-width: 300px;
+   margin: 0 1rem 1.5rem 1rem;
 
-  h3 {
-    margin: 2px;
-    padding-left: 5px;
-  }
-`;
+   h3 {
+      flex-basis: 100%;
+      margin: 2px;
+      padding-left: 5px;
+   }
 
-const StyledDiv = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+   button {
+      width: 100%;
+      flex-basis: 100%;
+      height: 30px;
+      flex-grow: 1;
+      margin: 5px auto 2px;
+      border-radius: 5px;
+      border: 1.5px solid lightgray;
+      cursor: pointer;
+      font-weight: 400;
+      color: #423f3f;
 
-  p {
-    font-size: small;
-  }
-
-  input {
-    height: 30px;
-    border-radius: 5px;
-    border: 1.5px solid lightgray;
-
-    margin: 8px;
-    text-align: center;
-  }
-
-  input[type="number"] {
-    width: 10%;
-    //Chrome, Safari, Edge, Opera - hide arrows
-    ::-webkit-outer-spin-button,
-    ::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-    }
-    // Firefox - hide arrows (CSS - letters shouldn't be allowed! Needs to be fixed later!!!)
-    -moz-appearance: textfield;
-    // normal styling
-    background-color: #efefef;
-    border: 0.5px solid lightgrey;
-    font-weight: 600;
-
-    ::placeholder {
-      color: grey;
-      font-weight: 500;
-      font-size: 15px;
-    }
-  }
-  input[name="set"],
-  input[name="volume"] {
-    min-width: 35px;
-    flex-basis: 0;
-    flex-grow: 0.5;
-  }
-
-  input[name="weight"] {
-    min-width: 55px;
-    flex-basis: 0;
-    flex-grow: 1;
-  }
-  input[name="exercise"] {
-    min-width: 70px;
-    flex-basis: 0;
-    flex-grow: 3;
-  }
+      background-color: #05b7ce;
+      color: #f1fffa;
+      border: 1px white;
+      box-shadow: 1px 1px 5px #e2e2e2, -1px -1px 5px #ffffff;
+      :hover {
+         background-color: #15aabf;
+         box-shadow: 1px 1px 5px rgba(10, 82, 92, 0.5);
+      }
+   }
 `;
