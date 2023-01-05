@@ -6,14 +6,12 @@ export default function GymPlan() {
    }
 
    return (
-      <>
-         <form onSubmit={handleSubmit}>
-            <WorkoutSet sectionName='Warm-up' />
-            <WorkoutSet sectionName='Squat' />
-            <WorkoutSet sectionName='Bench' />
-            <WorkoutSet sectionName='Deadlift' />
-            <WorkoutSet sectionName='Assistant' />
-         </form>
-      </>
+      <form onSubmit={handleSubmit}>
+         <WorkoutSet sectionName='Warm-up' />
+         <WorkoutSet sectionName='Squat' />
+         <WorkoutSet sectionName='Bench' />
+         <WorkoutSet sectionName='Deadlift' />
+         <WorkoutSet sectionName='Assistant' />
+      </form>
    );
 }
