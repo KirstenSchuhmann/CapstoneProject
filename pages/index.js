@@ -1,21 +1,21 @@
-import styled from "styled-components";
-import GymPlan from "../components/GymPlan/GymPlan";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import styled from 'styled-components';
+import GymPlan from '../components/GymPlan/GymPlan';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 export default function Home() {
-  return (
-    <>
-      <Header headline="Gym-Plan" />
-      <StyledMain>
-        <GymPlan />
-      </StyledMain>
-      <Footer />
-    </>
-  );
+   return (
+      <>
+         <Header headline='Gym-Plan' />
+         <StyledMain>
+            <GymPlan />
+         </StyledMain>
+         <Footer />
+      </>
+   );
 }
 
 const StyledMain = styled.main`
-  display: flex;
-  justify-content: center;
+   display: flex;
+   justify-content: center;
 `;

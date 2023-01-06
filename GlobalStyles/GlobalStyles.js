@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     html,
@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         margin: 0;
         padding-bottom: 2rem; 
-        font-family: Helvetica, Arial, sans-serif; 
+        font-family: Helvetica, Arial, sans-serif;     
     }
 
     * {
