@@ -25,7 +25,7 @@ const StyledSection = styled.section`
 `;
 
 const AddSectionButton = styled.button`
-   height: 2rem;
+   height: 3rem;
    width: fit-content;
    width: 8rem;
    border-radius: 2rem;
@@ -56,7 +56,7 @@ const AddExerciseSet = styled.button`
 const SaveButton = styled.button`
    background-color: #d30077;
    color: white;
-   height: 2rem;
+   height: 3rem;
    width: 8rem;
    border-radius: 2rem;
    border: 1.5px solid lightgray;
