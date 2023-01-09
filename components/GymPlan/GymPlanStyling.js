@@ -28,7 +28,7 @@ const StyledForm = styled.form`
 `;
 const DeleteButton = styled.button`
    float: right;
-
+   text-align: center;
    height: 25px;
    width: 25px;
    border: 1.5px solid lightgray;
