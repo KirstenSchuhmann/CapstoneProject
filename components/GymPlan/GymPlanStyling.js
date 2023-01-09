@@ -74,6 +74,8 @@ const AddExerciseSet = styled.button`
 `;
 
 const SaveButton = styled.button`
+   display: inherit;
+   margin: 0 auto;
    height: 2.5rem;
    width: 10rem;
    font-size: 16px;
