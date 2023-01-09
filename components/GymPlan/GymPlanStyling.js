@@ -18,6 +18,10 @@ const CenterButtons = styled.div`
 `;
 
 const StyledForm = styled.form`
+   h3 {
+      display: inline;
+   }
+
    button {
       cursor: pointer;
    }
