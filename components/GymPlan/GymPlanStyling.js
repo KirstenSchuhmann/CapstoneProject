@@ -86,9 +86,9 @@ const StyledDiv = styled.div`
       ::-webkit-inner-spin-button {
          -webkit-appearance: none;
       }
-      // Firefox - hide arrows (CSS - letters shouldn't be allowed! Needs to be fixed later!!!)
+
       -moz-appearance: textfield;
-      // normal styling
+
       background-color: #efefef;
       border: 0.5px solid lightgrey;
       font-weight: 600;
