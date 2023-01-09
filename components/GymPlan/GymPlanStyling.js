@@ -26,7 +26,7 @@ const StyledSection = styled.section`
 
 const AddSectionButton = styled.button`
    height: 2.5rem;
-   width: 8rem;
+   width: 9rem;
    font-size: 16px;
    border-radius: 2rem;
    border: 1.5px solid lightgray;
