@@ -8,7 +8,14 @@ export {
    SaveButton,
    StyledDiv,
    DeleteButton,
+   CenterButtons,
 };
+
+const CenterButtons = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+`;
 
 const StyledForm = styled.form`
    button {
