@@ -1,4 +1,9 @@
-import { StyledSection, AddExerciseSet, StyledDiv } from './GymPlanStyling';
+import {
+   StyledSection,
+   AddExerciseSet,
+   StyledDiv,
+   DeleteButton,
+} from './GymPlanStyling';
 
 export default function SectionAndExerciseSet({
    sections,
@@ -10,11 +15,11 @@ export default function SectionAndExerciseSet({
          {sections.map((section, sectionIndex) => (
             <StyledSection key={sectionIndex}>
                <h3> {section.name}</h3>
-               <button
+               <DeleteButton
                   type='button'
                   onClick={() => deleteSection(sectionIndex)}>
                   x
-               </button>
+               </DeleteButton>
 
                {section.exerciseSets.map((exerciseSet) => (
                   <>

@@ -7,12 +7,21 @@ export {
    AddExerciseSet,
    SaveButton,
    StyledDiv,
+   DeleteButton,
 };
 
 const StyledForm = styled.form`
    button {
       cursor: pointer;
    }
+`;
+const DeleteButton = styled.button`
+   float: right;
+
+   height: 25px;
+   width: 25px;
+   border: 1.5px solid lightgray;
+   border-radius: 50%;
 `;
 
 const StyledSection = styled.section`
