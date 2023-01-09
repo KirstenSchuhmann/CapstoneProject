@@ -11,6 +11,14 @@ export default function GymPlan() {
    function addSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
    }
+   // Delete Section
+   function deleteSection(sectionIndex) {
+      if (sectionIndex >= 0) {
+         const removedSection = sections.splice(sectionIndex, 1);
+         sections - removedSection;
+         setSections([...sections]);
+      }
+   }
 
    const addExerciseSet = (sectionIndex) => {
       const updatedSections = [...sections];
@@ -79,6 +87,7 @@ export default function GymPlan() {
             sections={sections}
             addSection={addSection}
             addExerciseSet={addExerciseSet}
+            deleteSection={deleteSection}
          />
 
          <SaveButton type='submit'> Save Gym Plan </SaveButton>
