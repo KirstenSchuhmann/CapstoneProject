@@ -25,13 +25,12 @@ const StyledSection = styled.section`
 `;
 
 const AddSectionButton = styled.button`
-   height: 3rem;
-   width: fit-content;
+   height: 2.5rem;
    width: 8rem;
+   font-size: 16px;
    border-radius: 2rem;
    border: 1.5px solid lightgray;
    margin: 10px;
-   font-size: 16px;
    color: #393f47;
    background-color: #ebebec;
 `;
@@ -39,6 +38,7 @@ const AddSectionButton = styled.button`
 const AddExerciseSet = styled.button`
    width: 100%;
    height: 30px;
+   font-size: 17px;
    margin: 5px auto 2px;
    border-radius: 5px;
    border: 1px white;
@@ -54,10 +54,11 @@ const AddExerciseSet = styled.button`
 `;
 
 const SaveButton = styled.button`
+   height: 2.5rem;
+   width: 10rem;
+   font-size: 16px;
    background-color: #d30077;
    color: white;
-   height: 3rem;
-   width: 8rem;
    border-radius: 2rem;
    border: 1.5px solid lightgray;
 `;
