@@ -16,6 +16,5 @@ export default function Home() {
 }
 
 const StyledMain = styled.main`
-   display: flex;
-   justify-content: center;
+   padding: 10px;
 `;

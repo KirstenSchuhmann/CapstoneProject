@@ -41,7 +41,7 @@ const StyledSection = styled.section`
    padding: 13px;
    min-width: 300px;
    max-width: 700px;
-   margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+   margin: 1.5rem auto;
 `;
 
 const AddSectionButton = styled.button`
@@ -87,8 +87,6 @@ const StyledDiv = styled.div`
    display: flex;
    flex-flow: row wrap;
    align-items: center;
-   margin-left: 0;
-   margin-right: 0;
 
    p {
       font-size: small;
