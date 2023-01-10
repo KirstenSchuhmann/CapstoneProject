@@ -8,6 +8,11 @@ import {
    StyledForm,
    SaveButton,
    CenterButtons,
+   StyledNotes,
+   StyledNotesLabel,
+   StyledLabelTitle,
+   StyledFieldSet,
+   GymPlanTitle,
 } from './GymPlanStyling';
 
 export default function GymPlan() {
@@ -73,23 +78,23 @@ export default function GymPlan() {
 
    return (
       <StyledForm onSubmit={handleSubmit}>
-         <fieldset>
-            <label htmlFor='planTitle'>Title: </label>
-            <input
+         <StyledFieldSet>
+            <StyledLabelTitle htmlFor='planTitle'>Title: </StyledLabelTitle>
+            <GymPlanTitle
                type='text'
                placeholder='e.g. Block W1'
                aria-label='Type plan name'
                label='planTitle'
-               maxLength={30}></input>
+               maxLength={30}></GymPlanTitle>
 
-            <label htmlFor='notes'>notes: </label>
-            <textarea
+            <StyledNotesLabel htmlFor='notes'>notes: </StyledNotesLabel>
+            <StyledNotes
                placeholder='...safe notes for later.'
                aria-label='Type plan name'
                label='notes'
                maxLength={30}
             />
-         </fieldset>
+         </StyledFieldSet>
          <CenterButtons>
             {createSectionName.map((section) => (
                <AddSectionButton
