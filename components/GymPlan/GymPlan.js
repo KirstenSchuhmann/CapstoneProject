@@ -73,6 +73,23 @@ export default function GymPlan() {
 
    return (
       <StyledForm onSubmit={handleSubmit}>
+         <fieldset>
+            <label htmlFor='planTitle'>Title: </label>
+            <input
+               type='text'
+               placeholder='e.g. Block W1'
+               aria-label='Type plan name'
+               label='planTitle'
+               maxLength={30}></input>
+
+            <label htmlFor='notes'>notes: </label>
+            <textarea
+               placeholder='...safe notes for later.'
+               aria-label='Type plan name'
+               label='notes'
+               maxLength={30}
+            />
+         </fieldset>
          <CenterButtons>
             {createSectionName.map((section) => (
                <AddSectionButton
