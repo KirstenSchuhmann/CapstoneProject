@@ -60,34 +60,27 @@ export default function GymPlan() {
       setSections(updatedSections);
    }
 
+   // To Create Buttons
+   const createSectionName = [
+      { name: 'Warm-Up' },
+      { name: 'Squat' },
+      { name: 'Bench' },
+      { name: 'Deadlift' },
+      { name: 'Assistant' },
+   ];
+
+   console.log(sections);
+
    return (
       <StyledForm onSubmit={handleSubmit}>
          <CenterButtons>
-            <AddSectionButton
-               type='button'
-               onClick={() => addSection('Warm-Up')}>
-               add Warm-Up
-            </AddSectionButton>
-            <AddSectionButton
-               type='button'
-               onClick={() => addSection('Squat')}>
-               add Squat
-            </AddSectionButton>
-            <AddSectionButton
-               type='button'
-               onClick={() => addSection('Bench')}>
-               add Bench
-            </AddSectionButton>
-            <AddSectionButton
-               type='button'
-               onClick={() => addSection('Deadlift')}>
-               add Deadlift
-            </AddSectionButton>
-            <AddSectionButton
-               type='button'
-               onClick={() => addSection('Assistant')}>
-               add Assistant
-            </AddSectionButton>
+            {createSectionName.map((section) => (
+               <AddSectionButton
+                  type='button'
+                  onClick={() => addSection(section.name)}>
+                  {section.name}
+               </AddSectionButton>
+            ))}
          </CenterButtons>
          <SectionAndExerciseSet
             sections={sections}
