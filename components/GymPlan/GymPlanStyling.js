@@ -16,13 +16,9 @@ export {
    StyledFieldSet,
 };
 
-const CenterButtons = styled.div`
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-`;
-
 const StyledForm = styled.form`
+   padding: 0.5rem;
+
    h3 {
       display: inline;
    }
@@ -45,7 +41,7 @@ const StyledLabelTitle = styled.label`
    grid-column: 1 / 2;
    grid-row: 1 / 2;
    place-self: center start;
-   margin-left: 14px;
+   margin-left: 5px;
 
    font-family: 'Satoshi-Variable';
    font-size: 35px;
@@ -55,7 +51,7 @@ const StyledNotesLabel = styled.label`
    grid-row: 2 / 2;
    grid-column: 1 / 2;
    place-self: center start;
-   margin-left: 20px;
+   margin-left: 8px;
 
    font-family: 'Satoshi-Variable';
    font-weight: 400;
@@ -98,6 +94,12 @@ const DeleteButton = styled.button`
    width: 25px;
    border: 1.5px solid lightgray;
    border-radius: 50%;
+`;
+
+const CenterButtons = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
 `;
 
 const StyledSection = styled.section`

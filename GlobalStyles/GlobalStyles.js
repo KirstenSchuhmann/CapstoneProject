@@ -8,13 +8,12 @@ const GlobalStyles = createGlobalStyle`
        font-display: swap;
        font-style: normal;  
         }
-        
     html,
     body {
         padding: 0;
         margin: 0;
         padding-bottom: 3rem; 
-        font-family: Helvetica, Arial, sans-serif;     
+        font-family: 'Satoshi-Variable', Arial, Helvetica, sans-serif; 
     }
 
     * {
