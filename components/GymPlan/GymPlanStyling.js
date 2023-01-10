@@ -7,12 +7,32 @@ export {
    AddExerciseSet,
    SaveButton,
    StyledDiv,
+   DeleteButton,
+   CenterButtons,
 };
 
+const CenterButtons = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+`;
+
 const StyledForm = styled.form`
+   h3 {
+      display: inline;
+   }
+
    button {
       cursor: pointer;
    }
+`;
+const DeleteButton = styled.button`
+   float: right;
+   text-align: center;
+   height: 25px;
+   width: 25px;
+   border: 1.5px solid lightgray;
+   border-radius: 50%;
 `;
 
 const StyledSection = styled.section`
@@ -21,7 +41,7 @@ const StyledSection = styled.section`
    padding: 13px;
    min-width: 300px;
    max-width: 700px;
-   margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+   margin: 1.5rem auto;
 `;
 
 const AddSectionButton = styled.button`
@@ -54,6 +74,8 @@ const AddExerciseSet = styled.button`
 `;
 
 const SaveButton = styled.button`
+   display: inherit;
+   margin: 0 auto;
    height: 2.5rem;
    width: 10rem;
    font-size: 16px;
@@ -67,8 +89,6 @@ const StyledDiv = styled.div`
    display: flex;
    flex-flow: row wrap;
    align-items: center;
-   margin-left: 0;
-   margin-right: 0;
 
    p {
       font-size: small;

@@ -5,7 +5,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        padding-bottom: 2rem; 
+        padding-bottom: 3rem; 
         font-family: Helvetica, Arial, sans-serif;     
     }
 
