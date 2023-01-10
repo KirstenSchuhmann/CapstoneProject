@@ -62,11 +62,11 @@ export default function GymPlan() {
 
    // To Create Buttons
    const createSectionName = [
-      { name: 'Warm-Up' },
-      { name: 'Squat' },
-      { name: 'Bench' },
-      { name: 'Deadlift' },
-      { name: 'Assistant' },
+      'Warm-Up',
+      'Squat',
+      'Bench',
+      'Deadlift',
+      'Assistant',
    ];
 
    console.log(sections);
@@ -77,8 +77,8 @@ export default function GymPlan() {
             {createSectionName.map((section) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => addSection(section.name)}>
-                  {section.name}
+                  onClick={() => addSection(section)}>
+                  {section}
                </AddSectionButton>
             ))}
          </CenterButtons>
