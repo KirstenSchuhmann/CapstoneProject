@@ -5,7 +5,6 @@ export {
    AddSectionButton,
    StyledForm,
    AddExerciseSet,
-   SaveButton,
    StyledDiv,
    DeleteButton,
    CenterButtons,
@@ -83,7 +82,6 @@ const StyledNotes = styled.textarea`
    min-height: 50px;
    border: 1.5px solid #9d9d9d;
    border-radius: 5px;
-   font-family: 'Satoshi-Variable';
    resize: vertical;
 `;
 

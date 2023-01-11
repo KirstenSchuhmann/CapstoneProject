@@ -6,7 +6,6 @@ import SectionAndExerciseSet from './Section+ExerciseSet';
 import {
    AddSectionButton,
    StyledForm,
-   SaveButton,
    CenterButtons,
    StyledNotes,
    StyledNotesLabel,
@@ -118,8 +117,6 @@ export default function GymPlan({ onCreatePlan }) {
             addExerciseSet={addExerciseSet}
             deleteSection={deleteSection}
          />
-
-         <SaveButton type='submit'> Save Gym Plan </SaveButton>
       </StyledForm>
    );
 }
