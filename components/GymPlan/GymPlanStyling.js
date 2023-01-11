@@ -5,19 +5,19 @@ export {
    AddSectionButton,
    StyledForm,
    AddExerciseSet,
-   SaveButton,
    StyledDiv,
    DeleteButton,
    CenterButtons,
+   GymPlanTitle,
+   StyledNotes,
+   StyledNotesLabel,
+   StyledLabelTitle,
+   StyledFieldSet,
 };
 
-const CenterButtons = styled.div`
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-`;
-
 const StyledForm = styled.form`
+   padding: 0.5rem;
+
    h3 {
       display: inline;
    }
@@ -26,6 +26,65 @@ const StyledForm = styled.form`
       cursor: pointer;
    }
 `;
+const StyledFieldSet = styled.fieldset`
+   border: none;
+   max-width: 700px;
+   margin: 0 auto;
+   display: grid;
+
+   grid-template-columns: 6.5rem auto;
+   grid-template-rows: repeat(2, 2fr);
+`;
+
+const StyledLabelTitle = styled.label`
+   grid-column: 1 / 2;
+   grid-row: 1 / 2;
+   place-self: center start;
+   margin-left: 5px;
+
+   font-family: 'Satoshi-Variable';
+   font-size: 35px;
+   font-weight: 600;
+`;
+const StyledNotesLabel = styled.label`
+   grid-row: 2 / 2;
+   grid-column: 1 / 2;
+   place-self: center start;
+   margin-left: 8px;
+
+   font-family: 'Satoshi-Variable';
+   font-weight: 400;
+   font-size: 25px;
+`;
+const GymPlanTitle = styled.input`
+   grid-row: 1/ 2;
+   grid-column: 2/ 2;
+
+   margin-bottom: 0.75rem;
+   border: 0px;
+   border-bottom: 2px solid #9d9d9d;
+   width: 100%;
+
+   ::placeholder {
+      font-size: 22.5px;
+      position: relative;
+      top: 10px;
+      font-family: 'Satoshi-Variable';
+   }
+`;
+
+const StyledNotes = styled.textarea`
+   grid-row: 2 / 2;
+   grid-column: 2/ 2;
+   padding: 10px;
+   font-family: 'Satoshi-Variable';
+   font-weight: 500;
+   min-height: 50px;
+   border: 1.5px solid #9d9d9d;
+   border-radius: 5px;
+   resize: vertical;
+`;
+
 const DeleteButton = styled.button`
    float: right;
    text-align: center;
@@ -33,6 +92,12 @@ const DeleteButton = styled.button`
    width: 25px;
    border: 1.5px solid lightgray;
    border-radius: 50%;
+`;
+
+const CenterButtons = styled.div`
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
 `;
 
 const StyledSection = styled.section`
