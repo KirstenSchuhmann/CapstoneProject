@@ -13,6 +13,7 @@ export {
    StyledNotesLabel,
    StyledLabelTitle,
    StyledFieldSet,
+   SaveButton,
 };
 
 const StyledForm = styled.form`

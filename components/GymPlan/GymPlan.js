@@ -12,6 +12,7 @@ import {
    StyledLabelTitle,
    StyledFieldSet,
    GymPlanTitle,
+   SaveButton,
 } from './GymPlanStyling';
 
 export default function GymPlan({ onCreatePlan }) {
@@ -117,6 +118,7 @@ export default function GymPlan({ onCreatePlan }) {
             addExerciseSet={addExerciseSet}
             deleteSection={deleteSection}
          />
+         <SaveButton type='submit'> Save Gym Plan </SaveButton>
       </StyledForm>
    );
 }
