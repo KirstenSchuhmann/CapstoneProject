@@ -7,8 +7,8 @@ import {
 
 export default function SectionAndExerciseSet({
    sections,
-   addExerciseSet,
-   deleteSection,
+   onAddExerciseSet,
+   onDeleteSection,
 }) {
    return (
       <>
@@ -17,7 +17,7 @@ export default function SectionAndExerciseSet({
                <h3> {section.name}</h3>
                <DeleteButton
                   type='button'
-                  onClick={() => deleteSection(sectionIndex)}>
+                  onClick={() => onDeleteSection(sectionIndex)}>
                   x
                </DeleteButton>
 
@@ -65,7 +65,7 @@ export default function SectionAndExerciseSet({
 
                <AddExerciseSet
                   type='button'
-                  onClick={() => addExerciseSet(sectionIndex)}>
+                  onClick={() => onAddExerciseSet(sectionIndex)}>
                   add exercise
                </AddExerciseSet>
             </StyledSection>

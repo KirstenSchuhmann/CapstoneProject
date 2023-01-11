@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { useState } from 'react';
 
-import SectionAndExerciseSet from './Section+ExerciseSet';
+import SectionAndExerciseSet from './SectionAndExerciseSet';
 
 import {
    AddSectionButton,
@@ -15,33 +15,13 @@ import {
    SaveButton,
 } from './CreateWorkoutRoutineStyling';
 
-export default function CreateGymPlanForm({ onCreatePlan }) {
-   const [sections, setSections] = useState([]);
-
-   function addSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-   }
-   // Delete Section
-   function deleteSection(sectionIndex) {
-      if (sectionIndex >= 0) {
-         const removedSection = sections.splice(sectionIndex, 1);
-         sections - removedSection;
-         setSections([...sections]);
-      }
-   }
-
-   const addExerciseSet = (sectionIndex) => {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].exerciseSets.push({
-         id: nanoid(),
-         sets: '',
-         reps: '',
-         weight: '',
-         exercise: '',
-      });
-      setSections(() => updatedSections);
-   };
-
+export default function CreateWorkoutRoutineForm({
+   sections,
+   onCreatePlan,
+   onAddExerciseSet,
+   onDeleteSection,
+   onAddSection,
+}) {
    // Function storing input values
    function handleSubmit(event) {
       event.preventDefault();
@@ -69,16 +49,18 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
 
       const newPlan = {
          id: nanoid(),
-         name: title,
+         title,
          notes,
-         sections: { name: sectionName, exerciseSets: [] },
+         updatedSections,
       };
 
       onCreatePlan(newPlan);
-      // console.log(newPlan);
+      console.log(newPlan);
 
-      // event.target.reset();
+      event.target.reset();
    }
+
+   console.log(sections);
 
    // To Create Buttons
    const createSectionName = [
@@ -114,18 +96,21 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
             {createSectionName.map((section) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => addSection(section)}>
+                  onClick={() => onAddSection(section)}>
                   {section}
                </AddSectionButton>
             ))}
          </CenterButtons>
          <SectionAndExerciseSet
             sections={sections}
-            addSection={addSection}
-            addExerciseSet={addExerciseSet}
-            deleteSection={deleteSection}
+            onAddExerciseSet={onAddExerciseSet}
+            onDeleteSection={onDeleteSection}
          />
-         <SaveButton type='submit'> add workout routine </SaveButton>
+         <SaveButton
+            type='submit'
+            aria-label='add workout routine'>
+            add workout routine
+         </SaveButton>
       </StyledForm>
    );
 }

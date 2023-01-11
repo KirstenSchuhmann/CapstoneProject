@@ -2,8 +2,8 @@
 
 export default function SavedWorkoutRoutine({ gymPlans, sections }) {
    return (
-      <>
-         {/* {gymPlans.map((gymPlan, gymPlanIndex) => (
+      <section>
+         {gymPlans.map((gymPlan) => (
             <section key={gymPlan.id}>
                <p> {gymPlan.title} </p>
                <p> {gymPlan.notes} </p>
@@ -15,7 +15,7 @@ export default function SavedWorkoutRoutine({ gymPlans, sections }) {
                      {section.exerciseSets.map((exerciseSet) => (
                         <>
                            <div key={exerciseSet.id}>
-                              <p>{`${section.name}-${exerciseSet.id}-sets`} </p>
+                              <p>{`${section.name}-${exerciseSet.id}-sets`}</p>
 
                               <p>x</p>
                               <p>{`${section.name}-${exerciseSet.id}-reps`} </p>
@@ -27,12 +27,12 @@ export default function SavedWorkoutRoutine({ gymPlans, sections }) {
                                  {`${section.name}-${exerciseSet.id}-exercise`}
                               </p>
                            </div>
-                        </> . 
+                        </>
                      ))}
                   </section>
                ))}
             </section>
-         ))} */}
-      </>
+         ))}
+      </section>
    );
 }
