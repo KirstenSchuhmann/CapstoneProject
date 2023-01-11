@@ -15,7 +15,7 @@ import {
    GymPlanTitle,
 } from './GymPlanStyling';
 
-export default function GymPlan() {
+export default function GymPlan({ onCreatePlan }) {
    const [sections, setSections] = useState([]);
 
    function addSection(sectionName) {
@@ -47,6 +47,8 @@ export default function GymPlan() {
       event.preventDefault();
 
       const formElements = event.target.elements;
+      const title = formElements.title.value;
+      const notes = formElements.notes.value;
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
@@ -62,7 +64,14 @@ export default function GymPlan() {
             exerciseSets: updatedExerciseSet,
          };
       });
-      setSections(updatedSections);
+
+      const newPlan = {
+         id: nanoid(),
+         title,
+         notes,
+         sections,
+      };
+      console.log(newPlan);
    }
 
    // To Create Buttons
@@ -74,14 +83,13 @@ export default function GymPlan() {
       'Assistant',
    ];
 
-   console.log(sections);
-
    return (
       <StyledForm onSubmit={handleSubmit}>
          <StyledFieldSet>
             <StyledLabelTitle htmlFor='planTitle'>Title: </StyledLabelTitle>
             <GymPlanTitle
                type='text'
+               name='title'
                placeholder='e.g. Block W1'
                aria-label='Type plan name'
                label='planTitle'
@@ -90,9 +98,10 @@ export default function GymPlan() {
             <StyledNotesLabel htmlFor='notes'>notes: </StyledNotesLabel>
             <StyledNotes
                placeholder='...safe notes for later.'
+               name='notes'
                aria-label='Type plan name'
                label='notes'
-               maxLength={30}
+               maxLength={300}
             />
          </StyledFieldSet>
          <CenterButtons>
