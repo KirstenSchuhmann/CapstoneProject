@@ -13,7 +13,7 @@ import {
    StyledFieldSet,
    GymPlanTitle,
    SaveButton,
-} from './CreateGymPlanFormStyling';
+} from './CreateWorkoutRoutineStyling';
 
 export default function CreateGymPlanForm({ onCreatePlan }) {
    const [sections, setSections] = useState([]);
@@ -65,12 +65,19 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
          };
       });
 
+      //setSections(updatedSections);
+
       const newPlan = {
          id: nanoid(),
-         title,
+         name: title,
          notes,
-         sections,
+         sections: { name: sectionName, exerciseSets: [] },
       };
+
+      onCreatePlan(newPlan);
+      // console.log(newPlan);
+
+      // event.target.reset();
    }
 
    // To Create Buttons
@@ -118,7 +125,7 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
             addExerciseSet={addExerciseSet}
             deleteSection={deleteSection}
          />
-         <SaveButton type='submit'> Save Gym Plan </SaveButton>
+         <SaveButton type='submit'> add workout routine </SaveButton>
       </StyledForm>
    );
 }
