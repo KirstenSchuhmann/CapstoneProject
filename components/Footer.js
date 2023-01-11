@@ -4,13 +4,13 @@ import Link from 'next/link';
 export default function Footer() {
    return (
       <StyledFooter>
-         <Link href='/'> 🏋️‍♀️ </Link>
          <Link href='/'>
             <img
                src='/assets/LiftUp_Logo.png'
                width={65}
             />
          </Link>
+         <Link href='/CreateGymPlan'> 🏋️‍♀️</Link>
       </StyledFooter>
    );
 }

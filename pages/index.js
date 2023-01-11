@@ -5,8 +5,8 @@ import Header from '../components/Header';
 export default function Home() {
    return (
       <>
-         <Header headline='Gym-Plan' />
-         <CreateGymPlanForm />
+         <Header headline='Lift up your Training' />
+
          <Footer />
       </>
    );
