@@ -71,7 +71,6 @@ export default function GymPlan({ onCreatePlan }) {
          notes,
          sections,
       };
-      console.log(newPlan);
    }
 
    // To Create Buttons
