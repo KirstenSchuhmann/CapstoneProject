@@ -3,7 +3,7 @@ import {
    AddExerciseSet,
    StyledDiv,
    DeleteButton,
-} from './GymPlanStyling';
+} from './CreateGymPlanFormStyling';
 
 export default function SectionAndExerciseSet({
    sections,

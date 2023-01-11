@@ -13,9 +13,9 @@ import {
    StyledFieldSet,
    GymPlanTitle,
    SaveButton,
-} from './GymPlanStyling';
+} from './CreateGymPlanFormStyling';
 
-export default function GymPlan({ onCreatePlan }) {
+export default function CreateGymPlanForm({ onCreatePlan }) {
    const [sections, setSections] = useState([]);
 
    function addSection(sectionName) {
