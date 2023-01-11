@@ -30,7 +30,7 @@ export default function CreateWorkoutRoutineForm({
       const title = formElements.title.value;
       const notes = formElements.notes.value;
 
-      const updatedSections = sections.map((section) => {
+      const addedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
@@ -51,7 +51,7 @@ export default function CreateWorkoutRoutineForm({
          id: nanoid(),
          title,
          notes,
-         updatedSections,
+         addedSections,
       };
 
       onCreatePlan(newPlan);
@@ -60,7 +60,7 @@ export default function CreateWorkoutRoutineForm({
       event.target.reset();
    }
 
-   console.log(sections);
+   // console.log(sections);
 
    // To Create Buttons
    const createSectionName = [

@@ -1,37 +1,31 @@
 // Component for displaying the full Routine
 
-export default function SavedWorkoutRoutine({ gymPlans, sections }) {
+export default function SavedWorkoutRoutine({ gymPlans }) {
    return (
       <section>
-         {gymPlans.map((gymPlan) => (
-            <section key={gymPlan.id}>
-               <p> {gymPlan.title} </p>
-               <p> {gymPlan.notes} </p>
-
-               {sections.map((section, sectionIndex) => (
+         {gymPlans.map(({ id, title, notes, addedSections }) => (
+            <div key={id}>
+               <p> {title} </p>
+               <p> {notes} </p>
+               {addedSections.map((section, sectionIndex) => (
                   <section key={sectionIndex}>
                      <h3> {section.name}</h3>
 
                      {section.exerciseSets.map((exerciseSet) => (
                         <>
                            <div key={exerciseSet.id}>
-                              <p>{`${section.name}-${exerciseSet.id}-sets`}</p>
+                              <p>{exerciseSet.sets}</p>
 
                               <p>x</p>
-                              <p>{`${section.name}-${exerciseSet.id}-reps`} </p>
-                              <p>
-                                 {`${section.name}-${exerciseSet.id}-weight`}
-                              </p>
-                              <p>
-                                 name=
-                                 {`${section.name}-${exerciseSet.id}-exercise`}
-                              </p>
+                              <p>{exerciseSet.reps} </p>
+                              <p>{exerciseSet.weight}</p>
+                              <p>{exerciseSet.exercise}</p>
                            </div>
                         </>
                      ))}
                   </section>
                ))}
-            </section>
+            </div>
          ))}
       </section>
    );

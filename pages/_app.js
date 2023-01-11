@@ -6,8 +6,8 @@ function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useState([]);
    const [sections, setSections] = useState([]);
 
-   function handleCreatePlan(title) {
-      setGymPlans([...gymPlans, { name: title }]);
+   function handleCreatePlan(newPlan) {
+      setGymPlans([...gymPlans, newPlan]);
    }
 
    function handleAddSection(sectionName) {
