@@ -57,7 +57,7 @@ export default function CreateWorkoutRoutineForm({
       onCreatePlan(newPlan);
       console.log(newPlan);
 
-      event.target.reset();
+      //event.target.reset();
    }
 
    // console.log(sections);

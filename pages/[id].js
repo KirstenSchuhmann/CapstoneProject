@@ -17,11 +17,11 @@ export default function SavedWorkout({ gymPlans = [] }) {
 
    return (
       <>
-         {gymPlans.map((gymPlan) => (
+         {gymPlans.map(({ id, title, notes, addedSections }) => (
             <section>
-               <div key={gymPlan.id}>
-                  <h6> {gymPlan.title} </h6>
-                  <p> {gymPlan.notes} </p>
+               <div key={id}>
+                  <h6> {title} </h6>
+                  <p> {notes} </p>
                </div>
                {addedSections.map((section, sectionIndex) => (
                   <section key={sectionIndex}>
