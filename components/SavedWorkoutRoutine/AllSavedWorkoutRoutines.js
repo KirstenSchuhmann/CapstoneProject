@@ -1,3 +1,5 @@
+// Component for displaying the full Routine
+
 export default function AllSavedWorkoutRoutines({ gymPlans }) {
    return (
       <section>

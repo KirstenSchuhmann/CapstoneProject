@@ -1,9 +1,10 @@
 import GlobalStyles from '../GlobalStyles/GlobalStyles';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import { useLocalStorage } from '../helpers/hooks';
 
 function MyApp({ Component, pageProps }) {
-   const [gymPlans, setGymPlans] = useState([]);
+   const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
    const [sections, setSections] = useState([]);
 
    function handleCreatePlan(newPlan) {
