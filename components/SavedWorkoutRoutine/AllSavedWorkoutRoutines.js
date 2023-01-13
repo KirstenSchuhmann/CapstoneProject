@@ -1,4 +1,4 @@
-// Component for displaying the full Routine
+// ----> This Component shows all added gymPlans, which will be an overview for the user.
 
 export default function AllSavedWorkoutRoutines({ gymPlans }) {
    return (

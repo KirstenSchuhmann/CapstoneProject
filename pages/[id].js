@@ -1,49 +1,48 @@
+// This page shows currently ALL Saved WorkoutRoutine, which where submitted in the form
+
 import { useRouter } from 'next/router';
+import { Fragment } from 'react';
 import Footer from '../components/Footer';
 
-export default function SavedWorkout({ gymPlans = [] }) {
+export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    const router = useRouter();
    const { id } = router.query;
 
-   if (!gymPlans) {
-      return null;
-   }
-
+   // Creates new Array of the addressed gymPlan
    const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
 
-   if (!currentWorkoutRoutine) {
-      return null;
+   const { title, notes, addedSections } = currentWorkoutRoutine;
+
+   // sections gibt die sections aus, die in einem Plan, beim erstellen, hinzugefügt wurden.
+   const sectionsOfThisPlan = currentWorkoutRoutine.addedSections;
+
+   if (!gymPlans) {
+      return <p> Geht grad nicht 🤓 </p>;
    }
 
    return (
       <>
-         {gymPlans.map(({ id, title, notes, addedSections }) => (
-            <section>
-               <div key={id}>
-                  <h6> {title} </h6>
-                  <p> {notes} </p>
-               </div>
-               {addedSections.map((section, sectionIndex) => (
-                  <section key={sectionIndex}>
-                     <h3> {section.name}</h3>
-
-                     {section.exerciseSets.map((exerciseSet) => (
-                        <>
-                           <div key={exerciseSet.id}>
-                              <p>{exerciseSet.sets}</p>
-
-                              <p>x</p>
-                              <p>{exerciseSet.reps} </p>
-                              <p>{exerciseSet.weight}</p>
-                              <p>{exerciseSet.exercise}</p>
-                           </div>
-                        </>
-                     ))}
-                  </section>
-               ))}
-            </section>
-         ))}
-
+         <section>
+            <h4> {title}</h4>
+            <p> {notes} </p>
+            {sectionsOfThisPlan.map(
+               ({
+                  name,
+                  exerciseSets: [{ id, sets, reps, weight, exercise }],
+               }) => (
+                  <>
+                     <p> {name} </p>
+                     <div key={id}>
+                        <p> {sets} </p>
+                        <p> x </p>
+                        <p> {reps} </p>
+                        <p> {weight} </p>
+                        <p> {exercise} </p>
+                     </div>
+                  </>
+               )
+            )}
+         </section>
          <Footer />
       </>
    );

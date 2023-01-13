@@ -1,8 +1,9 @@
+// ---> Main Page - Shows overview of all the capacity of this app
+
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Link from 'next/link';
-import SavedWorkoutRoutine from '../components/SavedWorkoutRoutine/AllSavedWorkoutRoutines';
-
+import { Fragment } from 'react';
 import styled from 'styled-components';
 
 export default function Home({ gymPlans }) {
@@ -10,12 +11,14 @@ export default function Home({ gymPlans }) {
       <>
          <Header headline='Lift up your Training' />
          <StyledOverviewAll>
-            {gymPlans.map((gymPlan) => (
-               <Link href={`/${gymPlan.id}`}>
-                  <div key={gymPlan.id}>
-                     <h4>{gymPlan.title}</h4>
-                  </div>
-               </Link>
+            {/* Show all Plan titles, which are linked directly to the full visible plan */}
+            {gymPlans.map(({ id, title }) => (
+               <Fragment key={id}>
+                  <h4> {title} </h4>
+                  <Link href={`${id}`}>
+                     <p> see more... </p>
+                  </Link>
+               </Fragment>
             ))}
          </StyledOverviewAll>
 

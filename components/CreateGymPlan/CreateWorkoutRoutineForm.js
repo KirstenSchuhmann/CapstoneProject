@@ -1,5 +1,4 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 
 import SectionAndExerciseSet from './SectionAndExerciseSet';
 
@@ -57,7 +56,7 @@ export default function CreateWorkoutRoutineForm({
       onCreatePlan(newPlan);
       console.log(newPlan);
 
-      //event.target.reset();
+      event.target.reset();
    }
 
    // console.log(sections);
@@ -93,11 +92,11 @@ export default function CreateWorkoutRoutineForm({
             />
          </StyledFieldSet>
          <CenterButtons>
-            {createSectionName.map((section) => (
+            {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddSection(section)}>
-                  {section}
+                  onClick={() => onAddSection(sectionName)}>
+                  {sectionName}
                </AddSectionButton>
             ))}
          </CenterButtons>
