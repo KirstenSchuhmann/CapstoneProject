@@ -57,6 +57,7 @@ export default function CreateWorkoutRoutineForm({
       console.log(newPlan);
 
       event.target.reset();
+      sections.reset();
    }
 
    // console.log(sections);
