@@ -11,10 +11,10 @@ export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    // Creates new Array of the addressed gymPlan
    const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
 
-   const { title, notes, addedSections } = currentWorkoutRoutine;
+   //const { title, notes, addedSections } = currentWorkoutRoutine;
 
    // sections gibt die sections aus, die in einem Plan, beim erstellen, hinzugefügt wurden.
-   const sectionsOfThisPlan = currentWorkoutRoutine.addedSections;
+   //const sectionsOfThisPlan = currentWorkoutRoutine.addedSections;
 
    if (!gymPlans) {
       return <p> Geht grad nicht 🤓 </p>;
@@ -23,9 +23,10 @@ export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    return (
       <>
          <section>
-            <h4> {title}</h4>
-            <p> {notes} </p>
-            {sectionsOfThisPlan.map(
+            <h4> {currentWorkoutRoutine.title}</h4>
+            <p> {currentWorkoutRoutine.notes} </p>
+
+            {currentWorkoutRoutine.addedSections.map(
                ({
                   name,
                   exerciseSets: [{ id, sets, reps, weight, exercise }],
