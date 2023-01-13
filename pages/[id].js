@@ -10,10 +10,14 @@ export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    const { id } = router.query;
 
    // Creates new Array of the addressed gymPlan
-   const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
 
    if (!gymPlans) {
       return <p> Geht grad nicht 🤓 </p>;
+   }
+   const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
+
+   if (!currentWorkoutRoutine) {
+      return null;
    }
 
    return (
