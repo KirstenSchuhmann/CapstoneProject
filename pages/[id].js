@@ -1,8 +1,9 @@
-// This page shows currently ALL Saved WorkoutRoutine, which where submitted in the form
+// Page to view a saved Workout Routine
 
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
+
 import Footer from '../components/Footer';
+import SavedWorkoutRoutine from '../components/SavedWorkoutRoutine/SavedWorkoutRoutine';
 
 export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    const router = useRouter();
@@ -11,39 +12,13 @@ export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    // Creates new Array of the addressed gymPlan
    const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
 
-   //const { title, notes, addedSections } = currentWorkoutRoutine;
-
-   // sections gibt die sections aus, die in einem Plan, beim erstellen, hinzugefügt wurden.
-   //const sectionsOfThisPlan = currentWorkoutRoutine.addedSections;
-
    if (!gymPlans) {
       return <p> Geht grad nicht 🤓 </p>;
    }
 
    return (
       <>
-         <section>
-            <h4> {currentWorkoutRoutine.title}</h4>
-            <p> {currentWorkoutRoutine.notes} </p>
-
-            {currentWorkoutRoutine.addedSections.map(
-               ({
-                  name,
-                  exerciseSets: [{ id, sets, reps, weight, exercise }],
-               }) => (
-                  <>
-                     <p> {name} </p>
-                     <div key={id}>
-                        <p> {sets} </p>
-                        <p> x </p>
-                        <p> {reps} </p>
-                        <p> {weight} </p>
-                        <p> {exercise} </p>
-                     </div>
-                  </>
-               )
-            )}
-         </section>
+         <SavedWorkoutRoutine currentWorkoutRoutine={currentWorkoutRoutine} />
          <Footer />
       </>
    );

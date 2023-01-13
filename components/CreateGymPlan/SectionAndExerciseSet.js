@@ -3,7 +3,7 @@ import {
    AddExerciseSet,
    StyledDiv,
    DeleteButton,
-} from './CreateWorkoutRoutineStyling';
+} from './SectionAndExerciseSetStyling';
 
 export default function SectionAndExerciseSet({
    sections,
