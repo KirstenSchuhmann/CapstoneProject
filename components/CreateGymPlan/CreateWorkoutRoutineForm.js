@@ -20,6 +20,7 @@ export default function CreateWorkoutRoutineForm({
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
+   onDeleteSet,
 }) {
    // Function storing input values
    function handleSubmit(event) {
@@ -99,6 +100,7 @@ export default function CreateWorkoutRoutineForm({
             sections={sections}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}
+            onDeleteSet={onDeleteSet}
          />
          <SaveButton type='submit'>add workout routine</SaveButton>
       </StyledForm>

@@ -8,6 +8,7 @@ export default function CreateGymPlan({
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
+   onDeleteSet,
 }) {
    return (
       <>
@@ -18,6 +19,7 @@ export default function CreateGymPlan({
             onDeleteSection={onDeleteSection}
             onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
+            onDeleteSet={onDeleteSet}
          />
          <Footer />
       </>

@@ -23,7 +23,7 @@ export default function SectionAndExerciseSet({
                   x
                </DeleteButton>
 
-               {section.exerciseSets.map((exerciseSet) => (
+               {section.exerciseSets.map((exerciseSet, id) => (
                   <SwipeExerciseToLeft key={exerciseSet.id}>
                      <input
                         type='number'
