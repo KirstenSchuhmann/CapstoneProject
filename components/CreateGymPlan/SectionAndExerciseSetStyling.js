@@ -63,6 +63,7 @@ const StyledExerciseSet = styled.div`
       }
 
       -moz-appearance: textfield;
+
       background-color: #efefef;
       border: 0.5px solid lightgrey;
       font-weight: 600;
