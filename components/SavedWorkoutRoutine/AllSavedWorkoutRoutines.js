@@ -1,3 +1,4 @@
+// This component is currently not in use!
 // ----> This Component shows all added gymPlans, which will be an overview for the user.
 
 export default function AllSavedWorkoutRoutines({ gymPlans }) {
@@ -9,7 +10,7 @@ export default function AllSavedWorkoutRoutines({ gymPlans }) {
                <p> {notes} </p>
                {addedSections.map((section, sectionIndex) => (
                   <section key={sectionIndex}>
-                     <h6> {section.name}</h6>
+                     <h5> {section.name}</h5>
 
                      {section.exerciseSets.map((exerciseSet) => (
                         <>

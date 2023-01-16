@@ -3,16 +3,14 @@ import styled from 'styled-components';
 export default function SavedWorkoutRoutine({ currentWorkoutRoutine }) {
    return (
       <StyledPlan>
-         <h2> {currentWorkoutRoutine.title}</h2>
+         <h1> {currentWorkoutRoutine.title}</h1>
          <p> {currentWorkoutRoutine.notes} </p>
 
-         {currentWorkoutRoutine.addedSections.map(
-            ({
-               name,
-               exerciseSets: [{ id, sets, reps, weight, exercise }],
-            }) => (
-               <StyledSection>
-                  <h4> {name} </h4>
+         {currentWorkoutRoutine.addedSections?.map(({ name, exerciseSets }) => (
+            <StyledSection>
+               <h2> {name} </h2>
+
+               {exerciseSets?.map(({ id, sets, reps, weight, exercise }) => (
                   <StyledDiv key={id}>
                      <StyledInputData> {sets} </StyledInputData>
                      <p> x </p>
@@ -20,9 +18,9 @@ export default function SavedWorkoutRoutine({ currentWorkoutRoutine }) {
                      <StyledInputData> {weight} </StyledInputData>
                      <StyledInputData> {exercise} </StyledInputData>
                   </StyledDiv>
-               </StyledSection>
-            )
-         )}
+               ))}
+            </StyledSection>
+         ))}
       </StyledPlan>
    );
 }
@@ -37,8 +35,14 @@ const StyledPlan = styled.section`
    background-color: #f8f8f8;
    border-radius: 20px;
 
-   h2,
+   h1 {
+      font-size: 2rem;
+      margin: 0;
+      text-align: center;
+   }
+
    p {
+      margin: 0.5rem;
       text-align: center;
    }
 `;
@@ -49,8 +53,9 @@ const StyledSection = styled.section`
    height: 80%;
    border-radius: 10px;
 
-   h4 {
+   h2 {
       margin: 5px 0 10px 0px;
+      font-size: 1.25rem;
    }
 `;
 const StyledDiv = styled.div`
