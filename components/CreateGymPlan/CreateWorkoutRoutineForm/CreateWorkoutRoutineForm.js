@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import SectionAndExerciseSet from './SectionAndExerciseSet';
+import SectionAndExerciseSet from '../SectionAndExerciseSet/SectionAndExerciseSet';
 
 import {
    AddSectionButton,

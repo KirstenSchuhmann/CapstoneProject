@@ -1,6 +1,6 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import CreateWorkoutRoutineForm from '../components/CreateGymPlan/CreateWorkoutRoutineForm';
+import CreateWorkoutRoutineForm from '../components/CreateGymPlan/CreateWorkoutRoutineForm/CreateWorkoutRoutineForm';
 
 export default function CreateGymPlan({
    sections,

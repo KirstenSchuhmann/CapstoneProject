@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { StyledExerciseSet } from '../CreateGymPlan/SectionAndExerciseSetStyling';
+import { StyledExerciseSet } from '../SectionAndExerciseSet/SectionAndExerciseSetStyling';
 
 export default function SwipeExerciseToLeft({ children }) {
    const ref = useRef();
