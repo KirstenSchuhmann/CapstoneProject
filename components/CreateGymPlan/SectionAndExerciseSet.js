@@ -1,14 +1,16 @@
 import {
    StyledSection,
    AddExerciseSet,
-   StyledExerciseSet,
    DeleteButton,
 } from './SectionAndExerciseSetStyling';
+
+import SwipeExerciseToLeft from './SwipeLeftFunction';
 
 export default function SectionAndExerciseSet({
    sections,
    onAddExerciseSet,
    onDeleteSection,
+   onDeleteSet,
 }) {
    return (
       <>
@@ -22,45 +24,48 @@ export default function SectionAndExerciseSet({
                </DeleteButton>
 
                {section.exerciseSets.map((exerciseSet) => (
-                  <>
-                     <StyledExerciseSet key={exerciseSet.id}>
-                        <input
-                           type='number'
-                           aria-label='set sets'
-                           label='set'
-                           placeholder='set'
-                           min='0'
-                           name={`${section.name}-${exerciseSet.id}-sets`}
-                        />
-                        <p>x</p>
-                        <input
-                           type='number'
-                           aria-label='set repitition'
-                           label='reps'
-                           placeholder='reps'
-                           min='0'
-                           name={`${section.name}-${exerciseSet.id}-reps`}
-                        />
+                  <SwipeExerciseToLeft key={exerciseSet.id}>
+                     <input
+                        type='number'
+                        aria-label='set sets'
+                        label='set'
+                        placeholder='set'
+                        min='0'
+                        name={`${section.name}-${exerciseSet.id}-sets`}
+                     />
+                     <p>x</p>
+                     <input
+                        type='number'
+                        aria-label='set repitition'
+                        label='reps'
+                        placeholder='reps'
+                        min='0'
+                        name={`${section.name}-${exerciseSet.id}-reps`}
+                     />
 
-                        <input
-                           type='number'
-                           aria-label='set weight'
-                           label='weight'
-                           placeholder='weight'
-                           min='0'
-                           name={`${section.name}-${exerciseSet.id}-weight`}
-                        />
+                     <input
+                        type='number'
+                        aria-label='set weight'
+                        label='weight'
+                        placeholder='weight'
+                        min='0'
+                        name={`${section.name}-${exerciseSet.id}-weight`}
+                     />
 
-                        <input
-                           type='text'
-                           aria-label='set exercise'
-                           label='exercise'
-                           autoComplete='off'
-                           placeholder='exercise'
-                           name={`${section.name}-${exerciseSet.id}-exercise`}
-                        />
-                     </StyledExerciseSet>
-                  </>
+                     <input
+                        type='text'
+                        aria-label='set exercise'
+                        label='exercise'
+                        autoComplete='off'
+                        placeholder='exercise'
+                        name={`${section.name}-${exerciseSet.id}-exercise`}
+                     />
+                     <button
+                        type='button'
+                        onClick={() => onDeleteSet(sectionIndex, id)}>
+                        delete set
+                     </button>
+                  </SwipeExerciseToLeft>
                ))}
 
                <AddExerciseSet
