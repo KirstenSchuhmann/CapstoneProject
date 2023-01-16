@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 
 export {
-   StyledSection,
    AddSectionButton,
    StyledForm,
-   AddExerciseSet,
-   StyledDiv,
-   DeleteButton,
    CenterButtons,
    GymPlanTitle,
    StyledNotes,
    StyledNotesLabel,
    StyledLabelTitle,
    StyledFieldSet,
+   SaveButton,
 };
 
 const StyledForm = styled.form`

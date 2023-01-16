@@ -1,14 +1,14 @@
 import {
    StyledSection,
    AddExerciseSet,
-   StyledDiv,
+   StyledExerciseSet,
    DeleteButton,
-} from './GymPlanStyling';
+} from './SectionAndExerciseSetStyling';
 
 export default function SectionAndExerciseSet({
    sections,
-   addExerciseSet,
-   deleteSection,
+   onAddExerciseSet,
+   onDeleteSection,
 }) {
    return (
       <>
@@ -17,13 +17,13 @@ export default function SectionAndExerciseSet({
                <h3> {section.name}</h3>
                <DeleteButton
                   type='button'
-                  onClick={() => deleteSection(sectionIndex)}>
+                  onClick={() => onDeleteSection(sectionIndex)}>
                   x
                </DeleteButton>
 
                {section.exerciseSets.map((exerciseSet) => (
                   <>
-                     <StyledDiv key={exerciseSet.id}>
+                     <StyledExerciseSet key={exerciseSet.id}>
                         <input
                            type='number'
                            aria-label='set sets'
@@ -59,13 +59,13 @@ export default function SectionAndExerciseSet({
                            placeholder='exercise'
                            name={`${section.name}-${exerciseSet.id}-exercise`}
                         />
-                     </StyledDiv>
+                     </StyledExerciseSet>
                   </>
                ))}
 
                <AddExerciseSet
                   type='button'
-                  onClick={() => addExerciseSet(sectionIndex)}>
+                  onClick={() => onAddExerciseSet(sectionIndex)}>
                   add exercise
                </AddExerciseSet>
             </StyledSection>

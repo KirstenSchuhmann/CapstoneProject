@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
        font-display: swap;
        font-style: normal;  
         }
+
+
     html,
     body {
         padding: 0;
@@ -15,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
         padding-bottom: 3rem; 
         font-family: 'Satoshi-Variable', Arial, Helvetica, sans-serif; 
     }
+
 
     * {
         box-sizing: border-box;

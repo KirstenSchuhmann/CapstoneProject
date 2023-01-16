@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
-import SectionAndExerciseSet from './Section+ExerciseSet';
+import SectionAndExerciseSet from './SectionAndExerciseSet';
 
 import {
    AddSectionButton,
@@ -12,35 +11,16 @@ import {
    StyledLabelTitle,
    StyledFieldSet,
    GymPlanTitle,
-} from './GymPlanStyling';
+   SaveButton,
+} from './CreateWorkoutRoutineStyling';
 
-export default function GymPlan({ onCreatePlan }) {
-   const [sections, setSections] = useState([]);
-
-   function addSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-   }
-   // Delete Section
-   function deleteSection(sectionIndex) {
-      if (sectionIndex >= 0) {
-         const removedSection = sections.splice(sectionIndex, 1);
-         sections - removedSection;
-         setSections([...sections]);
-      }
-   }
-
-   const addExerciseSet = (sectionIndex) => {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].exerciseSets.push({
-         id: nanoid(),
-         sets: '',
-         reps: '',
-         weight: '',
-         exercise: '',
-      });
-      setSections(() => updatedSections);
-   };
-
+export default function CreateWorkoutRoutineForm({
+   sections,
+   onCreatePlan,
+   onAddExerciseSet,
+   onDeleteSection,
+   onAddSection,
+}) {
    // Function storing input values
    function handleSubmit(event) {
       event.preventDefault();
@@ -49,7 +29,7 @@ export default function GymPlan({ onCreatePlan }) {
       const title = formElements.title.value;
       const notes = formElements.notes.value;
 
-      const updatedSections = sections.map((section) => {
+      const addedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
@@ -68,8 +48,12 @@ export default function GymPlan({ onCreatePlan }) {
          id: nanoid(),
          title,
          notes,
-         sections,
+         addedSections,
       };
+
+      onCreatePlan(newPlan);
+
+      location.reload();
    }
 
    // To Create Buttons
@@ -103,20 +87,20 @@ export default function GymPlan({ onCreatePlan }) {
             />
          </StyledFieldSet>
          <CenterButtons>
-            {createSectionName.map((section) => (
+            {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => addSection(section)}>
-                  {section}
+                  onClick={() => onAddSection(sectionName)}>
+                  {sectionName}
                </AddSectionButton>
             ))}
          </CenterButtons>
          <SectionAndExerciseSet
             sections={sections}
-            addSection={addSection}
-            addExerciseSet={addExerciseSet}
-            deleteSection={deleteSection}
+            onAddExerciseSet={onAddExerciseSet}
+            onDeleteSection={onDeleteSection}
          />
+         <SaveButton type='submit'>add workout routine</SaveButton>
       </StyledForm>
    );
 }
