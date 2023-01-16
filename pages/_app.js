@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }) {
       setSections(() => updatedSections);
    }
 
-   // Delete Section
    function handleDeleteSection(sectionIndex) {
       if (sectionIndex >= 0) {
          const removedSection = sections.splice(sectionIndex, 1);

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export { StyledSection, AddExerciseSet, StyledDiv, DeleteButton };
+export { StyledSection, AddExerciseSet, StyledExerciseSet, DeleteButton };
 
 const DeleteButton = styled.button`
    float: right;
@@ -38,7 +38,7 @@ const AddExerciseSet = styled.button`
    }
 `;
 
-const StyledDiv = styled.div`
+const StyledExerciseSet = styled.div`
    display: flex;
    flex-flow: row wrap;
    align-items: center;
@@ -57,14 +57,12 @@ const StyledDiv = styled.div`
 
    input[type='number'] {
       margin-right: 8px;
-      //Chrome, Safari, Edge, Opera - hide arrows
       ::-webkit-outer-spin-button,
       ::-webkit-inner-spin-button {
          -webkit-appearance: none;
       }
 
       -moz-appearance: textfield;
-
       background-color: #efefef;
       border: 0.5px solid lightgrey;
       font-weight: 600;

@@ -5,11 +5,11 @@ export default function AllSavedWorkoutRoutines({ gymPlans }) {
       <section>
          {gymPlans.map(({ id, title, notes, addedSections }) => (
             <div key={id}>
-               <h6> {title} </h6>
+               <h3> {title} </h3>
                <p> {notes} </p>
                {addedSections.map((section, sectionIndex) => (
                   <section key={sectionIndex}>
-                     <h3> {section.name}</h3>
+                     <h6> {section.name}</h6>
 
                      {section.exerciseSets.map((exerciseSet) => (
                         <>

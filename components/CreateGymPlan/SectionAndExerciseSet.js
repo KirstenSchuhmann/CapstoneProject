@@ -1,7 +1,7 @@
 import {
    StyledSection,
    AddExerciseSet,
-   StyledDiv,
+   StyledExerciseSet,
    DeleteButton,
 } from './SectionAndExerciseSetStyling';
 
@@ -23,7 +23,7 @@ export default function SectionAndExerciseSet({
 
                {section.exerciseSets.map((exerciseSet) => (
                   <>
-                     <StyledDiv key={exerciseSet.id}>
+                     <StyledExerciseSet key={exerciseSet.id}>
                         <input
                            type='number'
                            aria-label='set sets'
@@ -59,7 +59,7 @@ export default function SectionAndExerciseSet({
                            placeholder='exercise'
                            name={`${section.name}-${exerciseSet.id}-exercise`}
                         />
-                     </StyledDiv>
+                     </StyledExerciseSet>
                   </>
                ))}
 

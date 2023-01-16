@@ -44,8 +44,6 @@ export default function CreateWorkoutRoutineForm({
          };
       });
 
-      //setSections(updatedSections);
-
       const newPlan = {
          id: nanoid(),
          title,
@@ -54,13 +52,9 @@ export default function CreateWorkoutRoutineForm({
       };
 
       onCreatePlan(newPlan);
-      console.log(newPlan);
 
-      event.target.reset();
-      sections.reset();
+      location.reload();
    }
-
-   // console.log(sections);
 
    // To Create Buttons
    const createSectionName = [
@@ -106,11 +100,7 @@ export default function CreateWorkoutRoutineForm({
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}
          />
-         <SaveButton
-            type='submit'
-            aria-label='add workout routine'>
-            add workout routine
-         </SaveButton>
+         <SaveButton type='submit'>add workout routine</SaveButton>
       </StyledForm>
    );
 }

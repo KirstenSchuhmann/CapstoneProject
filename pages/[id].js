@@ -12,7 +12,7 @@ export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
    // Creates new Array of the addressed gymPlan
 
    if (!gymPlans) {
-      return <p> Geht grad nicht 🤓 </p>;
+      return null;
    }
    const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
 
