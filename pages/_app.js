@@ -38,7 +38,6 @@ function MyApp({ Component, pageProps }) {
    function deleteSet(sectionIndex, setId) {
       const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
       const idOfSet = sections[sectionIndex].exerciseSets[setId];
-      const indexOfSet = exercisesInSelectedSection.indexOf(idOfSet);
 
       if (setId >= 0) {
          let removeSet = exercisesInSelectedSection.splice(setId, 1);
