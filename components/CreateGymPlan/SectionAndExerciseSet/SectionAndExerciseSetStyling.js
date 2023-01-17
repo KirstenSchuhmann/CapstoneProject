@@ -11,15 +11,6 @@ const DeleteButton = styled.button`
    border-radius: 50%;
 `;
 
-const StyledSection = styled.section`
-   border: 1px solid black;
-   border-radius: 15px;
-   padding: 13px;
-   min-width: 300px;
-   max-width: 700px;
-   margin: 1.5rem auto;
-`;
-
 const AddExerciseSet = styled.button`
    width: 100%;
    height: 30px;
@@ -38,14 +29,35 @@ const AddExerciseSet = styled.button`
    }
 `;
 
+const StyledSection = styled.section`
+   border: 1px solid black;
+   border-radius: 15px;
+   padding: 13px;
+   min-width: 300px;
+   max-width: 700px;
+   margin: 1.5rem auto;
+   overflow: hidden;
+`;
+
 const StyledExerciseSet = styled.div`
-   display: flex;
-   flex-flow: row wrap;
+   touch-action: none;
+   scroll-snap-type: x mandatory;
+   -webkit-transition: -webkit-transform 2000ms ease;
+   //-moz-transition: -moz-transform 100ms ease;
+   transition: transform 400ms ease;
+
+   display: grid;
+   grid-template-columns: 15% 10px 15% 25% 40% 20%;
+
+   grid-template-rows: 1fr;
+   margin: 10px 0 0 0;
    align-items: center;
+   text-align: center;
+   grid-gap: 1.1%;
 
    p {
-      font-size: small;
-      margin-right: 8px;
+      grid-column: 2 / 2;
+      grid-row: 1;
    }
 
    input {
@@ -56,7 +68,8 @@ const StyledExerciseSet = styled.div`
    }
 
    input[type='number'] {
-      margin-right: 8px;
+      //margin-right: 8px;
+      //Chrome, Safari, Edge, Opera - hide arrows
       ::-webkit-outer-spin-button,
       ::-webkit-inner-spin-button {
          -webkit-appearance: none;
@@ -71,25 +84,55 @@ const StyledExerciseSet = styled.div`
       ::placeholder {
          color: grey;
          font-weight: 500;
-         font-size: 15px;
+         font-size: 14px;
       }
    }
-   input[label='set'],
+
+   input[label='sets'],
    input[label='reps'] {
       min-width: 35px;
-      flex-basis: 0;
-      flex-grow: 0.6;
+   }
+
+   input[label='sets'] {
+      grid-column: 1 / 1;
+      grid-row: 1;
+   }
+
+   input[label='reps'] {
+      grid-column: 3 / 3;
+      grid-row: 1;
    }
 
    input[label='weight'] {
-      margin-left: 8px;
+      grid-column: 4 / 4;
+      grid-row: 1;
+
       min-width: 45px;
-      flex-basis: 0;
-      flex-grow: 1;
    }
    input[label='exercise'] {
+      grid-column: 5 / 5;
+      grid-row: 1;
+      margin-right: 5px;
+
       min-width: 60px;
-      flex-basis: 0;
-      flex-grow: 3;
+   }
+
+   button {
+      grid-column: 6 / 6;
+      margin-left: 2px;
+      grid-row: 1;
+
+      // Styling
+      width: 100px;
+      font-size: 17px;
+      font-weight: 600;
+      font-family: 'Satoshi-Variable';
+      height: 30px;
+
+      background-color: red;
+      color: white;
+      border-radius: 5px;
+      height: 30px;
+      border: none;
    }
 `;

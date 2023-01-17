@@ -1,6 +1,6 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import CreateWorkoutRoutineForm from '../components/CreateGymPlan/CreateWorkoutRoutineForm';
+import CreateWorkoutRoutineForm from '../components/CreateGymPlan/CreateWorkoutRoutineForm/CreateWorkoutRoutineForm';
 
 export default function CreateGymPlan({
    sections,
@@ -8,6 +8,7 @@ export default function CreateGymPlan({
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
+   onDeleteSet,
 }) {
    return (
       <>
@@ -18,6 +19,7 @@ export default function CreateGymPlan({
             onDeleteSection={onDeleteSection}
             onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
+            onDeleteSet={onDeleteSet}
          />
          <Footer />
       </>
