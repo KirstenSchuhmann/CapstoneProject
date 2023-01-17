@@ -6,9 +6,14 @@ import { useLocalStorage } from '../helpers/hooks';
 function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
    const [sections, setSections] = useState([]);
+   const [value, setValue] = useState('');
+
+   function handleChange(event) {
+      setValue(event.target.value);
+   }
 
    function handleCreatePlan(newPlan) {
-      setGymPlans([...gymPlans, newPlan]);
+      setGymPlans([newPlan, ...gymPlans]);
    }
 
    function handleUpdatedPlan(editedPlan) {
@@ -23,8 +28,12 @@ function MyApp({ Component, pageProps }) {
       );
    }
 
+   console.log(sections);
+
+   // createPlan: Funktionen um Sections & Exercises hinzuzufügen
    function handleAddSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+      console.log(sections);
    }
 
    function handleAddExerciseSet(sectionIndex) {
@@ -76,6 +85,8 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             gymPlans={gymPlans}
             sections={sections}
+            value={value}
+            onChange={handleChange}
             onCreatePlan={handleCreatePlan}
             onDeleteSection={handleDeleteSection}
             onAddSection={handleAddSection}

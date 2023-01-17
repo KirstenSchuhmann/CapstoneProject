@@ -6,6 +6,8 @@ export default function SavedWorkoutRoutine({
    currentWorkoutRoutine,
    onUpdatedPlan,
    sections,
+   onChange,
+   value,
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
@@ -19,11 +21,12 @@ export default function SavedWorkoutRoutine({
       const editedTitle = formElements.editedTitle.value;
       const editedNotes = formElements.editedNotes.value;
 
-      const updatedSections = currentWorkoutRoutine.addedSections.map(
+      const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
          (section) => {
             const updatedExerciseSet = section.exerciseSets.map(
                (exerciseSet) => ({
-                  sets: formElements[`${exerciseSet.id}-editedSets`].value,
+                  sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
+                     .value,
                   reps: formElements[`${exerciseSet.id}-editedReps`].value,
                   weight: formElements[`${exerciseSet.id}-editedWeight`].value,
                   exercise:
@@ -40,7 +43,8 @@ export default function SavedWorkoutRoutine({
          id,
          title: editedTitle,
          notes: editedNotes,
-         addedSections: updatedSections,
+         sectionsOfThisPlan: updatedSections,
+         sectionsOfThisPlan,
       };
 
       onUpdatedPlan(editedPlan);
@@ -57,13 +61,16 @@ export default function SavedWorkoutRoutine({
                   Cancel Edit
                </button>
                <EditCurrenWorkoutRoutine
-                  sections={sections}
-                  onAddExerciseSet={onAddExerciseSet}
-                  onDeleteSection={onDeleteSection}
-                  // Ab hier aktuell funktioniert
-                  onDeleteSet={onDeleteSet}
                   onEditSubmit={handleEditSubmit}
                   currentWorkoutRoutine={currentWorkoutRoutine}
+                  value={value}
+                  onChange={onChange}
+                  // Ab hier Props Übergabe der sections
+                  sections={sections}
+                  onAddSection={onAddSection}
+                  onAddExerciseSet={onAddExerciseSet}
+                  onDeleteSection={onDeleteSection}
+                  onDeleteSet={onDeleteSet}
                />
             </>
          ) : (
@@ -77,7 +84,7 @@ export default function SavedWorkoutRoutine({
 
                <p> {currentWorkoutRoutine.notes} </p>
 
-               {currentWorkoutRoutine.addedSections?.map((section) => (
+               {currentWorkoutRoutine.sectionsOfThisPlan?.map((section) => (
                   <SectionsOfCurrenWorkoutRoutine>
                      <h4> {section.name} </h4>
 

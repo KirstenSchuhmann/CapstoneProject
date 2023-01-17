@@ -7,11 +7,42 @@ import {
 import SwipeExerciseToLeft from './SwipeLeftFunction';
 
 export default function SectionAndExerciseSet({
+   gymPlans,
    sections,
+   value,
+   onChange,
+   currentWorkoutRoutine,
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
+   // if (!gymPlans) {
+   //    return null;
+   // } else gymPlans.find((gymPlan) => gymPlan.id === id);
+
+   // const lookForId = !currentWorkoutRoutine ? [] : currentWorkoutRoutine.id;
+
+   if (!gymPlans) {
+      return null;
+   }
+
+   const TestA = !currentWorkoutRoutine ? [] : currentWorkoutRoutine.id;
+
+   console.log(currentWorkoutRoutine);
+   // const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
+
+   //const lookForPlan = !gymPlans ? null : currentWorkoutRoutine.id;
+
+   // const savedPlan = gymPlans.find((gymPlan) => gymPlan.id === id);
+
+   // if (!savedPlan) {
+   //    return null;
+   // }
+   // const useCase =
+   //    currentWorkoutRoutine.id === id
+   //       ? currentWorkoutRoutine.sectionsOfThisPlan
+   //       : (gymPlans = []).sections;
+
    return (
       <>
          {sections.map((section, sectionIndex) => (
@@ -32,6 +63,8 @@ export default function SectionAndExerciseSet({
                         placeholder='sets'
                         min='0'
                         max='500'
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-sets`}
                      />
                      <p>x</p>
@@ -42,6 +75,8 @@ export default function SectionAndExerciseSet({
                         placeholder='reps'
                         min='0'
                         max='500'
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-reps`}
                      />
 
@@ -52,6 +87,8 @@ export default function SectionAndExerciseSet({
                         placeholder='weight'
                         min='0'
                         max='500'
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-weight`}
                      />
 
@@ -61,6 +98,8 @@ export default function SectionAndExerciseSet({
                         label='exercise'
                         autoComplete='off'
                         placeholder='exercise'
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-exercise`}
                      />
                      <button

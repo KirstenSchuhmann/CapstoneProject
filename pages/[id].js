@@ -8,6 +8,13 @@ import SavedWorkoutRoutine from '../components/SavedWorkoutRoutine/SavedWorkoutR
 export default function OverviewOfAddedRoutines({
    gymPlans = [],
    onUpdatedPlan,
+   sections,
+   onChange,
+   value,
+   onAddExerciseSet,
+   onDeleteSection,
+   onAddSection,
+   onDeleteSet,
 }) {
    const router = useRouter();
    const { id } = router.query;
@@ -23,11 +30,24 @@ export default function OverviewOfAddedRoutines({
       return null;
    }
 
+   console.log(currentWorkoutRoutine.sectionsOfThisPlan);
+
    return (
       <>
          <SavedWorkoutRoutine
+            //  Funktionen, damit Sections hinzugefügt werden können
+            // Aktueller Plan
             currentWorkoutRoutine={currentWorkoutRoutine}
+            // selbst erklärend
             onUpdatedPlan={onUpdatedPlan}
+            // Bereits existierende Funktionen
+            value={value}
+            onChange={onChange}
+            sections={sections}
+            onAddSection={onAddSection}
+            onAddExerciseSet={onAddExerciseSet}
+            onDeleteSection={onDeleteSection}
+            onDeleteSet={onDeleteSet}
          />
          <Footer />
       </>

@@ -18,12 +18,19 @@ import {
    DeleteButton,
 } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
 
+import SectionAndExerciseSet from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSet';
+
 export default function EditCurrenWorkoutRoutine({
    currentWorkoutRoutine,
    onEditSubmit,
+
+   onChange,
+   value,
+   sections,
+
+   onAddSection,
    onAddExerciseSet,
    onDeleteSection,
-
    onDeleteSet,
 }) {
    // To Create Buttons
@@ -35,11 +42,9 @@ export default function EditCurrenWorkoutRoutine({
       'Assistant',
    ];
 
-   function handleAddingMoreSections(sectionName) {
-      const currentSections = currentWorkoutRoutine.addedSections;
-      [...currentSections, { name: sectionName, exerciseSets: [] }];
-      console.log(currentWorkoutRoutine.addedSections);
-   }
+   // console.log(currentWorkoutRoutine.sectionsOfThisPlan);
+
+   //const currentSections = currentWorkoutRoutine.sectionsOfThisPlan;
 
    return (
       <StyledForm onSubmit={onEditSubmit}>
@@ -68,14 +73,16 @@ export default function EditCurrenWorkoutRoutine({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => handleAddingMoreSections(sectionName)}>
+                  onClick={() => onAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
          </CenterButtons>
-         {currentWorkoutRoutine.addedSections?.map(({ name, exerciseSets }) => (
-            <StyledSection key={name}>
-               <h3> {name}</h3>
+
+         {/* saved Plan / current Workout Routine data will be rendered as a form  from here:  */}
+         {currentWorkoutRoutine.sectionsOfThisPlan?.map((section) => (
+            <StyledSection key={section.name}>
+               <h3> {section.name}</h3>
 
                <DeleteButton
                   type='button'
@@ -83,8 +90,8 @@ export default function EditCurrenWorkoutRoutine({
                   x
                </DeleteButton>
 
-               {exerciseSets?.map(({ id, sets, reps, weight, exercise }) => (
-                  <SwipeExerciseToLeft key={id}>
+               {/* {section.exerciseSets?.map((exerciseSet, id) => (
+                  <SwipeExerciseToLeft key={exerciseSet.id}>
                      <input
                         type='number'
                         aria-label='set sets'
@@ -92,8 +99,8 @@ export default function EditCurrenWorkoutRoutine({
                         placeholder='sets'
                         min='0'
                         max='500'
-                        defaultValue={sets}
-                        name={`${id}-editedSets`}
+                        defaultValue={exerciseSet.sets}
+                        name={`${section.name}-${exerciseSet.id}-sets`}
                      />
                      <p>x</p>
                      <input
@@ -103,8 +110,8 @@ export default function EditCurrenWorkoutRoutine({
                         placeholder='reps'
                         min='0'
                         max='500'
-                        defaultValue={reps}
-                        name={`${id}-editedReps`}
+                        defaultValue={exerciseSet.reps}
+                        name={`${section.name}-${exerciseSet.id}-reps`}
                      />
 
                      <input
@@ -114,8 +121,8 @@ export default function EditCurrenWorkoutRoutine({
                         placeholder='weight'
                         min='0'
                         max='500'
-                        defaultValue={weight}
-                        name={`${id}-editedWeight`}
+                        defaultValue={exerciseSet.weight}
+                        name={`${section.name}-${exerciseSet.id}-weight`}
                      />
 
                      <input
@@ -124,8 +131,8 @@ export default function EditCurrenWorkoutRoutine({
                         label='exercise'
                         autoComplete='off'
                         placeholder='exercise'
-                        defaultValue={exercise}
-                        name={`${id}-editedExercise`}
+                        defaultValue={exerciseSet.exercise}
+                        name={`${section.name}-${exerciseSet.id}-exercise`}
                      />
                      <button
                         type='button'
@@ -133,7 +140,7 @@ export default function EditCurrenWorkoutRoutine({
                         delete set
                      </button>
                   </SwipeExerciseToLeft>
-               ))}
+               ))} */}
 
                <AddExerciseSet
                   type='button'
@@ -142,6 +149,16 @@ export default function EditCurrenWorkoutRoutine({
                </AddExerciseSet>
             </StyledSection>
          ))}
+         {/* Ab hier werden neue Sections mit neuen Übungen hinzugefügt, wenn notwendig */}
+         <SectionAndExerciseSet
+            onChange={onChange}
+            value={value}
+            sections={sections}
+            currentWorkoutRoutine={currentWorkoutRoutine}
+            onAddExerciseSet={onAddExerciseSet}
+            onDeleteSection={onDeleteSection}
+            onDeleteSet={onDeleteSet}
+         />
          <SaveButton type='submit'> save my edit </SaveButton>
       </StyledForm>
    );

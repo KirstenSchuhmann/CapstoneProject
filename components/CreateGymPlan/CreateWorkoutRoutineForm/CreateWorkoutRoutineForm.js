@@ -15,6 +15,7 @@ import {
 } from './CreateWorkoutRoutineStyling';
 
 export default function CreateWorkoutRoutineForm({
+   gymPlans = [],
    sections,
    onCreatePlan,
    onAddExerciseSet,
@@ -30,7 +31,7 @@ export default function CreateWorkoutRoutineForm({
       const title = formElements.title.value;
       const notes = formElements.notes.value;
 
-      const addedSections = sections.map((section) => {
+      const sectionsOfThisPlan = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
@@ -49,7 +50,7 @@ export default function CreateWorkoutRoutineForm({
          id: nanoid(),
          title,
          notes,
-         addedSections,
+         sectionsOfThisPlan,
       };
 
       onCreatePlan(newPlan);
@@ -97,6 +98,7 @@ export default function CreateWorkoutRoutineForm({
             ))}
          </CenterButtons>
          <SectionAndExerciseSet
+            gymPlans={gymPlans}
             sections={sections}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}
