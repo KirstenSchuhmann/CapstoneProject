@@ -17,25 +17,22 @@ export default function SavedWorkoutRoutine({
 
    function handleEditSubmit(event) {
       event.preventDefault();
-      const formElements = event.target.elements;
-      const editedTitle = formElements.editedTitle.value;
-      const editedNotes = formElements.editedNotes.value;
 
-      const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
-         (section) => {
-            const updatedExerciseSet = section.exerciseSets.map(
-               (exerciseSet) => ({
-                  sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
-                     .value,
-                  reps: formElements[`${exerciseSet.id}-editedReps`].value,
-                  weight: formElements[`${exerciseSet.id}-editedWeight`].value,
-                  exercise:
-                     formElements[`${exerciseSet.id}-editedExercise`].value,
-               })
-            );
-            return { ...section, exerciseSets: updatedExerciseSet };
-         }
-      );
+      const editedTitle = event.target.editedTitle.value;
+      const editedNotes = event.target.editedNotes.value;
+
+      const updatedSections = sections.map((section) => {
+         const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            sets: [`${section.name}-${exerciseSet.id}-sets`].value,
+            reps: [`${section.name}-${exerciseSet.id}-reps`].value,
+            weight: [`${section.name}-${exerciseSet.id}-weight`].value,
+            exercise: [`${section.name}-${exerciseSet.id}-exercise`].value,
+         }));
+         return {
+            ...section,
+            exerciseSets: updatedExerciseSet,
+         };
+      });
 
       const id = currentWorkoutRoutine.id;
 
@@ -44,7 +41,6 @@ export default function SavedWorkoutRoutine({
          title: editedTitle,
          notes: editedNotes,
          sectionsOfThisPlan: updatedSections,
-         sectionsOfThisPlan,
       };
 
       onUpdatedPlan(editedPlan);
@@ -63,10 +59,11 @@ export default function SavedWorkoutRoutine({
                <EditCurrenWorkoutRoutine
                   onEditSubmit={handleEditSubmit}
                   currentWorkoutRoutine={currentWorkoutRoutine}
+                  sections={sections}
                   value={value}
                   onChange={onChange}
                   // Ab hier Props Übergabe der sections
-                  sections={sections}
+
                   onAddSection={onAddSection}
                   onAddExerciseSet={onAddExerciseSet}
                   onDeleteSection={onDeleteSection}

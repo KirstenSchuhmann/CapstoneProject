@@ -30,7 +30,7 @@ export default function OverviewOfAddedRoutines({
       return null;
    }
 
-   console.log(currentWorkoutRoutine.sectionsOfThisPlan);
+   // console.log(currentWorkoutRoutine.sectionsOfThisPlan);
 
    return (
       <>

@@ -28,8 +28,6 @@ function MyApp({ Component, pageProps }) {
       );
    }
 
-   console.log(sections);
-
    // createPlan: Funktionen um Sections & Exercises hinzuzufügen
    function handleAddSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);

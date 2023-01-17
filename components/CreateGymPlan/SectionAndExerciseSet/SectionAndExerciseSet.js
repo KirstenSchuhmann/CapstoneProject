@@ -1,3 +1,4 @@
+import EditCurrenWorkoutRoutine from '../../SavedWorkoutRoutine/EditWorkoutRoutine';
 import {
    StyledSection,
    AddExerciseSet,
@@ -7,42 +8,13 @@ import {
 import SwipeExerciseToLeft from './SwipeLeftFunction';
 
 export default function SectionAndExerciseSet({
-   gymPlans,
    sections,
    value,
    onChange,
-   currentWorkoutRoutine,
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
-   // if (!gymPlans) {
-   //    return null;
-   // } else gymPlans.find((gymPlan) => gymPlan.id === id);
-
-   // const lookForId = !currentWorkoutRoutine ? [] : currentWorkoutRoutine.id;
-
-   if (!gymPlans) {
-      return null;
-   }
-
-   const TestA = !currentWorkoutRoutine ? [] : currentWorkoutRoutine.id;
-
-   console.log(currentWorkoutRoutine);
-   // const currentWorkoutRoutine = gymPlans.find((gymPlan) => gymPlan.id === id);
-
-   //const lookForPlan = !gymPlans ? null : currentWorkoutRoutine.id;
-
-   // const savedPlan = gymPlans.find((gymPlan) => gymPlan.id === id);
-
-   // if (!savedPlan) {
-   //    return null;
-   // }
-   // const useCase =
-   //    currentWorkoutRoutine.id === id
-   //       ? currentWorkoutRoutine.sectionsOfThisPlan
-   //       : (gymPlans = []).sections;
-
    return (
       <>
          {sections.map((section, sectionIndex) => (

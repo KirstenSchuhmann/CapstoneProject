@@ -42,10 +42,6 @@ export default function EditCurrenWorkoutRoutine({
       'Assistant',
    ];
 
-   // console.log(currentWorkoutRoutine.sectionsOfThisPlan);
-
-   //const currentSections = currentWorkoutRoutine.sectionsOfThisPlan;
-
    return (
       <StyledForm onSubmit={onEditSubmit}>
          <StyledFieldSet>
@@ -90,7 +86,7 @@ export default function EditCurrenWorkoutRoutine({
                   x
                </DeleteButton>
 
-               {/* {section.exerciseSets?.map((exerciseSet, id) => (
+               {section.exerciseSets?.map((exerciseSet, id) => (
                   <SwipeExerciseToLeft key={exerciseSet.id}>
                      <input
                         type='number'
@@ -99,7 +95,7 @@ export default function EditCurrenWorkoutRoutine({
                         placeholder='sets'
                         min='0'
                         max='500'
-                        defaultValue={exerciseSet.sets}
+                        defaultValue={`${exerciseSet.id}-sets`}
                         name={`${section.name}-${exerciseSet.id}-sets`}
                      />
                      <p>x</p>
@@ -110,7 +106,8 @@ export default function EditCurrenWorkoutRoutine({
                         placeholder='reps'
                         min='0'
                         max='500'
-                        defaultValue={exerciseSet.reps}
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-reps`}
                      />
 
@@ -121,7 +118,8 @@ export default function EditCurrenWorkoutRoutine({
                         placeholder='weight'
                         min='0'
                         max='500'
-                        defaultValue={exerciseSet.weight}
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-weight`}
                      />
 
@@ -131,7 +129,8 @@ export default function EditCurrenWorkoutRoutine({
                         label='exercise'
                         autoComplete='off'
                         placeholder='exercise'
-                        defaultValue={exerciseSet.exercise}
+                        value={value}
+                        onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-exercise`}
                      />
                      <button
@@ -140,7 +139,7 @@ export default function EditCurrenWorkoutRoutine({
                         delete set
                      </button>
                   </SwipeExerciseToLeft>
-               ))} */}
+               ))}
 
                <AddExerciseSet
                   type='button'
