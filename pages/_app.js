@@ -58,6 +58,17 @@ function MyApp({ Component, pageProps }) {
       }
    }
 
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
    return (
       <>
          <GlobalStyles />
