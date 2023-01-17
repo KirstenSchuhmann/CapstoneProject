@@ -18,21 +18,46 @@ export default function SavedWorkoutRoutine({
    function handleEditSubmit(event) {
       event.preventDefault();
 
-      const editedTitle = event.target.editedTitle.value;
-      const editedNotes = event.target.editedNotes.value;
+      const id = currentWorkoutRoutine.id;
 
-      const updatedSections = sections.map((section) => {
-         const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            sets: [`${section.name}-${exerciseSet.id}-sets`].value,
-            reps: [`${section.name}-${exerciseSet.id}-reps`].value,
-            weight: [`${section.name}-${exerciseSet.id}-weight`].value,
-            exercise: [`${section.name}-${exerciseSet.id}-exercise`].value,
-         }));
-         return {
-            ...section,
-            exerciseSets: updatedExerciseSet,
-         };
-      });
+      const editedPlan = {
+         id,
+         title: editedTitle,
+         notes: editedNotes,
+         addedSections: updatedSections,
+      };
+
+      onUpdatedPlan(editedPlan);
+      setEdit(!edit);
+   }
+
+   function handleEditSubmit(event) {
+      event.preventDefault();
+
+      const formElements = event.target.elements;
+
+      const editedTitle = formElements.editedTitle.value;
+      const editedNotes = formElements.editedNotes.value;
+
+      const updatedSections = currentWorkoutRoutine.addedSections.map(
+         (section) => {
+            const updatedExerciseSet = section.exerciseSets.map(
+               (exerciseSet) => ({
+                  sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
+                     .value,
+                  reps: formElements[`${section.name}-${exerciseSet.id}-reps`]
+                     .value,
+                  weight:
+                     formElements[`${section.name}-${exerciseSet.id}-weight`]
+                        .value,
+                  exercise:
+                     formElements[`${section.name}-${exerciseSet.id}-exercise`]
+                        .value,
+               })
+            );
+            return { ...section, exerciseSets: updatedExerciseSet };
+         }
+      );
 
       const id = currentWorkoutRoutine.id;
 

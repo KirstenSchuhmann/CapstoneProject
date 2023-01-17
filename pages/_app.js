@@ -6,11 +6,11 @@ import { useLocalStorage } from '../helpers/hooks';
 function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
    const [sections, setSections] = useState([]);
-   const [value, setValue] = useState('');
+   // const [value, setValue] = useState('');
 
-   function handleChange(event) {
-      setValue(event.target.value);
-   }
+   // function handleChange(event) {
+   //    setValue(event.target.value);
+   // }
 
    function handleCreatePlan(newPlan) {
       setGymPlans([newPlan, ...gymPlans]);
@@ -83,8 +83,8 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             gymPlans={gymPlans}
             sections={sections}
-            value={value}
-            onChange={handleChange}
+            // value={value}
+            // onChange={handleChange}
             onCreatePlan={handleCreatePlan}
             onDeleteSection={handleDeleteSection}
             onAddSection={handleAddSection}

@@ -76,78 +76,77 @@ export default function EditCurrenWorkoutRoutine({
          </CenterButtons>
 
          {/* saved Plan / current Workout Routine data will be rendered as a form  from here:  */}
-         {currentWorkoutRoutine.sectionsOfThisPlan?.map((section) => (
-            <StyledSection key={section.name}>
-               <h3> {section.name}</h3>
+         {currentWorkoutRoutine.sectionsOfThisPlan?.map(
+            (section, sectionIndex) => (
+               <StyledSection key={section.name}>
+                  <h3> {section.name}</h3>
 
-               <DeleteButton
-                  type='button'
-                  onClick={() => onDeleteSection(sectionIndex)}>
-                  x
-               </DeleteButton>
+                  <DeleteButton
+                     type='button'
+                     onClick={() => onDeleteSection(sectionIndex)}>
+                     x
+                  </DeleteButton>
 
-               {section.exerciseSets?.map((exerciseSet, id) => (
-                  <SwipeExerciseToLeft key={exerciseSet.id}>
-                     <input
-                        type='number'
-                        aria-label='set sets'
-                        label='sets'
-                        placeholder='sets'
-                        min='0'
-                        max='500'
-                        defaultValue={`${exerciseSet.id}-sets`}
-                        name={`${section.name}-${exerciseSet.id}-sets`}
-                     />
-                     <p>x</p>
-                     <input
-                        type='number'
-                        aria-label='set repitition'
-                        label='reps'
-                        placeholder='reps'
-                        min='0'
-                        max='500'
-                        value={value}
-                        onChange={onChange}
-                        name={`${section.name}-${exerciseSet.id}-reps`}
-                     />
+                  {section.exerciseSets?.map((exerciseSet, id) => (
+                     <SwipeExerciseToLeft key={exerciseSet.id}>
+                        <input
+                           type='number'
+                           aria-label='set sets'
+                           label='sets'
+                           placeholder='sets'
+                           min='0'
+                           max='500'
+                           defaultValue={exerciseSet.sets}
+                           name={`${section.name}-${exerciseSet.id}-sets`}
+                        />
+                        <p>x</p>
+                        <input
+                           type='number'
+                           aria-label='set repitition'
+                           label='reps'
+                           placeholder='reps'
+                           min='0'
+                           max='500'
+                           defaultValue={exerciseSet.reps}
+                           name={`${section.name}-${exerciseSet.id}-reps`}
+                        />
 
-                     <input
-                        type='number'
-                        aria-label='set weight'
-                        label='weight'
-                        placeholder='weight'
-                        min='0'
-                        max='500'
-                        value={value}
-                        onChange={onChange}
-                        name={`${section.name}-${exerciseSet.id}-weight`}
-                     />
+                        <input
+                           type='number'
+                           aria-label='set weight'
+                           label='weight'
+                           placeholder='weight'
+                           min='0'
+                           max='500'
+                           defaultValue={exerciseSet.weight}
+                           name={`${section.name}-${exerciseSet.id}-weight`}
+                        />
 
-                     <input
-                        type='text'
-                        aria-label='set exercise'
-                        label='exercise'
-                        autoComplete='off'
-                        placeholder='exercise'
-                        value={value}
-                        onChange={onChange}
-                        name={`${section.name}-${exerciseSet.id}-exercise`}
-                     />
-                     <button
-                        type='button'
-                        onClick={() => onDeleteSet(sectionIndex, id)}>
-                        delete set
-                     </button>
-                  </SwipeExerciseToLeft>
-               ))}
+                        <input
+                           type='text'
+                           aria-label='set exercise'
+                           label='exercise'
+                           autoComplete='off'
+                           placeholder='exercise'
+                           defaultValue={exerciseSet.exercise}
+                           name={`${section.name}-${exerciseSet.id}-exercise`}
+                        />
+                        <button
+                           type='button'
+                           onClick={() => onDeleteSet(sectionIndex, id)}>
+                           delete set
+                        </button>
+                     </SwipeExerciseToLeft>
+                  ))}
 
-               <AddExerciseSet
-                  type='button'
-                  onClick={() => onAddExerciseSet(sectionIndex)}>
-                  add exercise
-               </AddExerciseSet>
-            </StyledSection>
-         ))}
+                  <AddExerciseSet
+                     type='button'
+                     onClick={() => onAddExerciseSet(sectionIndex)}>
+                     add exercise
+                  </AddExerciseSet>
+               </StyledSection>
+            )
+         )}
          {/* Ab hier werden neue Sections mit neuen Übungen hinzugefügt, wenn notwendig */}
          <SectionAndExerciseSet
             onChange={onChange}
