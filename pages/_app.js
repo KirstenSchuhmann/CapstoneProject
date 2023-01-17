@@ -11,6 +11,18 @@ function MyApp({ Component, pageProps }) {
       setGymPlans([...gymPlans, newPlan]);
    }
 
+   function handleUpdatedPlan(editedPlan) {
+      setGymPlans(
+         gymPlans.map((gymPlan) => {
+            if (gymPlan.id === editedPlan.id) {
+               return editedPlan;
+            } else {
+               return gymPlan;
+            }
+         })
+      );
+   }
+
    function handleAddSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
    }
@@ -58,6 +70,7 @@ function MyApp({ Component, pageProps }) {
             onAddSection={handleAddSection}
             onAddExerciseSet={handleAddExerciseSet}
             onDeleteSet={handleDeleteSet}
+            onUpdatedPlan={handleUpdatedPlan}
          />
       </>
    );

@@ -1,21 +1,21 @@
 import SwipeExerciseToLeft from '../CreateGymPlan/SectionAndExerciseSet/SwipeLeftFunction';
 
 import {
-   StyledSection,
-   AddExerciseSet,
-   DeleteButton,
-} from '../CreateGymPlan/CreateWorkoutRoutineForm/CreateWorkoutRoutineStyling';
-
-import {
    AddSectionButton,
    StyledForm,
    CenterButtons,
+   GymPlanTitle,
    StyledNotes,
    StyledNotesLabel,
    StyledLabelTitle,
    StyledFieldSet,
-   GymPlanTitle,
    SaveButton,
+} from '../CreateGymPlan/CreateWorkoutRoutineForm/CreateWorkoutRoutineStyling';
+
+import {
+   StyledSection,
+   AddExerciseSet,
+   DeleteButton,
 } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
 
 export default function EditCurrenWorkoutRoutine({
@@ -23,6 +23,7 @@ export default function EditCurrenWorkoutRoutine({
    onEditSubmit,
    onAddExerciseSet,
    onDeleteSection,
+
    onDeleteSet,
 }) {
    // To Create Buttons

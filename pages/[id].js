@@ -5,7 +5,10 @@ import { useRouter } from 'next/router';
 import Footer from '../components/Footer';
 import SavedWorkoutRoutine from '../components/SavedWorkoutRoutine/SavedWorkoutRoutine';
 
-export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
+export default function OverviewOfAddedRoutines({
+   gymPlans = [],
+   onUpdatedPlan,
+}) {
    const router = useRouter();
    const { id } = router.query;
 
@@ -22,7 +25,10 @@ export default function OverviewOfAddedRoutines({ gymPlans = [] }) {
 
    return (
       <>
-         <SavedWorkoutRoutine currentWorkoutRoutine={currentWorkoutRoutine} />
+         <SavedWorkoutRoutine
+            currentWorkoutRoutine={currentWorkoutRoutine}
+            onUpdatedPlan={onUpdatedPlan}
+         />
          <Footer />
       </>
    );
