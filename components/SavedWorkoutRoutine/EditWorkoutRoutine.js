@@ -35,6 +35,12 @@ export default function EditCurrenWorkoutRoutine({
       'Assistant',
    ];
 
+   function handleAddingMoreSections(sectionName) {
+      const currentSections = currentWorkoutRoutine.addedSections;
+      [...currentSections, { name: sectionName, exerciseSets: [] }];
+      console.log(currentWorkoutRoutine.addedSections);
+   }
+
    return (
       <StyledForm onSubmit={onEditSubmit}>
          <StyledFieldSet>
@@ -59,7 +65,6 @@ export default function EditCurrenWorkoutRoutine({
             />
          </StyledFieldSet>
          <CenterButtons>
-            {/* Buttons to create Sections */}
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
@@ -83,7 +88,7 @@ export default function EditCurrenWorkoutRoutine({
                      <input
                         type='number'
                         aria-label='set sets'
-                        label='Sets'
+                        label='sets'
                         placeholder='sets'
                         min='0'
                         max='500'
@@ -108,6 +113,7 @@ export default function EditCurrenWorkoutRoutine({
                         label='weight'
                         placeholder='weight'
                         min='0'
+                        max='500'
                         defaultValue={weight}
                         name={`${id}-editedWeight`}
                      />
