@@ -5,7 +5,6 @@ import EditCurrenWorkoutRoutine from './EditWorkoutRoutine';
 export default function SavedWorkoutRoutine({
    currentWorkoutRoutine,
    onUpdatedPlan,
-
    sections,
    onAddExerciseSet,
    onDeleteSection,
@@ -54,7 +53,7 @@ export default function SavedWorkoutRoutine({
             <>
                <button
                   type='button'
-                  onClick={() => setEdit(edit)}>
+                  onClick={() => setEdit(!edit)}>
                   Cancel Edit
                </button>
                <EditCurrenWorkoutRoutine
@@ -113,14 +112,15 @@ const StyledPlan = styled.section`
    background-color: #f8f8f8;
    border-radius: 20px;
 
-   h1 {
-      font-size: 2rem;
+   h2 {
+      font-size: 1.5rem;
       margin: 0;
       text-align: center;
    }
 
    p {
-      margin: 0.5rem;
+      font-size: 1rem;
+      margin: 0.25rem;
       text-align: center;
    }
 `;
@@ -131,9 +131,9 @@ const SectionsOfCurrenWorkoutRoutine = styled.section`
    height: 80%;
    border-radius: 10px;
 
-   h2 {
+   h4 {
       margin: 5px 0 10px 0px;
-      font-size: 1.25rem;
+      font-size: 1rem;
    }
 `;
 const ExerciseSetCurrentWorkoutRoutine = styled.div`
@@ -144,6 +144,7 @@ const ExerciseSetCurrentWorkoutRoutine = styled.div`
    p {
       font-size: small;
       margin: 0px 5px 10px 0px;
+      font-size: 16px;
    }
 `;
 
