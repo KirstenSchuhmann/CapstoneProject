@@ -1,27 +1,53 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import EditCurrenWorkoutRoutine from '../SavedWorkoutRoutine/EditWorkoutRoutine';
 
 export default function SavedWorkoutRoutine({ currentWorkoutRoutine }) {
+   const [edit, setEdit] = useState(false);
+
    return (
-      <StyledPlan>
-         <h1> {currentWorkoutRoutine.title}</h1>
-         <p> {currentWorkoutRoutine.notes} </p>
+      <>
+         {edit === true ? (
+            <>
+               <p> Implemented Ternary Operator for Switching</p>
+            </>
+         ) : (
+            <StyledPlan>
+               <button
+                  type='button'
+                  onClick={() => setEdit(!edit)}>
+                  Edit Plan
+               </button>
+               <h2> {currentWorkoutRoutine.title} </h2>
 
-         {currentWorkoutRoutine.addedSections?.map(({ name, exerciseSets }) => (
-            <StyledSection>
-               <h2> {name} </h2>
+               <p> {currentWorkoutRoutine.notes} </p>
 
-               {exerciseSets?.map(({ id, sets, reps, weight, exercise }) => (
-                  <StyledDiv key={id}>
-                     <StyledInputData> {sets} </StyledInputData>
-                     <p> x </p>
-                     <StyledInputData> {reps} </StyledInputData>
-                     <StyledInputData> {weight} </StyledInputData>
-                     <StyledInputData> {exercise} </StyledInputData>
-                  </StyledDiv>
+               {currentWorkoutRoutine.addedSections?.map((section) => (
+                  <SectionsOfCurrenWorkoutRoutine>
+                     <h4> {section.name} </h4>
+
+                     {section.exerciseSets?.map((exerciseSet) => (
+                        <ExerciseSetCurrentWorkoutRoutine key={exerciseSet.id}>
+                           <StyledInputData>{exerciseSet.sets}</StyledInputData>
+                           <p> x </p>
+                           <StyledInputData>
+                              {' '}
+                              {exerciseSet.reps}{' '}
+                           </StyledInputData>
+                           <StyledInputData>
+                              {' '}
+                              {exerciseSet.weight}{' '}
+                           </StyledInputData>
+                           <StyledInputData>
+                              {exerciseSet.exercise}
+                           </StyledInputData>
+                        </ExerciseSetCurrentWorkoutRoutine>
+                     ))}
+                  </SectionsOfCurrenWorkoutRoutine>
                ))}
-            </StyledSection>
-         ))}
-      </StyledPlan>
+            </StyledPlan>
+         )}
+      </>
    );
 }
 
@@ -46,7 +72,7 @@ const StyledPlan = styled.section`
       text-align: center;
    }
 `;
-const StyledSection = styled.section`
+const SectionsOfCurrenWorkoutRoutine = styled.section`
    padding: 10px;
    margin: 15px 0px 15px 0px;
    border: 1px solid;
@@ -58,7 +84,7 @@ const StyledSection = styled.section`
       font-size: 1.25rem;
    }
 `;
-const StyledDiv = styled.div`
+const ExerciseSetCurrentWorkoutRoutine = styled.div`
    display: flex;
    flex-flow: row wrap;
    align-items: center;
