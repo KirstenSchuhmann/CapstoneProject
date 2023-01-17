@@ -39,7 +39,7 @@ export default function SavedWorkoutRoutine({
       const editedTitle = formElements.editedTitle.value;
       const editedNotes = formElements.editedNotes.value;
 
-      const updatedSections = currentWorkoutRoutine.addedSections.map(
+      const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
          (section) => {
             const updatedExerciseSet = section.exerciseSets.map(
                (exerciseSet) => ({

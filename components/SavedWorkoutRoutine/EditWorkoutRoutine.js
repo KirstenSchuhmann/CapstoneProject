@@ -69,7 +69,7 @@ export default function EditCurrenWorkoutRoutine({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddSection(sectionName)}>
+                  onClick={() => onAddExerciseSet(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
@@ -147,7 +147,7 @@ export default function EditCurrenWorkoutRoutine({
                </StyledSection>
             )
          )}
-         {/* Ab hier werden neue Sections mit neuen Übungen hinzugefügt, wenn notwendig */}
+         {/* new added Sections and exercises will be rendered from this part  */}
          <SectionAndExerciseSet
             onChange={onChange}
             value={value}
