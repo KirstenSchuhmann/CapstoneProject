@@ -46,7 +46,7 @@ export default function SavedWorkoutRoutine({
             };
          }
       );
-
+      console.log(`Just for a commit - to get back to it, if I don't make it`);
       const addedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
@@ -68,13 +68,12 @@ export default function SavedWorkoutRoutine({
          id,
          title: editedTitle,
          notes: editedNotes,
-         sectionsOfThisPlan: [updatedSections, addedSections],
+         sectionsOfThisPlan: updatedSections,
+         addedSections,
          // +  ----------------> added Sections hinzufügen (weitere constante erstellen, die durch sections mappt)
       };
 
-      const newPlan = editedPlan;
-
-      onUpdatedPlan(newPlan);
+      onUpdatedPlan(editedPlan);
       setEdit(!edit);
    }
 
