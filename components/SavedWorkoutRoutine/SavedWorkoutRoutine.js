@@ -16,7 +16,30 @@ export default function SavedWorkoutRoutine({
 }) {
    const [edit, setEdit] = useState(false);
 
-   const id = currentWorkoutRoutine.id;
+   // Aktuell findet die console das:
+
+   //    {
+   //       "0": {
+   //           "name": "Deadlift",
+   //           "exerciseSets": [
+   //               {
+   //                   "id": "XzKoCblrVxjNkognJraC7",
+   //                   "sets": "",
+   //                   "reps": "",
+   //                   "weight": "",
+   //                   "exercise": ""
+   //               }
+   //           ]
+   //       },
+   //       "id": "EbUPkfVcLVAaVmkjn5d_a",
+   //       "title": "Push / Pull - Oberkörper",
+   //       "notes": "Notizen für Später:  \n- abc \n- abc",
+   //       "sectionsOfThisPlan": [
+   //           null,
+   //           null
+   //       ]
+   //   }
+
    function handleEditSubmit(event) {
       event.preventDefault();
 
@@ -25,36 +48,36 @@ export default function SavedWorkoutRoutine({
       const editedTitle = formElements.editedTitle.value;
       const editedNotes = formElements.editedNotes.value;
 
-      const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
-         (section) => {
-            const updatedExerciseSet = section.exerciseSets.map(
-               (exerciseSet) => ({
-                  sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
-                     .value,
-                  reps: formElements[`${section.name}-${exerciseSet.id}-reps`]
-                     .value,
-                  weight:
-                     formElements[`${section.name}-${exerciseSet.id}-weight`]
-                        .value,
-                  exercise:
-                     formElements[`${section.name}-${exerciseSet.id}-exercise`]
-                        .value,
-               })
-            );
-            return {
-               ...section,
-               exerciseSets: updatedExerciseSet,
-            };
-            setSections(sections);
-         }
-      );
+      // const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
+      //    (section) => {
+      //       const updatedExerciseSet = section.exerciseSets.map(
+      //          (exerciseSet) => ({
+      //             sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
+      //                .value,
+      //             reps: formElements[`${section.name}-${exerciseSet.id}-reps`]
+      //                .value,
+      //             weight:
+      //                formElements[`${section.name}-${exerciseSet.id}-weight`]
+      //                   .value,
+      //             exercise:
+      //                formElements[`${section.name}-${exerciseSet.id}-exercise`]
+      //                   .value,
+      //          })
+      //       );
+      //       return {
+      //          ...section,
+      //          exerciseSets: updatedExerciseSet,
+      //       };
+      //       // setSections(sections);
+      //    }
+      // );
 
       const editedPlan = {
          id,
          title: editedTitle,
          notes: editedNotes,
          sectionsOfThisPlan: updatedSections,
-         ...sections,
+         // +  ----------------> added Sections hinzufügen (weitere constante erstellen, die durch sections mappt)
       };
 
       onUpdatedPlan(editedPlan);
@@ -100,25 +123,34 @@ export default function SavedWorkoutRoutine({
 
                <p> {currentWorkoutRoutine.notes} </p>
 
-               {currentWorkoutRoutine.sectionsOfThisPlan?.map((section) => (
-                  <SectionsOfCurrenWorkoutRoutine>
-                     <h4> {section.name} </h4>
+               {currentWorkoutRoutine.sectionsOfThisPlan?.map(
+                  (section, sectionIndex) => (
+                     <SectionsOfCurrenWorkoutRoutine key={sectionIndex}>
+                        <h4> {section.name} </h4>
 
-                     {section.exerciseSets?.map((exerciseSet) => (
-                        <ExerciseSetCurrentWorkoutRoutine key={exerciseSet.id}>
-                           <StyledInputData>{exerciseSet.sets}</StyledInputData>
-                           <p> x </p>
-                           <StyledInputData>{exerciseSet.reps}</StyledInputData>
-                           <StyledInputData>
-                              {exerciseSet.weight}
-                           </StyledInputData>
-                           <StyledInputData>
-                              {exerciseSet.exercise}
-                           </StyledInputData>
-                        </ExerciseSetCurrentWorkoutRoutine>
-                     ))}
-                  </SectionsOfCurrenWorkoutRoutine>
-               ))}
+                        {section.exerciseSets?.map((exerciseSet) => (
+                           <ExerciseSetCurrentWorkoutRoutine
+                              key={exerciseSet.id}>
+                              <StyledInputData>
+                                 {exerciseSet.sets}
+                              </StyledInputData>
+                              <p> x </p>
+                              <StyledInputData>
+                                 {exerciseSet.reps}
+                              </StyledInputData>
+                              <StyledInputData>
+                                 {exerciseSet.weight}
+                              </StyledInputData>
+                              <StyledInputData>
+                                 {exerciseSet.exercise}
+                              </StyledInputData>
+                           </ExerciseSetCurrentWorkoutRoutine>
+                        ))}
+                     </SectionsOfCurrenWorkoutRoutine>
+                  )
+               )}
+
+               {/* Kurzer Test ab hier: Copy & Past von einem letzten commit*/}
             </StyledPlan>
          )}
       </>

@@ -17,6 +17,7 @@ import {
 export default function CreateWorkoutRoutineForm({
    gymPlans = [],
    sections,
+   setSections,
    onCreatePlan,
    onAddExerciseSet,
    onDeleteSection,
@@ -24,6 +25,7 @@ export default function CreateWorkoutRoutineForm({
    onDeleteSet,
 }) {
    // Function storing input values
+
    function handleSubmit(event) {
       event.preventDefault();
 

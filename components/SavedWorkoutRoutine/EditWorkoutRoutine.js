@@ -63,8 +63,6 @@ export default function EditCurrenWorkoutRoutine({
          exercise: '',
       });
       setSections(() => updatedSections);
-
-      console.log(updatedSections);
    }
 
    return (

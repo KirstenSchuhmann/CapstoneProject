@@ -88,10 +88,13 @@ function MyApp({ Component, pageProps }) {
          <GlobalStyles />
          <Component
             {...pageProps}
-            gymPlans={gymPlans}
-            sections={sections}
+            gymPlans={gymPlans} // Aktuelle gespeicherten / hinzugefügten Pläne
+            sections={sections} // Sections stehen für sich und werden immer erstellt
+            // und einem gespeicherten Plan oder einem neuen Plan hinzugefügt.
+
             setSections={setSections}
-            onCreatePlan={handleCreatePlan}
+            onCreatePlan={handleCreatePlan} // Wenn neuer Plan erstellt wird
+            // Funktionen für States :)
             onDeleteSection={handleDeleteSection}
             onAddSection={handleAddSection}
             onAddExerciseSet={handleAddExerciseSet}
