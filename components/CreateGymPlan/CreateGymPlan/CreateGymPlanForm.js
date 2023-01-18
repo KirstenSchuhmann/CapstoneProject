@@ -1,5 +1,4 @@
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
 
 import SectionAndExerciseSet from '../SectionAndExerciseSet/SectionAndExerciseSet';
 
@@ -15,54 +14,14 @@ import {
    SaveButton,
 } from './CreateGymPlanStyling';
 
-export default function CreateGymPlanForm({ onCreatePlan }) {
-   const [sections, setSections] = useState([]);
+export default function CreateGymPlanForm({
+   onCreatePlan,
 
-   function handleAddSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-   }
-
-   function handleAddExerciseSet(sectionIndex) {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].exerciseSets.push({
-         id: nanoid(),
-         sets: '',
-         reps: '',
-         weight: '',
-         exercise: '',
-      });
-      setSections(() => updatedSections);
-   }
-
-   function handleDeleteSection(sectionIndex) {
-      if (sectionIndex >= 0) {
-         const removedSection = sections.splice(sectionIndex, 1);
-         sections - removedSection;
-         setSections([...sections]);
-      }
-   }
-
-   function handleDeleteSet(sectionIndex, setId) {
-      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
-      const idOfSet = sections[sectionIndex].exerciseSets[setId];
-
-      if (setId >= 0) {
-         let removeSet = exercisesInSelectedSection.splice(setId, 1);
-         exercisesInSelectedSection - removeSet;
-         setSections([...sections]);
-      }
-   }
-
-   function handleDeleteSet(sectionIndex, setId) {
-      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
-      const idOfSet = sections[sectionIndex].exerciseSets[setId];
-
-      if (setId >= 0) {
-         let removeSet = exercisesInSelectedSection.splice(setId, 1);
-         exercisesInSelectedSection - removeSet;
-         setSections([...sections]);
-      }
-   }
+   onAddSection,
+   onAddExerciseSet,
+   onDeleteSection,
+   onDeleteSet,
+}) {
    // Function storing input values
 
    function handleSubmit(event) {
@@ -141,9 +100,10 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
          </CenterButtons>
          <SectionAndExerciseSet
             sections={sections}
-            onDeleteSection={handleDeleteSection}
-            onAddExerciseSet={handleAddExerciseSet}
-            onDeleteSet={handleDeleteSet}
+            onAddSection={onAddSection}
+            onAddExerciseSet={onAddExerciseSet}
+            onDeleteSection={onDeleteSection}
+            onDeleteSet={onDeleteSet}
          />
          <SaveButton type='submit'>add workout routine</SaveButton>
       </StyledForm>

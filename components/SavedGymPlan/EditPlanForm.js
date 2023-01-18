@@ -20,13 +20,13 @@ import {
 } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
 
 export default function EditPlanForm({
-   sections,
-   onDeleteSection,
-   onAddNewExercise,
-   onAddNewSection,
-   onDeleteSet,
    onEditSubmit,
+   sections,
    gymPlan,
+   onAddSection,
+   onAddExerciseSet,
+   onDeleteSection,
+   onDeleteSet,
 }) {
    // To Create Buttons
    const createSectionName = [
@@ -64,7 +64,7 @@ export default function EditPlanForm({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddNewSection(sectionName)}>
+                  onClick={() => onAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
@@ -135,7 +135,7 @@ export default function EditPlanForm({
 
                <AddExerciseSet
                   type='button'
-                  onClick={() => onAddNewExercise(sectionIndex)}>
+                  onClick={() => onAddExerciseSet(sectionIndex)}>
                   add exercise
                </AddExerciseSet>
             </StyledSection>
@@ -144,7 +144,7 @@ export default function EditPlanForm({
          <SectionAndExerciseSet
             sections={sections}
             onDeleteSection={onDeleteSection}
-            onAddExerciseSet={onAddNewExercise}
+            onAddExerciseSet={onAddExerciseSet}
             onDeleteSet={onDeleteSet}
          />
 

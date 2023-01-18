@@ -1,9 +1,12 @@
 import GlobalStyles from '../GlobalStyles/GlobalStyles';
 
 import { useLocalStorage } from '../helpers/hooks';
+import { useState } from 'react';
+import { nanoid } from 'nanoid';
 
 function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
+   const [sections, setSections] = useState([]);
 
    function handleCreatePlan(newPlan) {
       setGymPlans([newPlan, ...gymPlans]);
@@ -30,6 +33,52 @@ function MyApp({ Component, pageProps }) {
 
    // createPlan: Funktionen um Sections & Exercises hinzuzufügen
 
+   function handleAddSection(sectionName) {
+      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+   }
+
+   function handleAddExerciseSet(sectionIndex) {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(() => updatedSections);
+   }
+
+   function handleDeleteSection(sectionIndex) {
+      if (sectionIndex >= 0) {
+         const removedSection = sections.splice(sectionIndex, 1);
+         sections - removedSection;
+         setSections([...sections]);
+      }
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
    return (
       <>
          <GlobalStyles />
@@ -39,6 +88,10 @@ function MyApp({ Component, pageProps }) {
             onUpdatedPlan={handleUpdatedPlan}
             onDeletePlan={handleDeletePlan}
             gymPlans={gymPlans}
+            onAddSection={handleAddSection}
+            onAddExerciseSet={handleAddExerciseSet}
+            onDeleteSection={handleDeleteSection}
+            onDeleteSet={handleDeleteSet}
          />
       </>
    );

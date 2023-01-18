@@ -2,51 +2,19 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import EditPlanForm from './EditPlanForm';
+import SectionAndExerciseSet from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSet';
 
 export default function SavedWorkoutRoutine({
    gymPlan,
    onUpdatedPlan,
-   onDeletePlan,
+
+   onAddSection,
+   onAddExerciseSet,
+   onDeleteSection,
+   onDeleteSet,
 }) {
    const [edit, setEdit] = useState(false);
    const [sections, setSections] = useState([]);
-
-   function handleAddNewSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-      console.log(sections);
-   }
-
-   function handleDeleteSection(sectionIndex) {
-      if (sectionIndex >= 0) {
-         const removedSection = gymPlan.sections.splice(sectionIndex, 1);
-         sections - removedSection;
-         setSections([...sections]);
-      }
-   }
-
-   function handleAddNewExercise(sectionIndex) {
-      const updatedSections = gymPlan.sections;
-      updatedSections[sectionIndex].exerciseSets.push({
-         id: nanoid(),
-         sets: '',
-         reps: '',
-         weight: '',
-         exercise: '',
-      });
-      // setSections(() => updatedSections);
-   }
-
-   function handleDeleteSet(sectionIndex, setId) {
-      const exercisesInSelectedSection =
-         gymPlan.sections[sectionIndex].exerciseSets;
-      const idOfSet = sections[sectionIndex].exerciseSets[setId];
-
-      if (setId >= 0) {
-         let removeSet = exercisesInSelectedSection.splice(setId, 1);
-         exercisesInSelectedSection - removeSet;
-         // setSections([...sections]);
-      }
-   }
 
    function handleEditSubmit(event) {
       event.preventDefault();
@@ -71,17 +39,45 @@ export default function SavedWorkoutRoutine({
          };
       });
 
+      const addedSections = sections.map((section) => {
+         const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
+            reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
+            weight:
+               formElements[`${section.name}-${exerciseSet.id}-weight`].value,
+            exercise:
+               formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
+         }));
+         return {
+            ...section,
+            exerciseSets: updatedExerciseSet,
+         };
+      });
+
       const id = gymPlan.id;
 
       const editedPlan = {
          id,
          title: editedTitle,
          notes: editedNotes,
-         sections: updatedSections,
+         sectionsOfThisPlan: updatedSections.concat(addedSections),
       };
 
-      onUpdatedPlan(editedPlan);
+      const newPlan = editedPlan;
+
+      onUpdatedPlan(newPlan);
       setEdit(!edit);
+   }
+
+   // If .. Else Anweisungen in den Funktionen schreiben
+   // onAddSection
+   // onDeleteSection
+   // onDeleteSet
+   // onAddExerciseSet
+
+   function handleAddNewSection(sectionName) {
+      const TestA = gymPlan;
+      console.log(TestA);
    }
 
    return (
@@ -100,10 +96,10 @@ export default function SavedWorkoutRoutine({
                   gymPlan={gymPlan}
                   // Ab hier Props Übergabe der sections
 
-                  onDeleteSection={handleDeleteSection}
-                  onAddNewExercise={handleAddNewExercise}
-                  onAddNewSection={handleAddNewSection}
-                  onDeleteSet={handleDeleteSet}
+                  onDeleteSection={onDeleteSection}
+                  onAddExerciseSet={onAddExerciseSet}
+                  onAddSection={onAddSection}
+                  onDeleteSet={onDeleteSet}
                />
             </>
          ) : (
@@ -141,7 +137,13 @@ export default function SavedWorkoutRoutine({
                      ))}
                   </SectionsOfCurrenWorkoutRoutine>
                ))}
-
+               <SectionAndExerciseSet
+                  sections={sections}
+                  onAddSection={onAddSection}
+                  onAddExerciseSet={onAddExerciseSet}
+                  onDeleteSection={onDeleteSection}
+                  onDeleteSet={onDeleteSet}
+               />
                {/* Kurzer Test ab hier: Copy & Past von einem letzten commit*/}
             </StyledPlan>
          )}
