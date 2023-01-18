@@ -9,6 +9,7 @@ export default function OverviewOfAddedRoutines({
    gymPlans = [],
    onUpdatedPlan,
    sections,
+   setSections,
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
@@ -40,6 +41,7 @@ export default function OverviewOfAddedRoutines({
             onUpdatedPlan={onUpdatedPlan}
             // Bereits existierende Funktionen
             sections={sections}
+            setSections={setSections}
             onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}

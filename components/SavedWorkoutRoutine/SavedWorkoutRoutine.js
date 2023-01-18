@@ -6,8 +6,8 @@ export default function SavedWorkoutRoutine({
    currentWorkoutRoutine,
    onUpdatedPlan,
    sections,
-   onChange,
-   value,
+   setSections,
+
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
@@ -16,21 +16,6 @@ export default function SavedWorkoutRoutine({
 }) {
    const [edit, setEdit] = useState(false);
 
-   // function handleEditSubmit(event) {
-   //    event.preventDefault();
-
-   //    const id = currentWorkoutRoutine.id;
-
-   //    const editedPlan = {
-   //       id,
-   //       title: editedTitle,
-   //       notes: editedNotes,
-   //       addedSections: updatedSections,
-   //    };
-
-   //    onUpdatedPlan(editedPlan);
-   //    setEdit(!edit);
-   // }
    const id = currentWorkoutRoutine.id;
    function handleEditSubmit(event) {
       event.preventDefault();
@@ -56,7 +41,11 @@ export default function SavedWorkoutRoutine({
                         .value,
                })
             );
-            return { ...section, exerciseSets: updatedExerciseSet };
+            return {
+               ...section,
+               exerciseSets: updatedExerciseSet,
+            };
+            setSections(sections);
          }
       );
 
@@ -65,6 +54,7 @@ export default function SavedWorkoutRoutine({
          title: editedTitle,
          notes: editedNotes,
          sectionsOfThisPlan: updatedSections,
+         ...sections,
       };
 
       onUpdatedPlan(editedPlan);
@@ -85,8 +75,7 @@ export default function SavedWorkoutRoutine({
                   onEditSubmit={handleEditSubmit}
                   currentWorkoutRoutine={currentWorkoutRoutine}
                   sections={sections}
-                  value={value}
-                  onChange={onChange}
+                  setSections={setSections}
                   // Ab hier Props Übergabe der sections
 
                   onAddSection={onAddSection}

@@ -77,7 +77,8 @@ export default function CreateWorkoutRoutineForm({
                placeholder='e.g. Block W1'
                aria-label='Type plan name'
                label='planTitle'
-               maxLength={40}></GymPlanTitle>
+               maxLength={40}
+               required></GymPlanTitle>
 
             <StyledNotesLabel htmlFor='notes'>notes: </StyledNotesLabel>
             <StyledNotes

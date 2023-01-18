@@ -9,16 +9,10 @@ import SwipeExerciseToLeft from './SwipeLeftFunction';
 
 export default function SectionAndExerciseSet({
    sections,
-
-   currentWorkoutRoutine,
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
-   function handleDeleteSet(setId) {
-      const Test = currentWorkoutRoutine.s;
-   }
-
    return (
       <>
          {sections.map((section, sectionIndex) => (

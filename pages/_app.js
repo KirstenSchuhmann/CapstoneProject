@@ -90,6 +90,7 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             gymPlans={gymPlans}
             sections={sections}
+            setSections={setSections}
             onCreatePlan={handleCreatePlan}
             onDeleteSection={handleDeleteSection}
             onAddSection={handleAddSection}

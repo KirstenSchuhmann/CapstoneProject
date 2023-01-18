@@ -1,4 +1,5 @@
 import SwipeExerciseToLeft from '../CreateGymPlan/SectionAndExerciseSet/SwipeLeftFunction';
+import { nanoid } from 'nanoid';
 
 import {
    AddSectionButton,
@@ -24,9 +25,8 @@ export default function EditCurrenWorkoutRoutine({
    currentWorkoutRoutine,
    onEditSubmit,
 
-   onChange,
-   value,
    sections,
+   setSections,
 
    onAddSection,
    onAddExerciseSet,
@@ -41,6 +41,31 @@ export default function EditCurrenWorkoutRoutine({
       'Deadlift',
       'Assistant',
    ];
+
+   function handleDeleteSection(sectionIndex) {
+      if (sectionIndex >= 0) {
+         const removedSection = currentWorkoutRoutine.sectionsOfThisPlan.splice(
+            sectionIndex,
+            1
+         );
+         sections - removedSection;
+         setSections([...sections]);
+      }
+   }
+
+   function handleAddNewExercise(sectionIndex) {
+      const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan;
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(() => updatedSections);
+
+      console.log(updatedSections);
+   }
 
    return (
       <StyledForm onSubmit={onEditSubmit}>
@@ -83,7 +108,7 @@ export default function EditCurrenWorkoutRoutine({
 
                   <DeleteButton
                      type='button'
-                     onClick={() => onDeleteSection(section.name)}>
+                     onClick={() => handleDeleteSection(sectionIndex)}>
                      x
                   </DeleteButton>
 
@@ -141,7 +166,7 @@ export default function EditCurrenWorkoutRoutine({
 
                   <AddExerciseSet
                      type='button'
-                     onClick={() => onAddExerciseSet(sectionIndex)}>
+                     onClick={() => handleAddNewExercise(sectionIndex)}>
                      add exercise
                   </AddExerciseSet>
                </StyledSection>
@@ -149,13 +174,11 @@ export default function EditCurrenWorkoutRoutine({
          )}
          {/* new added Sections and exercises will be rendered from this part  */}
          <SectionAndExerciseSet
-            onChange={onChange}
-            value={value}
             sections={sections}
             currentWorkoutRoutine={currentWorkoutRoutine}
-            onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}
             onDeleteSet={onDeleteSet}
+            onAddExerciseSet={onAddExerciseSet}
          />
          <SaveButton type='submit'> save my edit </SaveButton>
       </StyledForm>
