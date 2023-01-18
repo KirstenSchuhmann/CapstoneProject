@@ -3,10 +3,10 @@ import GlobalStyles from '../GlobalStyles/GlobalStyles';
 import { useLocalStorage } from '../helpers/hooks';
 
 function MyApp({ Component, pageProps }) {
-   const [gymPlans, setGymPlans] = useLocalStorage([]);
+   const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
 
    function handleCreatePlan(newPlan) {
-      setGymPlans([newPlan, ...gymPlans]);
+      setGymPlans([...gymPlans, newPlan]);
    }
 
    console.log(gymPlans);
@@ -39,7 +39,6 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             onCreatePlan={handleCreatePlan}
             onUpdatedPlan={handleUpdatedPlan}
-            onDeletePlan={handleDeletePlan}
          />
       </>
    );

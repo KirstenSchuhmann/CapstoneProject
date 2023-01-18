@@ -96,9 +96,11 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
       };
 
       onCreatePlan(newPlan);
-      console.log(newPlan);
-      //location.reload();
+
+      location.reload();
    }
+
+   console.log(sections);
 
    // To Create Buttons
    const createSectionName = [
@@ -142,8 +144,8 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
          </CenterButtons>
          <SectionAndExerciseSet
             sections={sections}
-            onAddExerciseSet={handleAddExerciseSet}
             onDeleteSection={handleDeleteSection}
+            onAddExerciseSet={handleAddExerciseSet}
             onDeleteSet={handleDeleteSet}
          />
          <SaveButton type='submit'>add workout routine</SaveButton>
