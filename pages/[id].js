@@ -8,6 +8,7 @@ import SavedGymPlan from '../components/SavedGymPlan/SavedGymPlan';
 export default function DynamicPageOfEachGymPlan({
    gymPlans = [],
    onUpdatedPlan,
+   onDeletePlan,
 }) {
    const router = useRouter();
    const { id } = router.query;
@@ -22,8 +23,6 @@ export default function DynamicPageOfEachGymPlan({
    if (!gymPlan) {
       return null;
    }
-
-   // console.log(currentWorkoutRoutine.sectionsOfThisPlan);
 
    return (
       <>

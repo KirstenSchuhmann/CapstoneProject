@@ -9,8 +9,6 @@ function MyApp({ Component, pageProps }) {
       setGymPlans([...gymPlans, newPlan]);
    }
 
-   console.log(gymPlans);
-
    function handleDeletePlan(id) {
       const currentGymPlans = gymPlans.filter((gymPlan) => {
          return gymPlan.id !== id;
@@ -39,6 +37,8 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             onCreatePlan={handleCreatePlan}
             onUpdatedPlan={handleUpdatedPlan}
+            onDeletePlan={handleDeletePlan}
+            gymPlans={gymPlans}
          />
       </>
    );

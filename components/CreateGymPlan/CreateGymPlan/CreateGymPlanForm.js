@@ -86,21 +86,18 @@ export default function CreateGymPlanForm({ onCreatePlan }) {
             exerciseSets: updatedExerciseSet,
          };
       });
-      setSections(updatedSections);
 
       const newPlan = {
          id: nanoid(),
          title,
          notes,
-         sections,
+         sections: updatedSections,
       };
 
       onCreatePlan(newPlan);
 
       location.reload();
    }
-
-   console.log(sections);
 
    // To Create Buttons
    const createSectionName = [
