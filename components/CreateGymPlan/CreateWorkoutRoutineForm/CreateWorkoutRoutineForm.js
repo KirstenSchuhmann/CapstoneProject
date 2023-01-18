@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { useState } from 'react';
 
 import SectionAndExerciseSet from '../SectionAndExerciseSet/SectionAndExerciseSet';
 
@@ -14,16 +15,54 @@ import {
    SaveButton,
 } from './CreateWorkoutRoutineStyling';
 
-export default function CreateWorkoutRoutineForm({
-   gymPlans = [],
-   sections,
-   setSections,
-   onCreatePlan,
-   onAddExerciseSet,
-   onDeleteSection,
-   onAddSection,
-   onDeleteSet,
-}) {
+export default function CreateWorkoutRoutineForm({ onCreatePlan }) {
+   const [sections, setSections] = useState([]);
+
+   function handleAddSection(sectionName) {
+      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+   }
+
+   function handleAddExerciseSet(sectionIndex) {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(() => updatedSections);
+   }
+
+   function handleDeleteSection(sectionIndex) {
+      if (sectionIndex >= 0) {
+         const removedSection = sections.splice(sectionIndex, 1);
+         sections - removedSection;
+         setSections([...sections]);
+      }
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
    // Function storing input values
 
    function handleSubmit(event) {
@@ -33,7 +72,7 @@ export default function CreateWorkoutRoutineForm({
       const title = formElements.title.value;
       const notes = formElements.notes.value;
 
-      const sectionsOfThisPlan = sections.map((section) => {
+      const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
@@ -47,19 +86,19 @@ export default function CreateWorkoutRoutineForm({
             exerciseSets: updatedExerciseSet,
          };
       });
+      setSections(updatedSections);
 
       const newPlan = {
          id: nanoid(),
          title,
          notes,
-         sectionsOfThisPlan,
+         sections,
       };
 
-      onCreatePlan(newPlan);
+      console.log(newPlan);
 
-      location.reload();
+      // location.reload();
    }
-   console.log(sections);
 
    // To Create Buttons
    const createSectionName = [
@@ -96,17 +135,16 @@ export default function CreateWorkoutRoutineForm({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddSection(sectionName)}>
+                  onClick={() => handleAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
          </CenterButtons>
          <SectionAndExerciseSet
-            gymPlans={gymPlans}
             sections={sections}
-            onAddExerciseSet={onAddExerciseSet}
-            onDeleteSection={onDeleteSection}
-            onDeleteSet={onDeleteSet}
+            onAddExerciseSet={handleAddExerciseSet}
+            onDeleteSection={handleDeleteSection}
+            onDeleteSet={handleDeleteSet}
          />
          <SaveButton type='submit'>add workout routine</SaveButton>
       </StyledForm>

@@ -2,19 +2,45 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import EditCurrenWorkoutRoutine from './EditWorkoutRoutine';
 
-export default function SavedWorkoutRoutine({
-   currentWorkoutRoutine,
-   onUpdatedPlan,
-   sections,
-   setSections,
-
-   onAddExerciseSet,
-   onDeleteSection,
-   onAddSection,
-   onDeleteSet,
-   onDeletePlan,
-}) {
+export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
    const [edit, setEdit] = useState(false);
+
+   function handleAddNewSection(sectionName) {
+      const sections = gymPlan.sections;
+      sections.push[{ name: sectionName, exerciseSets: [] }];
+   }
+
+   function handleDeleteSection(sectionIndex) {
+      if (sectionIndex >= 0) {
+         const removedSection = gymPlan.sections.splice(sectionIndex, 1);
+         sections - removedSection;
+         setSections([...sections]);
+      }
+   }
+
+   function handleAddNewExercise(sectionIndex) {
+      const updatedSections = gymPlan.sections;
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(() => updatedSections);
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection =
+         gymPlan.sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
 
    function handleEditSubmit(event) {
       event.preventDefault();
@@ -46,21 +72,6 @@ export default function SavedWorkoutRoutine({
             };
          }
       );
-      console.log(`Just for a commit - to get back to it, if I don't make it`);
-      const addedSections = sections.map((section) => {
-         const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
-            reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
-            weight:
-               formElements[`${section.name}-${exerciseSet.id}-weight`].value,
-            exercise:
-               formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
-         }));
-         return {
-            ...section,
-            exerciseSets: updatedExerciseSet,
-         };
-      });
 
       const id = currentWorkoutRoutine.id;
 
@@ -77,8 +88,6 @@ export default function SavedWorkoutRoutine({
       setEdit(!edit);
    }
 
-   console.log(currentWorkoutRoutine);
-
    return (
       <>
          {edit === true ? (
@@ -92,14 +101,12 @@ export default function SavedWorkoutRoutine({
                <EditCurrenWorkoutRoutine
                   onEditSubmit={handleEditSubmit}
                   currentWorkoutRoutine={currentWorkoutRoutine}
-                  sections={sections}
-                  setSections={setSections}
                   // Ab hier Props Übergabe der sections
 
-                  onAddSection={onAddSection}
-                  onAddExerciseSet={onAddExerciseSet}
-                  onDeleteSection={onDeleteSection}
-                  onDeleteSet={onDeleteSet}
+                  onDeleteSection={handleDeleteSection}
+                  onAddNewExercise={handleAddNewExercise}
+                  onAddNewSection={handleAddNewSection}
+                  onDeleteSet={handleDeleteSet}
                />
             </>
          ) : (
