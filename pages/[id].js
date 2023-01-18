@@ -9,12 +9,11 @@ export default function OverviewOfAddedRoutines({
    gymPlans = [],
    onUpdatedPlan,
    sections,
-   onChange,
-   value,
    onAddExerciseSet,
    onDeleteSection,
    onAddSection,
    onDeleteSet,
+   onDeletePlan,
 }) {
    const router = useRouter();
    const { id } = router.query;
@@ -38,16 +37,14 @@ export default function OverviewOfAddedRoutines({
             //  Funktionen, damit Sections hinzugefügt werden können
             // Aktueller Plan
             currentWorkoutRoutine={currentWorkoutRoutine}
-            // selbst erklärend
             onUpdatedPlan={onUpdatedPlan}
             // Bereits existierende Funktionen
-            value={value}
-            onChange={onChange}
             sections={sections}
             onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}
             onDeleteSet={onDeleteSet}
+            onDeletePlan={onDeletePlan}
          />
          <Footer />
       </>

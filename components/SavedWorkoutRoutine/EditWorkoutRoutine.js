@@ -69,7 +69,7 @@ export default function EditCurrenWorkoutRoutine({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddExerciseSet(sectionName)}>
+                  onClick={() => onAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
@@ -83,7 +83,7 @@ export default function EditCurrenWorkoutRoutine({
 
                   <DeleteButton
                      type='button'
-                     onClick={() => onDeleteSection(sectionIndex)}>
+                     onClick={() => onDeleteSection(section.name)}>
                      x
                   </DeleteButton>
 
@@ -133,7 +133,7 @@ export default function EditCurrenWorkoutRoutine({
                         />
                         <button
                            type='button'
-                           onClick={() => onDeleteSet(sectionIndex, id)}>
+                           onClick={() => onDeleteSet(exerciseSet.id)}>
                            delete set
                         </button>
                      </SwipeExerciseToLeft>

@@ -16,6 +16,13 @@ function MyApp({ Component, pageProps }) {
       setGymPlans([newPlan, ...gymPlans]);
    }
 
+   function handleDeletePlan(id) {
+      const currentGymPlans = gymPlans.filter((gymPlan) => {
+         return gymPlan.id !== id;
+      });
+      setGymPlans([...currentGymPlans]);
+   }
+
    function handleUpdatedPlan(editedPlan) {
       setGymPlans(
          gymPlans.map((gymPlan) => {
@@ -29,9 +36,9 @@ function MyApp({ Component, pageProps }) {
    }
 
    // createPlan: Funktionen um Sections & Exercises hinzuzufügen
+
    function handleAddSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-      console.log(sections);
    }
 
    function handleAddExerciseSet(sectionIndex) {
@@ -83,14 +90,13 @@ function MyApp({ Component, pageProps }) {
             {...pageProps}
             gymPlans={gymPlans}
             sections={sections}
-            // value={value}
-            // onChange={handleChange}
             onCreatePlan={handleCreatePlan}
             onDeleteSection={handleDeleteSection}
             onAddSection={handleAddSection}
             onAddExerciseSet={handleAddExerciseSet}
             onDeleteSet={handleDeleteSet}
             onUpdatedPlan={handleUpdatedPlan}
+            onDeletePlan={handleDeletePlan}
          />
       </>
    );

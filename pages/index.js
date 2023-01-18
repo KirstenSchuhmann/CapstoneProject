@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import Link from 'next/link';
 import styled from 'styled-components';
 
-export default function Home({ gymPlans }) {
+export default function Home({ gymPlans = [], onDeletePlan }) {
    return (
       <>
          <Header headline='Lift up your Training' />
@@ -16,6 +16,11 @@ export default function Home({ gymPlans }) {
                      <h4> {title} </h4>
                      <p> see more... </p>
                   </Link>
+                  <button
+                     type='button'
+                     onClick={() => onDeletePlan(id)}>
+                     Delete This Plan
+                  </button>
                </StyledPlan>
             ))}
          </StyledOverviewOfPlans>

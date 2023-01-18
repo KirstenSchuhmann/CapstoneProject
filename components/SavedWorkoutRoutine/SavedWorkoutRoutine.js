@@ -12,25 +12,26 @@ export default function SavedWorkoutRoutine({
    onDeleteSection,
    onAddSection,
    onDeleteSet,
+   onDeletePlan,
 }) {
    const [edit, setEdit] = useState(false);
 
-   function handleEditSubmit(event) {
-      event.preventDefault();
+   // function handleEditSubmit(event) {
+   //    event.preventDefault();
 
-      const id = currentWorkoutRoutine.id;
+   //    const id = currentWorkoutRoutine.id;
 
-      const editedPlan = {
-         id,
-         title: editedTitle,
-         notes: editedNotes,
-         addedSections: updatedSections,
-      };
+   //    const editedPlan = {
+   //       id,
+   //       title: editedTitle,
+   //       notes: editedNotes,
+   //       addedSections: updatedSections,
+   //    };
 
-      onUpdatedPlan(editedPlan);
-      setEdit(!edit);
-   }
-
+   //    onUpdatedPlan(editedPlan);
+   //    setEdit(!edit);
+   // }
+   const id = currentWorkoutRoutine.id;
    function handleEditSubmit(event) {
       event.preventDefault();
 
@@ -59,8 +60,6 @@ export default function SavedWorkoutRoutine({
          }
       );
 
-      const id = currentWorkoutRoutine.id;
-
       const editedPlan = {
          id,
          title: editedTitle,
@@ -81,6 +80,7 @@ export default function SavedWorkoutRoutine({
                   onClick={() => setEdit(!edit)}>
                   Cancel Edit
                </button>
+
                <EditCurrenWorkoutRoutine
                   onEditSubmit={handleEditSubmit}
                   currentWorkoutRoutine={currentWorkoutRoutine}
@@ -97,6 +97,11 @@ export default function SavedWorkoutRoutine({
             </>
          ) : (
             <StyledPlan>
+               <button
+                  type='button'
+                  onClick={() => onDeletePlan(id)}>
+                  Delete This Plan
+               </button>
                <button
                   type='button'
                   onClick={() => setEdit(!edit)}>

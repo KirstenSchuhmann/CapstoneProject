@@ -9,12 +9,16 @@ import SwipeExerciseToLeft from './SwipeLeftFunction';
 
 export default function SectionAndExerciseSet({
    sections,
-   value,
-   onChange,
+
+   currentWorkoutRoutine,
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
+   function handleDeleteSet(setId) {
+      const Test = currentWorkoutRoutine.s;
+   }
+
    return (
       <>
          {sections.map((section, sectionIndex) => (
@@ -35,9 +39,6 @@ export default function SectionAndExerciseSet({
                         placeholder='sets'
                         min='0'
                         max='500'
-                        // value={value}
-                        // onChange={onChange}
-                        defaultValue={`${section.name}-${exerciseSet.id}-sets`}
                         name={`${section.name}-${exerciseSet.id}-sets`}
                      />
                      <p>x</p>
@@ -48,8 +49,6 @@ export default function SectionAndExerciseSet({
                         placeholder='reps'
                         min='0'
                         max='500'
-                        // value={value}
-                        // onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-reps`}
                      />
 
@@ -60,8 +59,6 @@ export default function SectionAndExerciseSet({
                         placeholder='weight'
                         min='0'
                         max='500'
-                        // value={value}
-                        // onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-weight`}
                      />
 
@@ -71,8 +68,6 @@ export default function SectionAndExerciseSet({
                         label='exercise'
                         autoComplete='off'
                         placeholder='exercise'
-                        // value={value}
-                        // onChange={onChange}
                         name={`${section.name}-${exerciseSet.id}-exercise`}
                      />
                      <button
