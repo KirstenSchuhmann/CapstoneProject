@@ -59,6 +59,7 @@ export default function CreateWorkoutRoutineForm({
 
       location.reload();
    }
+   console.log(sections);
 
    // To Create Buttons
    const createSectionName = [

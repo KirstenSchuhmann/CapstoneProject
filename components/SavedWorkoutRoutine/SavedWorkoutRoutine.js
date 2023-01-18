@@ -16,30 +16,6 @@ export default function SavedWorkoutRoutine({
 }) {
    const [edit, setEdit] = useState(false);
 
-   // Aktuell findet die console das:
-
-   //    {
-   //       "0": {
-   //           "name": "Deadlift",
-   //           "exerciseSets": [
-   //               {
-   //                   "id": "XzKoCblrVxjNkognJraC7",
-   //                   "sets": "",
-   //                   "reps": "",
-   //                   "weight": "",
-   //                   "exercise": ""
-   //               }
-   //           ]
-   //       },
-   //       "id": "EbUPkfVcLVAaVmkjn5d_a",
-   //       "title": "Push / Pull - Oberkörper",
-   //       "notes": "Notizen für Später:  \n- abc \n- abc",
-   //       "sectionsOfThisPlan": [
-   //           null,
-   //           null
-   //       ]
-   //   }
-
    function handleEditSubmit(event) {
       event.preventDefault();
 
@@ -48,41 +24,61 @@ export default function SavedWorkoutRoutine({
       const editedTitle = formElements.editedTitle.value;
       const editedNotes = formElements.editedNotes.value;
 
-      // const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
-      //    (section) => {
-      //       const updatedExerciseSet = section.exerciseSets.map(
-      //          (exerciseSet) => ({
-      //             sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
-      //                .value,
-      //             reps: formElements[`${section.name}-${exerciseSet.id}-reps`]
-      //                .value,
-      //             weight:
-      //                formElements[`${section.name}-${exerciseSet.id}-weight`]
-      //                   .value,
-      //             exercise:
-      //                formElements[`${section.name}-${exerciseSet.id}-exercise`]
-      //                   .value,
-      //          })
-      //       );
-      //       return {
-      //          ...section,
-      //          exerciseSets: updatedExerciseSet,
-      //       };
-      //       // setSections(sections);
-      //    }
-      // );
+      const updatedSections = currentWorkoutRoutine.sectionsOfThisPlan.map(
+         (section) => {
+            const updatedExerciseSet = section.exerciseSets.map(
+               (exerciseSet) => ({
+                  sets: formElements[`${section.name}-${exerciseSet.id}-sets`]
+                     .value,
+                  reps: formElements[`${section.name}-${exerciseSet.id}-reps`]
+                     .value,
+                  weight:
+                     formElements[`${section.name}-${exerciseSet.id}-weight`]
+                        .value,
+                  exercise:
+                     formElements[`${section.name}-${exerciseSet.id}-exercise`]
+                        .value,
+               })
+            );
+            return {
+               ...section,
+               exerciseSets: updatedExerciseSet,
+            };
+         }
+      );
+
+      const addedSections = sections.map((section) => {
+         const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
+            reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
+            weight:
+               formElements[`${section.name}-${exerciseSet.id}-weight`].value,
+            exercise:
+               formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
+         }));
+         return {
+            ...section,
+            exerciseSets: updatedExerciseSet,
+         };
+      });
+
+      const id = currentWorkoutRoutine.id;
 
       const editedPlan = {
          id,
          title: editedTitle,
          notes: editedNotes,
-         sectionsOfThisPlan: updatedSections,
+         sectionsOfThisPlan: [updatedSections, addedSections],
          // +  ----------------> added Sections hinzufügen (weitere constante erstellen, die durch sections mappt)
       };
 
-      onUpdatedPlan(editedPlan);
+      const newPlan = editedPlan;
+
+      onUpdatedPlan(newPlan);
       setEdit(!edit);
    }
+
+   console.log(currentWorkoutRoutine);
 
    return (
       <>
