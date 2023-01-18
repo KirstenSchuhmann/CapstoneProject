@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+
 import EditPlanForm from './EditPlanForm';
 
-export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
+export default function SavedWorkoutRoutine({
+   gymPlan,
+   onUpdatedPlan,
+   onDeletePlan,
+}) {
    const [edit, setEdit] = useState(false);
+   const [sections, setSections] = useState([]);
 
    function handleAddNewSection(sectionName) {
-      const sections = gymPlan.sections;
-      sections.push[{ name: sectionName, exerciseSets: [] }];
+      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+      console.log(sections);
    }
 
    function handleDeleteSection(sectionIndex) {
@@ -27,7 +33,7 @@ export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
          weight: '',
          exercise: '',
       });
-      setSections(() => updatedSections);
+      // setSections(() => updatedSections);
    }
 
    function handleDeleteSet(sectionIndex, setId) {
@@ -38,7 +44,7 @@ export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
       if (setId >= 0) {
          let removeSet = exercisesInSelectedSection.splice(setId, 1);
          exercisesInSelectedSection - removeSet;
-         setSections([...sections]);
+         // setSections([...sections]);
       }
    }
 
@@ -71,7 +77,7 @@ export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
          id,
          title: editedTitle,
          notes: editedNotes,
-         sectionsOfThisPlan: updatedSections,
+         sections: updatedSections,
       };
 
       onUpdatedPlan(editedPlan);
@@ -89,6 +95,7 @@ export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
                </button>
 
                <EditPlanForm
+                  sections={sections}
                   onEditSubmit={handleEditSubmit}
                   gymPlan={gymPlan}
                   // Ab hier Props Übergabe der sections

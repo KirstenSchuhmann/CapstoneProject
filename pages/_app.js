@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
 
    function handleCreatePlan(newPlan) {
-      setGymPlans([...gymPlans, newPlan]);
+      setGymPlans([newPlan, ...gymPlans]);
    }
 
    function handleDeletePlan(id) {

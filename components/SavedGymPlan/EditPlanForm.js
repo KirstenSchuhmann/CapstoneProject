@@ -1,4 +1,5 @@
 import SwipeExerciseToLeft from '../CreateGymPlan/SectionAndExerciseSet/SwipeLeftFunction';
+import SectionAndExerciseSet from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSet';
 
 import {
    AddSectionButton,
@@ -19,10 +20,13 @@ import {
 } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
 
 export default function EditPlanForm({
+   sections,
    onDeleteSection,
    onAddNewExercise,
    onAddNewSection,
    onDeleteSet,
+   onEditSubmit,
+   gymPlan,
 }) {
    // To Create Buttons
    const createSectionName = [
@@ -136,6 +140,13 @@ export default function EditPlanForm({
                </AddExerciseSet>
             </StyledSection>
          ))}
+
+         <SectionAndExerciseSet
+            sections={sections}
+            onDeleteSection={onDeleteSection}
+            onAddExerciseSet={onAddNewExercise}
+            onDeleteSet={onDeleteSet}
+         />
 
          <SaveButton type='submit'> save my edit </SaveButton>
       </StyledForm>

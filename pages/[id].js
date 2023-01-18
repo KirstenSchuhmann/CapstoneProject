@@ -13,8 +13,6 @@ export default function DynamicPageOfEachGymPlan({
    const router = useRouter();
    const { id } = router.query;
 
-   // Creates new Array of the addressed gymPlan
-
    if (!gymPlans) {
       return null;
    }
