@@ -1,5 +1,4 @@
 import SwipeExerciseToLeft from '../CreateGymPlan/SectionAndExerciseSet/SwipeLeftFunction';
-import { nanoid } from 'nanoid';
 
 import {
    AddSectionButton,
@@ -11,7 +10,7 @@ import {
    StyledLabelTitle,
    StyledFieldSet,
    SaveButton,
-} from '../CreateGymPlan/CreateWorkoutRoutineForm/CreateWorkoutRoutineStyling';
+} from '../CreateGymPlan/CreateGymPlan/CreateGymPlanStyling.js';
 
 import {
    StyledSection,
@@ -19,7 +18,7 @@ import {
    DeleteButton,
 } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
 
-export default function EditCurrenWorkoutRoutine({
+export default function EditPlanForm({
    onDeleteSection,
    onAddNewExercise,
    onAddNewSection,

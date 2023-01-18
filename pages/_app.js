@@ -1,4 +1,3 @@
-import { getStorybook } from '@storybook/react';
 import GlobalStyles from '../GlobalStyles/GlobalStyles';
 
 import { useLocalStorage } from '../helpers/hooks';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import EditCurrenWorkoutRoutine from './EditWorkoutRoutine';
+import EditPlanForm from './EditPlanForm';
 
 export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
    const [edit, setEdit] = useState(false);
@@ -19,7 +19,7 @@ export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
    }
 
    function handleAddNewExercise(sectionIndex) {
-      const updatedSections = gymPlan.sections;
+      const updatedSections = gymPlans.sections;
       updatedSections[sectionIndex].exerciseSets.push({
          id: nanoid(),
          sets: '',
@@ -98,9 +98,9 @@ export default function SavedWorkoutRoutine({ gymPlan, onUpdatedPlan }) {
                   Cancel Edit
                </button>
 
-               <EditCurrenWorkoutRoutine
+               <EditPlanForm
                   onEditSubmit={handleEditSubmit}
-                  currentWorkoutRoutine={currentWorkoutRoutine}
+                  gymPlan={gymPlan}
                   // Ab hier Props Übergabe der sections
 
                   onDeleteSection={handleDeleteSection}

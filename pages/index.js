@@ -10,7 +10,7 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
       <>
          <Header headline='Lift up your Training' />
          <StyledOverviewOfPlans>
-            {/* {gymPlans.map(({ id, title }) => (
+            {gymPlans.map(({ id, title }) => (
                <StyledPlan key={id}>
                   <Link href={`${id}`}>
                      <h4> {title} </h4>
@@ -22,7 +22,7 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
                      Delete This Plan
                   </button>
                </StyledPlan>
-            ))} */}
+            ))}
          </StyledOverviewOfPlans>
 
          <Footer />

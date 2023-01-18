@@ -3,9 +3,9 @@
 import { useRouter } from 'next/router';
 
 import Footer from '../components/Footer';
-import SavedWorkoutRoutine from '../components/SavedWorkoutRoutine/SavedWorkoutRoutine';
+import SavedGymPlan from '../components/SavedGymPlan/SavedGymPlan';
 
-export default function OverviewOfAddedRoutines({
+export default function DynamicPageOfEachGymPlan({
    gymPlans = [],
    onUpdatedPlan,
 }) {
@@ -19,7 +19,7 @@ export default function OverviewOfAddedRoutines({
    }
    const gymPlan = gymPlans.find((gymPlan) => gymPlan.id === id);
 
-   if (!currentWorkoutRoutine) {
+   if (!gymPlan) {
       return null;
    }
 
@@ -27,11 +27,12 @@ export default function OverviewOfAddedRoutines({
 
    return (
       <>
-         <SavedWorkoutRoutine
+         <SavedGymPlan
             //  Funktionen, damit Sections hinzugefügt werden können
             // Aktueller Plan
             gymPlan={gymPlan}
             onUpdatedPlan={onUpdatedPlan}
+            onDeletePlan={onDeletePlan}
          />
          <Footer />
       </>

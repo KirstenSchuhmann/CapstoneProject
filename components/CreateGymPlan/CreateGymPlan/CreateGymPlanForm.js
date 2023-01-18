@@ -13,9 +13,9 @@ import {
    StyledFieldSet,
    GymPlanTitle,
    SaveButton,
-} from './CreateWorkoutRoutineStyling';
+} from './CreateGymPlanStyling';
 
-export default function CreateWorkoutRoutineForm({ onCreatePlan }) {
+export default function CreateGymPlanForm({ onCreatePlan }) {
    const [sections, setSections] = useState([]);
 
    function handleAddSection(sectionName) {
@@ -95,9 +95,9 @@ export default function CreateWorkoutRoutineForm({ onCreatePlan }) {
          sections,
       };
 
+      onCreatePlan(newPlan);
       console.log(newPlan);
-
-      // location.reload();
+      //location.reload();
    }
 
    // To Create Buttons

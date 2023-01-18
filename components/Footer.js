@@ -10,7 +10,7 @@ export default function Footer() {
                width={65}
             />
          </Link>
-         <Link href='/Create-Workout-Routine'> 🏋️‍♀️</Link>
+         <Link href='/CreatePlan'> 🏋️‍♀️</Link>
       </StyledFooter>
    );
 }
