@@ -9,6 +9,12 @@ export default function DynamicPageOfEachGymPlan({
    gymPlans = [],
    onUpdatedPlan,
    onDeletePlan,
+
+   onAddSection,
+
+   onAddExerciseSet,
+   onDeleteSection,
+   onDeleteSet,
 }) {
    const router = useRouter();
    const { id } = router.query;
@@ -30,6 +36,10 @@ export default function DynamicPageOfEachGymPlan({
             gymPlan={gymPlan}
             onUpdatedPlan={onUpdatedPlan}
             onDeletePlan={onDeletePlan}
+            onAddSection={onAddSection}
+            onDeleteSection={onDeleteSection}
+            onAddExerciseSet={onAddExerciseSet}
+            onDeleteSet={onDeleteSet}
          />
          <Footer />
       </>

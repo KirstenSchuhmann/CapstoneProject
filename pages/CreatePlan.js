@@ -4,6 +4,7 @@ import CreateGymPlanForm from '../components/CreateGymPlan/CreateGymPlan/CreateG
 
 export default function CreateGymPlanPage({
    onCreatePlan,
+   sections,
    onAddSection,
    onAddExerciseSet,
    onDeleteSection,
@@ -14,6 +15,7 @@ export default function CreateGymPlanPage({
          <Header headline='create a workout routine' />
          <CreateGymPlanForm
             onCreatePlan={onCreatePlan}
+            sections={sections}
             onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}

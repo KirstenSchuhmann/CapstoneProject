@@ -16,6 +16,7 @@ import {
 
 export default function CreateGymPlanForm({
    onCreatePlan,
+   sections,
 
    onAddSection,
    onAddExerciseSet,
@@ -33,6 +34,7 @@ export default function CreateGymPlanForm({
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -93,7 +95,7 @@ export default function CreateGymPlanForm({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => handleAddSection(sectionName)}>
+                  onClick={() => onAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}

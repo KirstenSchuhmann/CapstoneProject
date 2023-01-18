@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { nanoid } from 'nanoid';
 
 import EditPlanForm from './EditPlanForm';
 import SectionAndExerciseSet from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSet';
@@ -9,6 +10,7 @@ export default function SavedWorkoutRoutine({
    onUpdatedPlan,
 
    onAddSection,
+
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
@@ -26,6 +28,7 @@ export default function SavedWorkoutRoutine({
 
       const updatedSections = gymPlan.sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -41,6 +44,7 @@ export default function SavedWorkoutRoutine({
 
       const addedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -67,6 +71,7 @@ export default function SavedWorkoutRoutine({
 
       onUpdatedPlan(newPlan);
       setEdit(!edit);
+      console.log(editedPlan);
    }
 
    // If .. Else Anweisungen in den Funktionen schreiben
@@ -75,29 +80,47 @@ export default function SavedWorkoutRoutine({
    // onDeleteSet
    // onAddExerciseSet
 
-   function handleAddNewSection(sectionName) {
-      const TestA = gymPlan;
-      console.log(TestA);
+   function handleNewSection(sectionName) {
+      const savedSections = gymPlan.sections;
+
+      if (gymPlan.sections === savedSections) {
+         setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+      } else {
+         onAddSection(sectionIndex);
+      }
+   }
+
+   function handleAddNewExerciseSet(sectionIndex) {
+      console.log(gymPlan.sections[sectionIndex]);
+
+      // if (gymPlan.sections[sectionIndex].exerciseSets) {
+      //    gymPlan.sections[sectionIndex].exerciseSets.push({
+      //       id: nanoid(),
+      //       sets: '',
+      //       reps: '',
+      //       weight: '',
+      //       exercise: '',
+      //    });
+      //    console.log('Gym Plan ');
+      // } else {
+      //    onAddExerciseSet(sectionIndex);
+      //    console.log('function von appjs');
+      //    // onAddExerciseSet(sectionIndex);
+      // }
    }
 
    return (
       <>
          {edit === true ? (
             <>
-               <button
-                  type='button'
-                  onClick={() => setEdit(!edit)}>
-                  Cancel Edit
-               </button>
-
                <EditPlanForm
                   sections={sections}
                   onEditSubmit={handleEditSubmit}
                   gymPlan={gymPlan}
-                  // Ab hier Props Übergabe der sections
-
                   onDeleteSection={onDeleteSection}
                   onAddExerciseSet={onAddExerciseSet}
+                  onAddNewExerciseSet={handleAddNewExerciseSet}
+                  onAddNewSection={handleNewSection}
                   onAddSection={onAddSection}
                   onDeleteSet={onDeleteSet}
                />
@@ -137,13 +160,22 @@ export default function SavedWorkoutRoutine({
                      ))}
                   </SectionsOfCurrenWorkoutRoutine>
                ))}
-               <SectionAndExerciseSet
-                  sections={sections}
-                  onAddSection={onAddSection}
-                  onAddExerciseSet={onAddExerciseSet}
-                  onDeleteSection={onDeleteSection}
-                  onDeleteSet={onDeleteSet}
-               />
+               {sections.map((section, sectionIndex) => (
+                  <StyledSection key={sectionIndex}>
+                     <h3> {section.name}</h3>
+                     <DeleteButton
+                        type='button'
+                        onClick={() => onDeleteSection(sectionIndex)}>
+                        x
+                     </DeleteButton>
+
+                     <AddExerciseSet
+                        type='button'
+                        onClick={() => onAddExerciseSet(sectionIndex)}>
+                        add exercise
+                     </AddExerciseSet>
+                  </StyledSection>
+               ))}
                {/* Kurzer Test ab hier: Copy & Past von einem letzten commit*/}
             </StyledPlan>
          )}

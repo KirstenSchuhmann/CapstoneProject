@@ -24,7 +24,10 @@ export default function EditPlanForm({
    sections,
    gymPlan,
    onAddSection,
+
+   onAddNewSection,
    onAddExerciseSet,
+   onAddNewExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
@@ -64,7 +67,7 @@ export default function EditPlanForm({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddSection(sectionName)}>
+                  onClick={() => onAddNewSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
@@ -127,7 +130,7 @@ export default function EditPlanForm({
                      />
                      <button
                         type='button'
-                        onClick={() => onDeleteSet(exerciseSet.id)}>
+                        onClick={() => onDeleteSet(sectionIndex, id)}>
                         delete set
                      </button>
                   </SwipeExerciseToLeft>
@@ -135,7 +138,7 @@ export default function EditPlanForm({
 
                <AddExerciseSet
                   type='button'
-                  onClick={() => onAddExerciseSet(sectionIndex)}>
+                  onClick={() => onAddNewExerciseSet(sectionIndex)}>
                   add exercise
                </AddExerciseSet>
             </StyledSection>
