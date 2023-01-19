@@ -7,16 +7,14 @@ import EditPlanForm from './EditPlanForm';
 export default function SavedWorkoutRoutine({
    gymPlan,
    onUpdatedPlan,
-   onAddSection,
-   onDeleteSection,
-   onAddExerciseSet,
-   onDeleteSet,
+   onDeletePlan,
 }) {
    const [edit, setEdit] = useState(false);
-   // Wording / Name 'sections' muss so bleinen, da SectionAndExerciseSet genau auf diesem Aufbau basiert
+   // this state is for for the edit mode, to add / delete content in the gymPlan
    const [sections, setSections] = useState(gymPlan.sections);
 
-   // Funktionen aus _App.js Copy & Past ab hier
+   // functions copied & pasted from _app.js, cause lifting them down wouldn't work with the new State
+   // and using the state from _app.js would cause a bug.
 
    function handleAddSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
@@ -72,7 +70,6 @@ export default function SavedWorkoutRoutine({
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            // GGF. muss hier noch das dazu: id: exerciseSet.id
             id: exerciseSet.id,
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
@@ -124,6 +121,7 @@ export default function SavedWorkoutRoutine({
                   onClick={() => setEdit(!edit)}>
                   Edit Plan
                </button>
+               <button onClick={() => onDeletePlan()}>Delete this plan</button>
                <h2> {gymPlan.title} </h2>
 
                <p> {gymPlan.notes} </p>

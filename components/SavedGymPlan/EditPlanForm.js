@@ -18,8 +18,6 @@ export default function EditPlanForm({
    gymPlan,
 
    onAddExerciseSet,
-   // onAddNewSection,
-   // onAddNewExerciseSet,
    onAddSection,
    onDeleteSection,
    onDeleteSet,

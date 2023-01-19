@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }) {
 
    function handleCreatePlan(newPlan) {
       setGymPlans([newPlan, ...gymPlans]);
+      window.location.assign(index);
    }
 
    function handleDeletePlan(id) {
@@ -17,6 +18,7 @@ function MyApp({ Component, pageProps }) {
          return gymPlan.id !== id;
       });
       setGymPlans([...currentGymPlans]);
+      history.back();
    }
 
    function handleUpdatedPlan(editedPlan) {
