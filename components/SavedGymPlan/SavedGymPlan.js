@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 
 import EditPlanForm from './EditPlanForm';
+
+export { DeleteButton } from '../components/CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
 import {
    StyledPlan,
    SecctionsOfGymPlan,
@@ -85,6 +87,7 @@ export default function SavedWorkoutRoutine({
          }));
 
          return {
+            id: section.id,
             ...section,
             exerciseSets: updatedExerciseSet,
          };
@@ -125,7 +128,9 @@ export default function SavedWorkoutRoutine({
                   onClick={() => setEdit(!edit)}>
                   Edit Plan
                </button>
-               <button onClick={() => onDeletePlan()}>Delete this plan</button>
+               <DeleteButton onClick={() => onDeletePlan()}>
+                  Delete this plan
+               </DeleteButton>
                <h2> {gymPlan.title} </h2>
 
                <p> {gymPlan.notes} </p>

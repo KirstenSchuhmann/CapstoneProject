@@ -36,7 +36,10 @@ function MyApp({ Component, pageProps }) {
    // createPlan: Funktionen um Sections & Exercises hinzuzufügen
 
    function handleAddSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+      setSections([
+         ...sections,
+         { id: nanoid(), name: sectionName, exerciseSets: [] },
+      ]);
    }
 
    function handleAddExerciseSet(sectionIndex) {

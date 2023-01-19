@@ -11,6 +11,7 @@ import {
    StyledFieldSet,
    SaveButton,
 } from '../CreateGymPlan/CreateGymPlan/CreateGymPlanStyling.js';
+import { nanoid } from 'nanoid';
 
 export default function EditPlanForm({
    onEditSubmit,
@@ -57,6 +58,7 @@ export default function EditPlanForm({
          <CenterButtons>
             {createSectionName.map((sectionName) => (
                <AddSectionButton
+                  key={nanoid()}
                   type='button'
                   onClick={() => onAddSection(sectionName)}>
                   {sectionName}

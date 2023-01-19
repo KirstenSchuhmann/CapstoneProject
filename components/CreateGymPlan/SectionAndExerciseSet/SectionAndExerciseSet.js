@@ -12,16 +12,18 @@ export default function SectionAndExerciseSet({
    onDeleteSection,
    onDeleteSet,
 }) {
+   console.log(sections);
    return (
       <>
          {sections.map((section, sectionIndex) => (
-            <StyledSection key={sectionIndex}>
+            <StyledSection key={section.id}>
                <h3> {section.name}</h3>
                <DeleteButton
                   type='button'
                   onClick={() => onDeleteSection(sectionIndex)}>
                   x
                </DeleteButton>
+               <p> Swipe to delete </p>
 
                {section.exerciseSets.map((exerciseSet, id) => (
                   <SwipeExerciseToLeft key={exerciseSet.id}>

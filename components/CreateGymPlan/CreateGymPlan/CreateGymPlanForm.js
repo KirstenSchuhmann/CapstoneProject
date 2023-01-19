@@ -43,6 +43,7 @@ export default function CreateGymPlanForm({
                formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
          }));
          return {
+            id: nanoid(),
             ...section,
             exerciseSets: updatedExerciseSet,
          };
@@ -57,7 +58,9 @@ export default function CreateGymPlanForm({
 
       onCreatePlan(newPlan);
 
-      location.reload();
+      console.log(newPlan);
+
+      //location.reload();
    }
 
    // To Create Buttons
@@ -94,6 +97,7 @@ export default function CreateGymPlanForm({
          <CenterButtons>
             {createSectionName.map((sectionName) => (
                <AddSectionButton
+                  key={nanoid()}
                   type='button'
                   onClick={() => onAddSection(sectionName)}>
                   {sectionName}
