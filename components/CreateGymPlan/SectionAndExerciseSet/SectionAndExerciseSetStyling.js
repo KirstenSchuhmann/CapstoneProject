@@ -1,14 +1,46 @@
 import styled from 'styled-components';
+import { keyframes } from 'styled-components';
 
-export { StyledSection, AddExerciseSet, StyledExerciseSet, DeleteButton };
+export {
+   SmallInfoText,
+   StyledSection,
+   AddExerciseSet,
+   StyledExerciseSet,
+   DeleteButton,
+};
+
+const Bounce = keyframes`
+  	0%, 20%, 50%, 80%, 100% 
+   {opacity: 1; transform: translateY(0);}
+    10%{transform: translateX(-10px);}
+    40% {transform: translateX(-15px);}
+    0% { opacity: 1; }
+    100% { opacity: 0;}
+`;
+
+const SmallInfoText = styled.span`
+   font-size: 12px;
+   font-style: italic;
+   margin: 0;
+   float: right;
+   position: relative;
+   top: 21px;
+   left: 22px;
+   opacity: 0;
+   animation-iteration-count: 1;
+   transition-duration: 4s;
+   animation: ${Bounce} 2.2s ease-in;
+`;
 
 const DeleteButton = styled.button`
-   float: right;
    text-align: center;
    height: 25px;
    width: 25px;
    border: 1.5px solid lightgray;
    border-radius: 50%;
+   float: right;
+   position: relative;
+   top: -5px;
 `;
 
 const AddExerciseSet = styled.button`
@@ -42,22 +74,23 @@ const StyledSection = styled.section`
 const StyledExerciseSet = styled.div`
    touch-action: none;
    scroll-snap-type: x mandatory;
-   -webkit-transition: -webkit-transform 2000ms ease;
-   //-moz-transition: -moz-transform 100ms ease;
-   transition: transform 400ms ease;
 
+   transition: transform 600ms ease;
+   height: 45px;
    display: grid;
-   grid-template-columns: 15% 10px 15% 25% 40% 20%;
-
+   grid-template-columns: 14% 10px 15% 15% 50% 20%;
    grid-template-rows: 1fr;
-   margin: 10px 0 0 0;
    align-items: center;
    text-align: center;
-   grid-gap: 1.1%;
+
+   //grid-gap: 1.1%;
+   grid-gap: 1.5%;
 
    p {
       grid-column: 2 / 2;
       grid-row: 1;
+      font-size: 16px;
+      margin: 0;
    }
 
    input {
@@ -65,27 +98,24 @@ const StyledExerciseSet = styled.div`
       border-radius: 5px;
       border: 1.5px solid lightgray;
       text-align: center;
+
+      ::placeholder {
+         color: grey;
+         font-weight: 400;
+         font-size: 14px;
+      }
    }
 
    input[type='number'] {
-      //margin-right: 8px;
       //Chrome, Safari, Edge, Opera - hide arrows
       ::-webkit-outer-spin-button,
       ::-webkit-inner-spin-button {
          -webkit-appearance: none;
       }
-
-      -moz-appearance: textfield;
-
+      //-moz-appearance: textfield;
       background-color: #efefef;
       border: 0.5px solid lightgrey;
       font-weight: 600;
-
-      ::placeholder {
-         color: grey;
-         font-weight: 500;
-         font-size: 14px;
-      }
    }
 
    input[label='sets'],
@@ -113,7 +143,6 @@ const StyledExerciseSet = styled.div`
       grid-column: 5 / 5;
       grid-row: 1;
       margin-right: 5px;
-
       min-width: 60px;
    }
 

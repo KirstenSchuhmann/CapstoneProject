@@ -34,7 +34,7 @@ export default function CreateGymPlanForm({
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            id: nanoid(),
+            // id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -43,7 +43,7 @@ export default function CreateGymPlanForm({
                formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
          }));
          return {
-            id: nanoid(),
+            // id: nanoid(),
             ...section,
             exerciseSets: updatedExerciseSet,
          };

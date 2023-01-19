@@ -11,17 +11,24 @@ import {
    StyledFieldSet,
    SaveButton,
 } from '../CreateGymPlan/CreateGymPlan/CreateGymPlanStyling.js';
+
+import styled from 'styled-components';
 import { nanoid } from 'nanoid';
+
+const CancelEdit = styled.button`
+   margin: 10px;
+`;
 
 export default function EditPlanForm({
    onEditSubmit,
    sections,
    gymPlan,
-
    onAddExerciseSet,
    onAddSection,
    onDeleteSection,
    onDeleteSet,
+   edit,
+   setEdit,
 }) {
    // To Create Buttons
    const createSectionName = [
@@ -73,7 +80,7 @@ export default function EditPlanForm({
             onAddExerciseSet={onAddExerciseSet}
          />
 
-         <SaveButton type='submit'> save my edit </SaveButton>
+         <SaveButton type='submit'>save my edit</SaveButton>
       </StyledForm>
    );
 }

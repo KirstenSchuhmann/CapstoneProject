@@ -3,7 +3,8 @@ import { nanoid } from 'nanoid';
 
 import EditPlanForm from './EditPlanForm';
 
-export { DeleteButton } from '../components/CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
+import { DeleteButton } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
+
 import {
    StyledPlan,
    SecctionsOfGymPlan,
@@ -77,7 +78,7 @@ export default function SavedWorkoutRoutine({
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            id: exerciseSet.id,
+            //id: exerciseSet.id,
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -87,7 +88,7 @@ export default function SavedWorkoutRoutine({
          }));
 
          return {
-            id: section.id,
+            //id: section.id,
             ...section,
             exerciseSets: updatedExerciseSet,
          };
@@ -113,6 +114,8 @@ export default function SavedWorkoutRoutine({
                   setSections={setSections}
                   onEditSubmit={handleEditSubmit}
                   gymPlan={gymPlan}
+                  edit={edit}
+                  setEdit={setEdit}
                   // Currently, functions exist in the same way, as they do in app.js
 
                   onDeleteSection={handleDeleteSection}
@@ -128,9 +131,8 @@ export default function SavedWorkoutRoutine({
                   onClick={() => setEdit(!edit)}>
                   Edit Plan
                </button>
-               <DeleteButton onClick={() => onDeletePlan()}>
-                  Delete this plan
-               </DeleteButton>
+
+               <DeleteButton onClick={() => onDeletePlan()}>x</DeleteButton>
                <h2> {gymPlan.title} </h2>
 
                <p> {gymPlan.notes} </p>

@@ -2,6 +2,7 @@ import {
    StyledSection,
    AddExerciseSet,
    DeleteButton,
+   SmallInfoText,
 } from './SectionAndExerciseSetStyling';
 
 import SwipeExerciseToLeft from './SwipeLeftFunction';
@@ -12,7 +13,6 @@ export default function SectionAndExerciseSet({
    onDeleteSection,
    onDeleteSet,
 }) {
-   console.log(sections);
    return (
       <>
          {sections.map((section, sectionIndex) => (
@@ -23,7 +23,7 @@ export default function SectionAndExerciseSet({
                   onClick={() => onDeleteSection(sectionIndex)}>
                   x
                </DeleteButton>
-               <p> Swipe to delete </p>
+               <SmallInfoText>Swipe to delete</SmallInfoText>
 
                {section.exerciseSets.map((exerciseSet, id) => (
                   <SwipeExerciseToLeft key={exerciseSet.id}>
@@ -34,8 +34,10 @@ export default function SectionAndExerciseSet({
                         placeholder='sets'
                         min='0'
                         max='500'
+                        pattern='[0-9]+'
                         defaultValue={exerciseSet.sets}
                         name={`${section.name}-${exerciseSet.id}-sets`}
+                        required
                      />
                      <p>x</p>
                      <input
@@ -47,6 +49,7 @@ export default function SectionAndExerciseSet({
                         max='500'
                         defaultValue={exerciseSet.reps}
                         name={`${section.name}-${exerciseSet.id}-reps`}
+                        required
                      />
 
                      <input
@@ -68,6 +71,7 @@ export default function SectionAndExerciseSet({
                         placeholder='exercise'
                         defaultValue={exerciseSet.exercise}
                         name={`${section.name}-${exerciseSet.id}-exercise`}
+                        required
                      />
                      <button
                         type='button'
