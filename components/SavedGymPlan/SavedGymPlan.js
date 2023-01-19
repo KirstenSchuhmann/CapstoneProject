@@ -93,7 +93,6 @@ export default function SavedWorkoutRoutine({
       };
 
       onUpdatedPlan(editedPlan);
-      console.log(editedPlan, 'EDITED PLAN');
       setEdit(!edit);
    }
 
