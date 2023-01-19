@@ -12,6 +12,9 @@ export default function SwipeExerciseToLeft({ children }) {
 
       if (clientX - touchX < -50) {
          ref.current.style.transform = 'translate(-120px)';
+         setTimeout(() => {
+            if (ref.current) ref.current.style.transform = 'translate(0px)';
+         }, 3000);
       } else ref.current.style.transform = 'translate(0px)';
    };
 
