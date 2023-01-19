@@ -22,6 +22,7 @@ import {
 export default function EditPlanForm({
    onEditSubmit,
    sections,
+   setSections,
    gymPlan,
    onAddSection,
 
@@ -144,12 +145,12 @@ export default function EditPlanForm({
             </StyledSection>
          ))}
 
-         {/* <SectionAndExerciseSet
+         <SectionAndExerciseSet
             sections={sections}
             onDeleteSection={onDeleteSection}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSet={onDeleteSet}
-         /> */}
+         />
 
          <SaveButton type='submit'> save my edit </SaveButton>
       </StyledForm>

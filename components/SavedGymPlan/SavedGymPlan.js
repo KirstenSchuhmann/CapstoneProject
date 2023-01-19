@@ -7,8 +7,8 @@ import EditPlanForm from './EditPlanForm';
 export default function SavedWorkoutRoutine({
    gymPlan,
    onUpdatedPlan,
-   sections,
-   setSections,
+   // sections,
+   // setSections,
 
    onAddSection,
 
@@ -17,6 +17,7 @@ export default function SavedWorkoutRoutine({
    onDeleteSet,
 }) {
    const [edit, setEdit] = useState(false);
+   const [sections, setSections] = useState([]);
 
    function handleEditSubmit(event) {
       event.preventDefault();
@@ -86,7 +87,7 @@ export default function SavedWorkoutRoutine({
       if (gymPlan.sections === savedSections) {
          setSections([...sections, { name: sectionName, exerciseSets: [] }]);
       } else {
-         onAddSection(sectionIndex);
+         onAddSection(sectionName);
       }
    }
 
@@ -115,12 +116,13 @@ export default function SavedWorkoutRoutine({
             <>
                <EditPlanForm
                   sections={sections}
+                  setSections={setSections}
                   onEditSubmit={handleEditSubmit}
+                  onAddNewExerciseSet={handleAddNewExerciseSet}
+                  onAddNewSection={handleNewSection}
                   gymPlan={gymPlan}
                   onDeleteSection={onDeleteSection}
                   onAddExerciseSet={onAddExerciseSet}
-                  onAddNewExerciseSet={handleAddNewExerciseSet}
-                  onAddNewSection={handleNewSection}
                   onAddSection={onAddSection}
                   onDeleteSet={onDeleteSet}
                />
