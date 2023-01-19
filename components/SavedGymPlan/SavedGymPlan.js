@@ -7,27 +7,74 @@ import EditPlanForm from './EditPlanForm';
 export default function SavedWorkoutRoutine({
    gymPlan,
    onUpdatedPlan,
-   // sections,
-   // setSections,
-
    onAddSection,
-
    onDeleteSection,
+   onAddExerciseSet,
    onDeleteSet,
 }) {
    const [edit, setEdit] = useState(false);
+   // Wording / Name 'sections' muss so bleinen, da SectionAndExerciseSet genau auf diesem Aufbau basiert
    const [sections, setSections] = useState(gymPlan.sections);
 
+   // Funktionen aus _App.js Copy & Past ab hier
+
+   function handleAddSection(sectionName) {
+      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+   }
+
+   function handleAddExerciseSet(sectionIndex) {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(() => updatedSections);
+   }
+
+   function handleDeleteSection(sectionIndex) {
+      if (sectionIndex >= 0) {
+         const removedSection = sections.splice(sectionIndex, 1);
+         sections - removedSection;
+         setSections([...sections]);
+      }
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
+   // Submit Funktion
    function handleEditSubmit(event) {
       event.preventDefault();
 
       const formElements = event.target.elements;
-
       const editedTitle = formElements.editedTitle.value;
       const editedNotes = formElements.editedNotes.value;
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            // GGF. muss hier noch das dazu: id: exerciseSet.id
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -35,6 +82,7 @@ export default function SavedWorkoutRoutine({
             exercise:
                formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
          }));
+
          return {
             ...section,
             exerciseSets: updatedExerciseSet,
@@ -50,30 +98,25 @@ export default function SavedWorkoutRoutine({
 
       onUpdatedPlan(editedPlan);
       setEdit(!edit);
-      console.log(editedPlan);
    }
 
-   // If .. Else Anweisungen in den Funktionen schreiben
-   // onAddSection
-   // onDeleteSection
-   // onDeleteSet
-   // onAddExerciseSet
+   // GGF. Funktionen entfernen
 
-   function handleNewSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-   }
+   // function handleNewSection(sectionName) {
+   //    setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+   // }
 
-   function handleAddNewExerciseSet(sectionIndex) {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].exerciseSets.push({
-         id: nanoid(),
-         sets: '',
-         reps: '',
-         weight: '',
-         exercise: '',
-      });
-      setSections(updatedSections);
-   }
+   // function handleAddNewExerciseSet(sectionIndex) {     // 1 - Das was mit Thomas noch funktioniert hat
+   //    const updatedSections = [...sections];
+   //    updatedSections[sectionIndex].exerciseSets.push({
+   //       id: nanoid(),
+   //       sets: '',
+   //       reps: '',
+   //       weight: '',
+   //       exercise: '',
+   //    });
+   //    setSections(updatedSections);
+   // }
 
    return (
       <>
@@ -83,13 +126,16 @@ export default function SavedWorkoutRoutine({
                   sections={sections}
                   setSections={setSections}
                   onEditSubmit={handleEditSubmit}
-                  onAddNewExerciseSet={handleAddNewExerciseSet}
-                  onAddNewSection={handleNewSection}
+                  // Funktionen, die ein par Code Zeilen weiter oben definiert wurden:
+                  // onAddNewExerciseSet={handleAddNewExerciseSet}
+                  // onAddNewSection={handleNewSection}
+                  // Funktionen aus _app.js
                   gymPlan={gymPlan}
-                  onDeleteSection={onDeleteSection}
-                  onAddExerciseSet={handleAddNewExerciseSet}
-                  onAddSection={onAddSection}
-                  onDeleteSet={onDeleteSet}
+                  // onAddExerciseSet={handleAddNewExerciseSet} // 1 - Das was gerade noch funktioniert  hat
+                  onDeleteSection={handleDeleteSection}
+                  onAddExerciseSet={handleAddExerciseSet}
+                  onAddSection={handleAddSection}
+                  onDeleteSet={handleDeleteSet}
                />
             </>
          ) : (
@@ -122,8 +168,6 @@ export default function SavedWorkoutRoutine({
                      ))}
                   </SectionsOfCurrenWorkoutRoutine>
                ))}
-
-               {/* Kurzer Test ab hier: Copy & Past von einem letzten commit*/}
             </StyledPlan>
          )}
       </>

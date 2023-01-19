@@ -8,10 +8,8 @@ import SavedGymPlan from '../components/SavedGymPlan/SavedGymPlan';
 export default function DynamicPageOfEachGymPlan({
    gymPlans = [],
    onUpdatedPlan,
-   onDeletePlan,
-
+   // Funktionen aus _app.js werden herunter gereicht
    onAddSection,
-
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
@@ -35,7 +33,7 @@ export default function DynamicPageOfEachGymPlan({
             // Aktueller Plan
             gymPlan={gymPlan}
             onUpdatedPlan={onUpdatedPlan}
-            onDeletePlan={onDeletePlan}
+            // Funktionen
             onAddSection={onAddSection}
             onDeleteSection={onDeleteSection}
             onAddExerciseSet={onAddExerciseSet}

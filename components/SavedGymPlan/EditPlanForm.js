@@ -1,4 +1,3 @@
-import SwipeExerciseToLeft from '../CreateGymPlan/SectionAndExerciseSet/SwipeLeftFunction';
 import SectionAndExerciseSet from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSet';
 
 import {
@@ -13,22 +12,15 @@ import {
    SaveButton,
 } from '../CreateGymPlan/CreateGymPlan/CreateGymPlanStyling.js';
 
-import {
-   StyledSection,
-   AddExerciseSet,
-   DeleteButton,
-} from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
-
 export default function EditPlanForm({
    onEditSubmit,
    sections,
-
    gymPlan,
-   onAddSection,
 
-   onAddNewSection,
    onAddExerciseSet,
-   onAddNewExerciseSet,
+   // onAddNewSection,
+   // onAddNewExerciseSet,
+   onAddSection,
    onDeleteSection,
    onDeleteSet,
 }) {
@@ -40,8 +32,10 @@ export default function EditPlanForm({
       'Deadlift',
       'Assistant',
    ];
+
    console.log(gymPlan, 'GYM PLAN');
    console.log(sections, 'SECTIONS');
+
    return (
       <StyledForm onSubmit={onEditSubmit}>
          <StyledFieldSet>
@@ -69,17 +63,19 @@ export default function EditPlanForm({
             {createSectionName.map((sectionName) => (
                <AddSectionButton
                   type='button'
-                  onClick={() => onAddNewSection(sectionName)}>
+                  onClick={() => onAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>
             ))}
          </CenterButtons>
 
          <SectionAndExerciseSet
+            // onAddExerciseSet={onAddNewExerciseSet} //  1 - das was mit Thomas noch funktioniert hat
+            // Funktionen von _app.js werden heruntergereicht:
             sections={sections}
             onDeleteSection={onDeleteSection}
-            onAddExerciseSet={onAddNewExerciseSet}
             onDeleteSet={onDeleteSet}
+            onAddExerciseSet={onAddExerciseSet}
          />
 
          <SaveButton type='submit'> save my edit </SaveButton>
