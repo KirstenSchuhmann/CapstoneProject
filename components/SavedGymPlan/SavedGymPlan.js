@@ -12,12 +12,11 @@ export default function SavedWorkoutRoutine({
 
    onAddSection,
 
-   onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
    const [edit, setEdit] = useState(false);
-   const [sections, setSections] = useState([]);
+   const [sections, setSections] = useState(gymPlan.sections);
 
    function handleEditSubmit(event) {
       event.preventDefault();
@@ -27,9 +26,8 @@ export default function SavedWorkoutRoutine({
       const editedTitle = formElements.editedTitle.value;
       const editedNotes = formElements.editedNotes.value;
 
-      const updatedSections = gymPlan.sections.map((section) => {
+      const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -42,35 +40,15 @@ export default function SavedWorkoutRoutine({
             exerciseSets: updatedExerciseSet,
          };
       });
-
-      const addedSections = sections.map((section) => {
-         const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            id: nanoid(),
-            sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
-            reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
-            weight:
-               formElements[`${section.name}-${exerciseSet.id}-weight`].value,
-            exercise:
-               formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
-         }));
-         return {
-            ...section,
-            exerciseSets: updatedExerciseSet,
-         };
-      });
-
-      const id = gymPlan.id;
 
       const editedPlan = {
-         id,
+         id: gymPlan.id,
          title: editedTitle,
          notes: editedNotes,
-         sectionsOfThisPlan: updatedSections.concat(addedSections),
+         sections: updatedSections,
       };
 
-      const newPlan = editedPlan;
-
-      onUpdatedPlan(newPlan);
+      onUpdatedPlan(editedPlan);
       setEdit(!edit);
       console.log(editedPlan);
    }
@@ -82,32 +60,19 @@ export default function SavedWorkoutRoutine({
    // onAddExerciseSet
 
    function handleNewSection(sectionName) {
-      const savedSections = gymPlan.sections;
-
-      if (gymPlan.sections === savedSections) {
-         setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-      } else {
-         onAddSection(sectionName);
-      }
+      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
    }
 
    function handleAddNewExerciseSet(sectionIndex) {
-      console.log(gymPlan.sections[sectionIndex]);
-
-      // if (gymPlan.sections[sectionIndex].exerciseSets) {
-      //    gymPlan.sections[sectionIndex].exerciseSets.push({
-      //       id: nanoid(),
-      //       sets: '',
-      //       reps: '',
-      //       weight: '',
-      //       exercise: '',
-      //    });
-      //    console.log('Gym Plan ');
-      // } else {
-      //    onAddExerciseSet(sectionIndex);
-      //    console.log('function von appjs');
-      //    // onAddExerciseSet(sectionIndex);
-      // }
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].exerciseSets.push({
+         id: nanoid(),
+         sets: '',
+         reps: '',
+         weight: '',
+         exercise: '',
+      });
+      setSections(updatedSections);
    }
 
    return (
@@ -122,18 +87,13 @@ export default function SavedWorkoutRoutine({
                   onAddNewSection={handleNewSection}
                   gymPlan={gymPlan}
                   onDeleteSection={onDeleteSection}
-                  onAddExerciseSet={onAddExerciseSet}
+                  onAddExerciseSet={handleAddNewExerciseSet}
                   onAddSection={onAddSection}
                   onDeleteSet={onDeleteSet}
                />
             </>
          ) : (
             <StyledPlan>
-               <button
-                  type='button'
-                  onClick={() => onDeletePlan(id)}>
-                  Delete This Plan
-               </button>
                <button
                   type='button'
                   onClick={() => setEdit(!edit)}>
