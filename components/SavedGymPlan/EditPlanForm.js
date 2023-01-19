@@ -75,7 +75,7 @@ export default function EditPlanForm({
 
          {/* saved Plan / current Workout Routine data will be rendered as a form  from here:  */}
          {gymPlan.sections?.map((section, sectionIndex) => (
-            <StyledSection key={section.name}>
+            <StyledSection key={sectionIndex}>
                <h3> {section.name}</h3>
 
                <DeleteButton
@@ -144,12 +144,12 @@ export default function EditPlanForm({
             </StyledSection>
          ))}
 
-         <SectionAndExerciseSet
+         {/* <SectionAndExerciseSet
             sections={sections}
             onDeleteSection={onDeleteSection}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSet={onDeleteSet}
-         />
+         /> */}
 
          <SaveButton type='submit'> save my edit </SaveButton>
       </StyledForm>

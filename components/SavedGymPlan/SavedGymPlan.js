@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 
 import EditPlanForm from './EditPlanForm';
-import SectionAndExerciseSet from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSet';
 
 export default function SavedWorkoutRoutine({
    gymPlan,
    onUpdatedPlan,
+   sections,
+   setSections,
 
    onAddSection,
 
@@ -16,7 +17,6 @@ export default function SavedWorkoutRoutine({
    onDeleteSet,
 }) {
    const [edit, setEdit] = useState(false);
-   const [sections, setSections] = useState([]);
 
    function handleEditSubmit(event) {
       event.preventDefault();
@@ -145,7 +145,7 @@ export default function SavedWorkoutRoutine({
                   <SectionsOfCurrenWorkoutRoutine key={sectionIndex}>
                      <h4> {section.name} </h4>
 
-                     {section.exerciseSets?.map((exerciseSet) => (
+                     {section.exerciseSets.map((exerciseSet) => (
                         <ExerciseSetCurrentWorkoutRoutine key={exerciseSet.id}>
                            <StyledInputData>{exerciseSet.sets}</StyledInputData>
                            <p> x </p>
@@ -160,22 +160,7 @@ export default function SavedWorkoutRoutine({
                      ))}
                   </SectionsOfCurrenWorkoutRoutine>
                ))}
-               {sections.map((section, sectionIndex) => (
-                  <StyledSection key={sectionIndex}>
-                     <h3> {section.name}</h3>
-                     <DeleteButton
-                        type='button'
-                        onClick={() => onDeleteSection(sectionIndex)}>
-                        x
-                     </DeleteButton>
 
-                     <AddExerciseSet
-                        type='button'
-                        onClick={() => onAddExerciseSet(sectionIndex)}>
-                        add exercise
-                     </AddExerciseSet>
-                  </StyledSection>
-               ))}
                {/* Kurzer Test ab hier: Copy & Past von einem letzten commit*/}
             </StyledPlan>
          )}
