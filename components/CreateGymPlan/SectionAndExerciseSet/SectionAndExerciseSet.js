@@ -28,9 +28,11 @@ export default function SectionAndExerciseSet({
                      <input
                         type='number'
                         aria-label='set sets'
-                        label='set'
-                        placeholder='set'
+                        label='sets'
+                        placeholder='sets'
                         min='0'
+                        max='500'
+                        defaultValue={exerciseSet.sets}
                         name={`${section.name}-${exerciseSet.id}-sets`}
                      />
                      <p>x</p>
@@ -40,6 +42,8 @@ export default function SectionAndExerciseSet({
                         label='reps'
                         placeholder='reps'
                         min='0'
+                        max='500'
+                        defaultValue={exerciseSet.reps}
                         name={`${section.name}-${exerciseSet.id}-reps`}
                      />
 
@@ -49,6 +53,8 @@ export default function SectionAndExerciseSet({
                         label='weight'
                         placeholder='weight'
                         min='0'
+                        max='500'
+                        defaultValue={exerciseSet.weight}
                         name={`${section.name}-${exerciseSet.id}-weight`}
                      />
 
@@ -58,6 +64,7 @@ export default function SectionAndExerciseSet({
                         label='exercise'
                         autoComplete='off'
                         placeholder='exercise'
+                        defaultValue={exerciseSet.exercise}
                         name={`${section.name}-${exerciseSet.id}-exercise`}
                      />
                      <button

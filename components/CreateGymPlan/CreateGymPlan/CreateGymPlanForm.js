@@ -12,17 +12,19 @@ import {
    StyledFieldSet,
    GymPlanTitle,
    SaveButton,
-} from './CreateWorkoutRoutineStyling';
+} from './CreateGymPlanStyling';
 
-export default function CreateWorkoutRoutineForm({
-   sections,
+export default function CreateGymPlanForm({
    onCreatePlan,
+   sections,
+
+   onAddSection,
    onAddExerciseSet,
    onDeleteSection,
-   onAddSection,
    onDeleteSet,
 }) {
    // Function storing input values
+
    function handleSubmit(event) {
       event.preventDefault();
 
@@ -30,8 +32,9 @@ export default function CreateWorkoutRoutineForm({
       const title = formElements.title.value;
       const notes = formElements.notes.value;
 
-      const addedSections = sections.map((section) => {
+      const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
+            id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -49,7 +52,7 @@ export default function CreateWorkoutRoutineForm({
          id: nanoid(),
          title,
          notes,
-         addedSections,
+         sections: updatedSections,
       };
 
       onCreatePlan(newPlan);
@@ -76,7 +79,8 @@ export default function CreateWorkoutRoutineForm({
                placeholder='e.g. Block W1'
                aria-label='Type plan name'
                label='planTitle'
-               maxLength={30}></GymPlanTitle>
+               maxLength={40}
+               required></GymPlanTitle>
 
             <StyledNotesLabel htmlFor='notes'>notes: </StyledNotesLabel>
             <StyledNotes
@@ -84,7 +88,7 @@ export default function CreateWorkoutRoutineForm({
                name='notes'
                aria-label='Type plan name'
                label='notes'
-               maxLength={300}
+               maxLength={350}
             />
          </StyledFieldSet>
          <CenterButtons>
@@ -98,6 +102,7 @@ export default function CreateWorkoutRoutineForm({
          </CenterButtons>
          <SectionAndExerciseSet
             sections={sections}
+            onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
             onDeleteSection={onDeleteSection}
             onDeleteSet={onDeleteSet}
@@ -106,3 +111,4 @@ export default function CreateWorkoutRoutineForm({
       </StyledForm>
    );
 }
+//

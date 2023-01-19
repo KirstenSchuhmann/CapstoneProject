@@ -1,24 +1,24 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import CreateWorkoutRoutineForm from '../components/CreateGymPlan/CreateWorkoutRoutineForm/CreateWorkoutRoutineForm';
+import CreateGymPlanForm from '../components/CreateGymPlan/CreateGymPlan/CreateGymPlanForm';
 
-export default function CreateGymPlan({
-   sections,
+export default function CreateGymPlanPage({
    onCreatePlan,
+   sections,
+   onAddSection,
    onAddExerciseSet,
    onDeleteSection,
-   onAddSection,
    onDeleteSet,
 }) {
    return (
       <>
          <Header headline='create a workout routine' />
-         <CreateWorkoutRoutineForm
-            sections={sections}
+         <CreateGymPlanForm
             onCreatePlan={onCreatePlan}
-            onDeleteSection={onDeleteSection}
+            sections={sections}
             onAddSection={onAddSection}
             onAddExerciseSet={onAddExerciseSet}
+            onDeleteSection={onDeleteSection}
             onDeleteSet={onDeleteSet}
          />
          <Footer />

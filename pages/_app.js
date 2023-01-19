@@ -1,15 +1,39 @@
 import GlobalStyles from '../GlobalStyles/GlobalStyles';
+
+import { useLocalStorage } from '../helpers/hooks';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { useLocalStorage } from '../helpers/hooks';
+import { Router } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
    const [sections, setSections] = useState([]);
 
    function handleCreatePlan(newPlan) {
-      setGymPlans([...gymPlans, newPlan]);
+      setGymPlans([newPlan, ...gymPlans]);
    }
+
+   function handleDeletePlan(id) {
+      const currentGymPlans = gymPlans.filter((gymPlan) => {
+         return gymPlan.id !== id;
+      });
+      setGymPlans([...currentGymPlans]);
+      location.replace('/');
+   }
+
+   function handleUpdatedPlan(editedPlan) {
+      setGymPlans(
+         gymPlans.map((gymPlan) => {
+            if (gymPlan.id === editedPlan.id) {
+               return editedPlan;
+            } else {
+               return gymPlan;
+            }
+         })
+      );
+   }
+
+   // createPlan: Funktionen um Sections & Exercises hinzuzufügen
 
    function handleAddSection(sectionName) {
       setSections([...sections, { name: sectionName, exerciseSets: [] }]);
@@ -46,17 +70,30 @@ function MyApp({ Component, pageProps }) {
       }
    }
 
+   function handleDeleteSet(sectionIndex, setId) {
+      const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
+      const idOfSet = sections[sectionIndex].exerciseSets[setId];
+
+      if (setId >= 0) {
+         let removeSet = exercisesInSelectedSection.splice(setId, 1);
+         exercisesInSelectedSection - removeSet;
+         setSections([...sections]);
+      }
+   }
+
    return (
       <>
          <GlobalStyles />
          <Component
             {...pageProps}
+            onCreatePlan={handleCreatePlan}
+            onUpdatedPlan={handleUpdatedPlan}
+            onDeletePlan={handleDeletePlan}
             gymPlans={gymPlans}
             sections={sections}
-            onCreatePlan={handleCreatePlan}
-            onDeleteSection={handleDeleteSection}
             onAddSection={handleAddSection}
             onAddExerciseSet={handleAddExerciseSet}
+            onDeleteSection={handleDeleteSection}
             onDeleteSet={handleDeleteSet}
          />
       </>
