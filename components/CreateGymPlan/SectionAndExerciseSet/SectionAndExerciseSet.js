@@ -69,6 +69,7 @@ export default function SectionAndExerciseSet({
                      />
                      <button
                         type='button'
+                        tabIndex='-1'
                         onClick={() => onDeleteSet(sectionIndex, id)}>
                         delete set
                      </button>
