@@ -44,7 +44,6 @@ export default function SavedWorkoutRoutine({
 
    function handleDeleteSet(sectionIndex, setId) {
       const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
-      const idOfSet = sections[sectionIndex].exerciseSets[setId];
 
       if (setId >= 0) {
          let removeSet = exercisesInSelectedSection.splice(setId, 1);
@@ -55,7 +54,6 @@ export default function SavedWorkoutRoutine({
 
    function handleDeleteSet(sectionIndex, setId) {
       const exercisesInSelectedSection = sections[sectionIndex].exerciseSets;
-      const idOfSet = sections[sectionIndex].exerciseSets[setId];
 
       if (setId >= 0) {
          let removeSet = exercisesInSelectedSection.splice(setId, 1);
@@ -75,6 +73,7 @@ export default function SavedWorkoutRoutine({
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
             // GGF. muss hier noch das dazu: id: exerciseSet.id
+            id: exerciseSet.id,
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -97,26 +96,9 @@ export default function SavedWorkoutRoutine({
       };
 
       onUpdatedPlan(editedPlan);
+      console.log(editedPlan, 'EDITED PLAN');
       setEdit(!edit);
    }
-
-   // GGF. Funktionen entfernen
-
-   // function handleNewSection(sectionName) {
-   //    setSections([...sections, { name: sectionName, exerciseSets: [] }]);
-   // }
-
-   // function handleAddNewExerciseSet(sectionIndex) {     // 1 - Das was mit Thomas noch funktioniert hat
-   //    const updatedSections = [...sections];
-   //    updatedSections[sectionIndex].exerciseSets.push({
-   //       id: nanoid(),
-   //       sets: '',
-   //       reps: '',
-   //       weight: '',
-   //       exercise: '',
-   //    });
-   //    setSections(updatedSections);
-   // }
 
    return (
       <>
@@ -126,12 +108,9 @@ export default function SavedWorkoutRoutine({
                   sections={sections}
                   setSections={setSections}
                   onEditSubmit={handleEditSubmit}
-                  // Funktionen, die ein par Code Zeilen weiter oben definiert wurden:
-                  // onAddNewExerciseSet={handleAddNewExerciseSet}
-                  // onAddNewSection={handleNewSection}
-                  // Funktionen aus _app.js
                   gymPlan={gymPlan}
-                  // onAddExerciseSet={handleAddNewExerciseSet} // 1 - Das was gerade noch funktioniert  hat
+                  // Currently, functions exist in the same way, as they do in app.js
+
                   onDeleteSection={handleDeleteSection}
                   onAddExerciseSet={handleAddExerciseSet}
                   onAddSection={handleAddSection}

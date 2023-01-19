@@ -33,9 +33,6 @@ export default function EditPlanForm({
       'Assistant',
    ];
 
-   console.log(gymPlan, 'GYM PLAN');
-   console.log(sections, 'SECTIONS');
-
    return (
       <StyledForm onSubmit={onEditSubmit}>
          <StyledFieldSet>
@@ -70,8 +67,6 @@ export default function EditPlanForm({
          </CenterButtons>
 
          <SectionAndExerciseSet
-            // onAddExerciseSet={onAddNewExerciseSet} //  1 - das was mit Thomas noch funktioniert hat
-            // Funktionen von _app.js werden heruntergereicht:
             sections={sections}
             onDeleteSection={onDeleteSection}
             onDeleteSet={onDeleteSet}
