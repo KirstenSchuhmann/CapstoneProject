@@ -31,7 +31,7 @@ export default function SectionAndExerciseSet({
                </DeleteIconTrashButton>
                {sections.map && (
                   <SwipeToDeleteInfo>
-                     Swipe to delete exercise
+                     Add exercise and swipe to delete.
                   </SwipeToDeleteInfo>
                )}
                {section.exerciseSets.map((exerciseSet, id) => (

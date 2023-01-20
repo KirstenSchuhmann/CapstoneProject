@@ -81,17 +81,18 @@ const StyledExerciseSet = styled.div`
    transition: transform 600ms ease;
    height: 45px;
    display: grid;
-   grid-template-columns: 14% 10px 15% 15% 50% 20%;
+   grid-template-columns: 15% 10px 15% 25% 40% 20%;
+   margin: 10px 0 0 0;
    grid-template-rows: 1fr;
    align-items: center;
    text-align: center;
-   grid-gap: 1.5%;
+   grid-gap: 1.1%;
 
    p {
       grid-column: 2 / 2;
       grid-row: 1;
       font-size: 16px;
-      margin: 0;
+      /* margin: 0; */
    }
 
    input {
@@ -108,7 +109,6 @@ const StyledExerciseSet = styled.div`
    }
 
    input[type='number'] {
-      //Chrome, Safari, Edge, Opera - hide arrows
       ::-webkit-outer-spin-button,
       ::-webkit-inner-spin-button {
          -webkit-appearance: none;
