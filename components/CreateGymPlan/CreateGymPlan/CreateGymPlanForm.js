@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import moment, { isMoment, now } from 'moment/moment';
 
 import SectionAndExerciseSet from '../SectionAndExerciseSet/SectionAndExerciseSet';
 
@@ -17,14 +18,11 @@ import {
 export default function CreateGymPlanForm({
    onCreatePlan,
    sections,
-
    onAddSection,
    onAddExerciseSet,
    onDeleteSection,
    onDeleteSet,
 }) {
-   // Function storing input values
-
    function handleSubmit(event) {
       event.preventDefault();
 
@@ -56,11 +54,10 @@ export default function CreateGymPlanForm({
          sections: updatedSections,
       };
 
+      console.log(newPlan, 'PLAN');
+
       onCreatePlan(newPlan);
-
-      console.log(newPlan);
-
-      //location.reload();
+      location.reload();
    }
 
    // To Create Buttons
@@ -82,7 +79,7 @@ export default function CreateGymPlanForm({
                placeholder='e.g. Block W1'
                aria-label='Type plan name'
                label='planTitle'
-               maxLength={40}
+               maxLength={30}
                required></GymPlanTitle>
 
             <StyledNotesLabel htmlFor='notes'>notes: </StyledNotesLabel>

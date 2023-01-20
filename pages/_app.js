@@ -3,7 +3,6 @@ import GlobalStyles from '../GlobalStyles/GlobalStyles';
 import { useLocalStorage } from '../helpers/hooks';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { Router } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
    const [gymPlans, setGymPlans] = useLocalStorage('gymPlans', []);
@@ -18,7 +17,6 @@ function MyApp({ Component, pageProps }) {
          return gymPlan.id !== id;
       });
       setGymPlans([...currentGymPlans]);
-      location.replace('/');
    }
 
    function handleUpdatedPlan(editedPlan) {

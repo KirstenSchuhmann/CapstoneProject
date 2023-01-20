@@ -9,7 +9,6 @@ export default function DynamicPageOfEachGymPlan({
    gymPlans = [],
    onUpdatedPlan,
    onDeletePlan,
-   // Funktionen aus _app.js werden herunter gereicht
 }) {
    const router = useRouter();
    const { id } = router.query;

@@ -1,5 +1,6 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import styled from 'styled-components';
 import CreateGymPlanForm from '../components/CreateGymPlan/CreateGymPlan/CreateGymPlanForm';
 
 export default function CreateGymPlanPage({
@@ -12,7 +13,8 @@ export default function CreateGymPlanPage({
 }) {
    return (
       <>
-         <Header headline='create a workout routine' />
+         <Heading> Create your </Heading>
+         <Heading> workout routine </Heading>
          <CreateGymPlanForm
             onCreatePlan={onCreatePlan}
             sections={sections}
@@ -25,3 +27,10 @@ export default function CreateGymPlanPage({
       </>
    );
 }
+
+const Heading = styled.h1`
+   font-size: 35px;
+   margin: 0;
+   text-align: center;
+   color: #46444e;
+`;

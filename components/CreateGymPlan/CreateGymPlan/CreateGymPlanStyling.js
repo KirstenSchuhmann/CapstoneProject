@@ -80,6 +80,7 @@ const StyledNotes = styled.textarea`
    border: 1.5px solid #9d9d9d;
    border-radius: 5px;
    resize: vertical;
+   white-space: pre-wrap;
 `;
 
 const CenterButtons = styled.div`
@@ -102,7 +103,7 @@ const AddSectionButton = styled.button`
 const SaveButton = styled.button`
    display: inherit;
    margin: 0 auto;
-   //height: 2.5rem;
+   height: 2.5rem;
    height: 50px;
    width: 10rem;
    font-size: 16px;

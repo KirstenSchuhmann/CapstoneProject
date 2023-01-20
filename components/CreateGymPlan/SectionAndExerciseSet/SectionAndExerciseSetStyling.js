@@ -11,7 +11,7 @@ export {
 
 const Bounce = keyframes`
   	0%, 20%, 50%, 80%, 100% 
-   {opacity: 1; transform: translateY(0);}
+   {opacity: 1; transform: translateX(0);}
     10%{transform: translateX(-10px);}
     40% {transform: translateX(-15px);}
     0% { opacity: 1; }
@@ -28,8 +28,8 @@ const SmallInfoText = styled.span`
    left: 22px;
    opacity: 0;
    animation-iteration-count: 1;
-   transition-duration: 4s;
-   animation: ${Bounce} 2.2s ease-in;
+   transition-duration: 9s;
+   animation: ${Bounce} 4s ease-in;
 `;
 
 const DeleteButton = styled.button`
@@ -62,19 +62,22 @@ const AddExerciseSet = styled.button`
 `;
 
 const StyledSection = styled.section`
-   border: 1px solid black;
    border-radius: 15px;
    padding: 13px;
    min-width: 300px;
    max-width: 700px;
    margin: 1.5rem auto;
    overflow: hidden;
+   box-shadow: inset 0px -1px 3px 0px rgb(0 0 0 / 32%),
+      0px 2px 17px -8px rgb(152 152 152 / 30%);
+   border: 1px solid #fbf6ec;
+   background-color: #f8f8f8;
+   border-radius: 20px;
 `;
 
 const StyledExerciseSet = styled.div`
    touch-action: none;
-   scroll-snap-type: x mandatory;
-
+   scroll-snap-type: mandatory;
    transition: transform 600ms ease;
    height: 45px;
    display: grid;
@@ -82,8 +85,6 @@ const StyledExerciseSet = styled.div`
    grid-template-rows: 1fr;
    align-items: center;
    text-align: center;
-
-   //grid-gap: 1.1%;
    grid-gap: 1.5%;
 
    p {
@@ -112,7 +113,7 @@ const StyledExerciseSet = styled.div`
       ::-webkit-inner-spin-button {
          -webkit-appearance: none;
       }
-      //-moz-appearance: textfield;
+      -moz-appearance: textfield;
       background-color: #efefef;
       border: 0.5px solid lightgrey;
       font-weight: 600;
@@ -150,8 +151,6 @@ const StyledExerciseSet = styled.div`
       grid-column: 6 / 6;
       margin-left: 2px;
       grid-row: 1;
-
-      // Styling
       width: 100px;
       font-size: 17px;
       font-weight: 600;

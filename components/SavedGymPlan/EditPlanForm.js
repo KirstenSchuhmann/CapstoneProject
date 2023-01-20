@@ -27,8 +27,6 @@ export default function EditPlanForm({
    onAddSection,
    onDeleteSection,
    onDeleteSet,
-   edit,
-   setEdit,
 }) {
    // To Create Buttons
    const createSectionName = [
@@ -48,7 +46,7 @@ export default function EditPlanForm({
                name='editedTitle'
                aria-label='Type plan name'
                label='editedTitle'
-               maxLength={35}
+               maxLength={30}
                defaultValue={gymPlan.title}
                required></GymPlanTitle>
 
