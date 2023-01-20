@@ -7,7 +7,7 @@ export default function Footer() {
    return (
       <StyledFooter>
          <LinkToOverviewGymPlans
-            href='/overview-of-saved-gym-plans.js'
+            href='/overview-of-saved-gym-plans'
             aria-label='Saved gym plans'>
             <img
                src='/assets/icons8-notebook-62.png'

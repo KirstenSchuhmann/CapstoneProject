@@ -44,7 +44,7 @@ const Headline = styled.h1`
    text-align: center;
 `;
 
-const IntroducionText = styled.p`
+const Introductiontext = styled.p`
    position: relative;
    text-align: center;
    font-size: 15px;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 export {
-   StyledButton,
+   DeleteIconTrashButton,
    LinkButton,
    DeleteButtonPosition,
    ListOfAllPlans,
@@ -37,7 +37,7 @@ const AddGymPlan = styled(Link)`
    height: 200px;
 `;
 
-const StyledButton = styled.button`
+const DeleteIconTrashButton = styled.button`
    height: 30px;
    width: 30px;
    border-radius: 15px;
@@ -60,7 +60,7 @@ const StyledButton = styled.button`
    }
 `;
 
-const DeleteButtonPosition = styled(StyledButton)`
+const DeleteButtonPosition = styled(DeleteIconTrashButton)`
    position: relative;
    top: -30px;
    left: 20px;
