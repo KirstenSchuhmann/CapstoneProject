@@ -1,12 +1,13 @@
 // Page to view a saved Workout Routine
 
 import Footer from '../components/Footer';
+import styled from 'styled-components';
 import { StyledButton } from '../components/ButtonStyling';
+
 import {
    StyledPlan,
    GetBackToMainPage,
 } from '../components/SavedGymPlan/SavedGymPlanStyling';
-import styled from 'styled-components';
 
 export default function OverviewAllGymPlans({ gymPlans = [], onDeletePlan }) {
    return (

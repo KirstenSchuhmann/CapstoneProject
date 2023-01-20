@@ -12,7 +12,6 @@ import {
    InputStyling,
    GetBackToMainPage,
 } from './SavedGymPlanStyling';
-import moment from 'moment/moment';
 
 export default function SavedWorkoutRoutine({
    gymPlan,

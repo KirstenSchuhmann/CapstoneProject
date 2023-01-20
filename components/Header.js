@@ -1,27 +1,17 @@
 import styled from 'styled-components';
 
 export default function Header({ headline }) {
-   return (
-      <StyledHeadline>
-         <Logo
-            src='/assets/LiftUp_Logo.png'
-            width={135}
-         />
-      </StyledHeadline>
-   );
+   return <StyledHeadline>Lift-Up your Training 🏋️‍♀️</StyledHeadline>;
 }
 
-const Logo = styled.img`
-   position: absolute;
-   margin-top: 1rem;
-`;
 const StyledHeadline = styled.h1`
    display: flex;
    justify-content: center;
    align-items: center;
    text-align: center;
    margin: 0;
-   height: 8rem;
+   font-size: 30px;
+   height: 6rem;
    width: 100vw;
 
    position: relative;

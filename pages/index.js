@@ -3,9 +3,24 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Link from 'next/link';
-import styled from 'styled-components';
 
-import { StyledButton } from '../components/ButtonStyling';
+import {
+   DeleteButtonPosition,
+   ListOfAllPlans,
+   CreateGymPlanButton,
+} from '../components/ButtonStyling';
+
+import {
+   ContentBlock,
+   ContentInformation,
+   PlaceholderText,
+   TextInformation,
+   Headline,
+   IntroducionText,
+   StyledLink,
+   StyledOverviewOfPlans,
+   StyledBox,
+} from '../components/PageStyling/StylingMainPage';
 
 export default function Home({ gymPlans = [], onDeletePlan }) {
    return (
@@ -22,7 +37,8 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
          {gymPlans.length === 0 ? (
             <PlaceholderText>
                Start now and add a new
-               <br /> workout routine to your gym plans!
+               <br /> workout routine to your gym plans
+               :sunglasses::man-lifting-weights:
             </PlaceholderText>
          ) : (
             <>
@@ -65,134 +81,16 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
          <ContentBlock>
             <ContentInformation> Add new Plan: </ContentInformation>
             <Link href={'/CreatePlan'}>
-               <AddButton>+</AddButton>
+               <CreateGymPlanButton>+</CreateGymPlanButton>
             </Link>
             <StyledLink href='/CreatePlan'></StyledLink>
             <ContentInformation> Have a look at all plans: </ContentInformation>
+            <Link href={'/CreatePlan'}>
+               <ListOfAllPlans> 📝 </ListOfAllPlans>
+            </Link>
          </ContentBlock>
 
          <Footer />
       </>
    );
 }
-
-const DeleteButtonPosition = styled(StyledButton)`
-   position: relative;
-   top: -30px;
-   left: 20px;
-`;
-
-const ContentBlock = styled.section`
-   border: 1px solid black;
-   border-radius: 15px;
-   padding: 13px;
-   min-width: 300px;
-   max-width: 700px;
-   margin: 1.5rem auto;
-   overflow: hidden;
-`;
-
-const ContentInformation = styled.p`
-   font-size: 20px;
-   font-weight: 600;
-   :first-child {
-      display: inline;
-   }
-`;
-
-const PlaceholderText = styled.p`
-   font-weight: 500;
-   font-size: 16px;
-   font-style: italic;
-
-   text-align: center;
-`;
-const TextInformation = styled.h2`
-   font-size: 17px;
-   margin: 20px 10px 0;
-`;
-
-const Headline = styled.h1`
-   font-size: 20px;
-   text-align: center;
-`;
-
-const IntroducionText = styled.p`
-   position: relative;
-   text-align: center;
-   font-size: 15px;
-   margin: 0 16px 0;
-`;
-
-const StyledLink = styled(Link)`
-   text-decoration: none;
-`;
-
-const AddButton = styled.button`
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   font-weight: 500;
-   font-size: 25px;
-
-   border: none;
-   position: relative;
-   float: right;
-   color: white;
-
-   background: linear-gradient(
-      0deg,
-      rgba(20, 167, 62, 1) 0%,
-      rgb(115 232 124) 100%
-   );
-
-   box-shadow: 0 0.7em 1.5em -0.5em #4a998498;
-   border-radius: 35rem;
-   height: 35px;
-   width: 35px;
-
-   padding: 10px;
-`;
-
-const StyledOverviewOfPlans = styled.section`
-   display: flex;
-   flex-flow: wrap;
-`;
-
-const StyledBox = styled.div`
-   grid-row: 1;
-   border-radius: 10px;
-   padding: 10px;
-   height: 104px;
-   width: 160px;
-   margin: 20px;
-   display: grid;
-   grid-template-columns: 2;
-   grid-template-rows: 2;
-   place-self: start center;
-
-   align-items: center;
-   background-color: #f1f1f1;
-   box-shadow: #969899 -1px 1px 0px 0px;
-   font-size: 16px;
-
-   h4 {
-      margin: 0px;
-      grid-column: 1 / 1;
-      grid-row: 1;
-   }
-   p {
-      grid-column: 1 / 1;
-      grid-row: 2 / 2;
-      margin: 0%;
-      place-self: end;
-   }
-   button {
-      grid-column: 2 / 2;
-   }
-
-   a {
-      color: #1d314c;
-      text-decoration: none;
-   }
-`;
