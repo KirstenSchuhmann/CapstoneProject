@@ -24,12 +24,12 @@ const SwipeToDeleteInfo = styled.span`
    margin: 0;
    float: right;
    position: relative;
-   top: 21px;
-   left: 22px;
+   top: 20px;
+   left: 5px;
    opacity: 0;
-   animation-iteration-count: 1;
-   transition-duration: 9s;
-   animation: ${Bounce} 4s ease-in;
+   animation-iteration-count: 4;
+   transition-duration: 30s;
+   animation: ${Bounce} 3s ease-in;
 `;
 
 const DeleteButton = styled.button`
