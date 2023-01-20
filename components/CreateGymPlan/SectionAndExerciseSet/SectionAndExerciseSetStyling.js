@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 
 export {
-   SmallInfoText,
+   SwipeToDeleteInfo,
    StyledSection,
    AddExerciseSet,
    StyledExerciseSet,
@@ -18,7 +18,7 @@ const Bounce = keyframes`
     100% { opacity: 0;}
 `;
 
-const SmallInfoText = styled.span`
+const SwipeToDeleteInfo = styled.span`
    font-size: 12px;
    font-style: italic;
    margin: 0;

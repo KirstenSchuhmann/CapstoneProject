@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import {
    StyledExerciseSet,
-   SmallInfoText,
+   SwipeToDeleteInfo,
 } from './SectionAndExerciseSetStyling';
 
 export default function SwipeExerciseToLeft({ children }) {

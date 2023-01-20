@@ -1,7 +1,7 @@
 import {
    StyledSection,
    AddExerciseSet,
-   SmallInfoText,
+   SwipeToDeleteInfo,
 } from './SectionAndExerciseSetStyling';
 
 import SwipeExerciseToLeft from './SwipeLeftFunction';
@@ -30,7 +30,9 @@ export default function SectionAndExerciseSet({
                   </svg>
                </DeleteIconTrashButton>
                {sections.map && (
-                  <SmallInfoText>Swipe to delete exercise</SmallInfoText>
+                  <SwipeToDeleteInfo>
+                     Swipe to delete exercise
+                  </SwipeToDeleteInfo>
                )}
                {section.exerciseSets.map((exerciseSet, id) => (
                   <SwipeExerciseToLeft key={exerciseSet.id}>

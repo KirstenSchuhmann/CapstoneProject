@@ -7,10 +7,10 @@ export {
    PlaceholderText,
    TextInformation,
    Headline,
-   IntroducionText,
+   Introductiontext,
    StyledLink,
    StyledOverviewOfPlans,
-   StyledBox,
+   GymPlanBoxMain,
 };
 
 const ContentBlock = styled.section`
@@ -61,7 +61,7 @@ const StyledOverviewOfPlans = styled.section`
    justify-content: center;
 `;
 
-const StyledBox = styled.div`
+const GymPlanBoxMain = styled.div`
    grid-row: 1;
    border-radius: 10px;
    padding: 10px;

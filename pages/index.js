@@ -19,7 +19,7 @@ import {
    Introductiontext,
    StyledLink,
    StyledOverviewOfPlans,
-   StyledBox,
+   GymPlanBoxMain,
 } from '../components/PageStyling/StylingMainPage';
 
 export default function Home({ gymPlans = [], onDeletePlan }) {

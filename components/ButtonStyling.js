@@ -43,6 +43,7 @@ const DeleteIconTrashButton = styled.button`
    border-radius: 15px;
    float: right;
    left: 30px;
+   margin-bottom: 5px;
 
    display: flex;
    justify-content: center;
