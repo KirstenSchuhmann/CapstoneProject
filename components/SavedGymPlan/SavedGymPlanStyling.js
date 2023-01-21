@@ -38,6 +38,7 @@ const StyledPlan = styled.section`
 
    h2 {
       font-size: 22px;
+      word-break: break-word;
    }
 `;
 
