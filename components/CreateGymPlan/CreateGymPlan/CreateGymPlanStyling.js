@@ -91,7 +91,7 @@ const CenterButtons = styled.div`
 
 const AddSectionButton = styled.button`
    height: 35px;
-   width: 97px;
+   width: 95px;
    font-size: 16px;
    border-radius: 2rem;
    border: 1.5px solid lightgray;
@@ -103,10 +103,11 @@ const AddSectionButton = styled.button`
 const SaveButton = styled.button`
    display: inherit;
    margin: 0 auto;
-   height: 2.5rem;
    height: 50px;
-   width: 10rem;
-   font-size: 16px;
+   width: 205px;
+   font-size: 17px;
+   font-weight: 500;
+   font-family: 'Satoshi-Variable';
    background-color: #d30077;
    color: white;
    border-radius: 2rem;

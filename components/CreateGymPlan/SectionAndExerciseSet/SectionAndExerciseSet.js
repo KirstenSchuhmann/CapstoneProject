@@ -34,9 +34,11 @@ export default function SectionAndExerciseSet({
                      Add exercise and swipe to delete.
                   </SwipeToDeleteInfo>
                )}
+
                {section.exerciseSets.map((exerciseSet, id) => (
                   <SwipeExerciseToLeft key={exerciseSet.id}>
                      <input
+                        autoComplete='off'
                         type='number'
                         aria-label='set sets'
                         label='sets'
@@ -50,6 +52,7 @@ export default function SectionAndExerciseSet({
                      />
                      <p>x</p>
                      <input
+                        autoComplete='off'
                         type='number'
                         aria-label='set repitition'
                         label='reps'
@@ -62,6 +65,7 @@ export default function SectionAndExerciseSet({
                      />
 
                      <input
+                        autoComplete='off'
                         type='number'
                         aria-label='set weight'
                         label='weight'
@@ -73,10 +77,10 @@ export default function SectionAndExerciseSet({
                      />
 
                      <input
+                        autoComplete='off'
                         type='text'
                         aria-label='set exercise'
                         label='exercise'
-                        autoComplete='off'
                         placeholder='exercise'
                         defaultValue={exerciseSet.exercise}
                         name={`${section.name}-${exerciseSet.id}-exercise`}

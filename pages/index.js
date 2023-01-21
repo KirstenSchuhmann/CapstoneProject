@@ -69,9 +69,9 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
 
                {gymPlans.length >= 2 && (
                   <Link href='/overview-of-saved-gym-plans'>
-                     <StyledBox>
+                     <GymPlanBoxMain>
                         <p> ... click here to see them all.</p>
-                     </StyledBox>
+                     </GymPlanBoxMain>
                   </Link>
                )}
             </>

@@ -53,6 +53,10 @@ const Introductiontext = styled.p`
 
 const StyledLink = styled(Link)`
    text-decoration: none;
+   color: black;
+   :hover {
+      color: gray;
+   }
 `;
 
 const StyledOverviewOfPlans = styled.section`

@@ -1,5 +1,4 @@
 import { nanoid } from 'nanoid';
-import moment, { isMoment, now } from 'moment/moment';
 
 import SectionAndExerciseSet from '../SectionAndExerciseSet/SectionAndExerciseSet';
 
@@ -32,7 +31,7 @@ export default function CreateGymPlanForm({
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            // id: nanoid(),
+            id: nanoid(),
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -41,7 +40,7 @@ export default function CreateGymPlanForm({
                formElements[`${section.name}-${exerciseSet.id}-exercise`].value,
          }));
          return {
-            // id: nanoid(),
+            id: nanoid(),
             ...section,
             exerciseSets: updatedExerciseSet,
          };
@@ -80,6 +79,7 @@ export default function CreateGymPlanForm({
                aria-label='Type plan name'
                label='planTitle'
                maxLength={30}
+               autoComplete='off'
                required></GymPlanTitle>
 
             <StyledNotesLabel htmlFor='notes'>notes: </StyledNotesLabel>
@@ -88,6 +88,7 @@ export default function CreateGymPlanForm({
                name='notes'
                aria-label='Type plan name'
                label='notes'
+               autoComplete='off'
                maxLength={350}
             />
          </StyledFieldSet>
@@ -96,6 +97,7 @@ export default function CreateGymPlanForm({
                <AddSectionButton
                   key={nanoid()}
                   type='button'
+                  autoComplete='off'
                   onClick={() => onAddSection(sectionName)}>
                   {sectionName}
                </AddSectionButton>

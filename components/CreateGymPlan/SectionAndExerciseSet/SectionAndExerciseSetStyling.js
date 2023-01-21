@@ -81,7 +81,7 @@ const StyledExerciseSet = styled.div`
    transition: transform 600ms ease;
    height: 45px;
    display: grid;
-   grid-template-columns: 15% 10px 15% 25% 40% 20%;
+   grid-template-columns: 15% 10px 15% 25% 39.5% 20%;
    margin: 10px 0 0 0;
    grid-template-rows: 1fr;
    align-items: center;
@@ -92,7 +92,6 @@ const StyledExerciseSet = styled.div`
       grid-column: 2 / 2;
       grid-row: 1;
       font-size: 16px;
-      /* margin: 0; */
    }
 
    input {
@@ -119,11 +118,6 @@ const StyledExerciseSet = styled.div`
       font-weight: 600;
    }
 
-   input[label='sets'],
-   input[label='reps'] {
-      min-width: 35px;
-   }
-
    input[label='sets'] {
       grid-column: 1 / 1;
       grid-row: 1;
@@ -137,19 +131,16 @@ const StyledExerciseSet = styled.div`
    input[label='weight'] {
       grid-column: 4 / 4;
       grid-row: 1;
-
-      min-width: 45px;
    }
    input[label='exercise'] {
       grid-column: 5 / 5;
       grid-row: 1;
-      margin-right: 5px;
-      min-width: 60px;
+      // margin-right: 5px;
    }
 
    button {
       grid-column: 6 / 6;
-      margin-left: 2px;
+      margin-left: 4px;
       grid-row: 1;
       width: 100px;
       font-size: 17px;

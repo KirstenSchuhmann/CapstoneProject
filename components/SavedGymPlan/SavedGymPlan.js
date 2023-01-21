@@ -79,7 +79,7 @@ export default function SavedWorkoutRoutine({
 
       const updatedSections = sections.map((section) => {
          const updatedExerciseSet = section.exerciseSets.map((exerciseSet) => ({
-            //id: exerciseSet.id,
+            id: exerciseSet.id,
             sets: formElements[`${section.name}-${exerciseSet.id}-sets`].value,
             reps: formElements[`${section.name}-${exerciseSet.id}-reps`].value,
             weight:
@@ -89,7 +89,7 @@ export default function SavedWorkoutRoutine({
          }));
 
          return {
-            //id: section.id,
+            id: section.id,
             ...section,
             exerciseSets: updatedExerciseSet,
          };
