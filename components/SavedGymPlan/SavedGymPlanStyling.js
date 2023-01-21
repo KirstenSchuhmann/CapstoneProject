@@ -6,25 +6,23 @@ export {
    StyledExerciseSet,
    InputStyling,
    GetBackToMainPage,
+   InputContext,
 };
 
+const InputContext = styled.p`
+   display: inline;
+`;
+4;
+
 const GetBackToMainPage = styled.button`
-   display: flex;
+   display: inline;
    height: 3em;
    width: 100px;
-   align-items: center;
-   justify-content: center;
-
-   border-radius: 10px;
+   border: none;
    letter-spacing: 1px;
-
    cursor: pointer;
-   border: none;
    background-color: #f8f8f8;
-
    letter-spacing: 1px;
-
-   border: none;
 `;
 
 const StyledPlan = styled.section`
@@ -70,13 +68,13 @@ const StyledExerciseSet = styled.div`
    p {
       font-size: small;
       margin: 0px 5px 10px 0px;
-      font-size: 16px;
+      font-size: 15px;
    }
 `;
 
 const InputStyling = styled.p`
    background-color: #efefef;
    border: 1px solid #dfe0e2;
-   padding: 10px;
+   padding: 7px;
    border-radius: 10px;
 `;

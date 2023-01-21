@@ -2,10 +2,11 @@
 
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import styled from 'styled-components';
 import Link from 'next/link';
 
 import {
-   DeleteButtonPosition,
+   DeleteIconTrashButton,
    ListOfAllPlans,
    CreateGymPlanButton,
 } from '../components/ButtonStyling';
@@ -93,3 +94,9 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
       </>
    );
 }
+
+const DeleteButtonPosition = styled(DeleteIconTrashButton)`
+   position: relative;
+   top: -30px;
+   left: 20px;
+`;
