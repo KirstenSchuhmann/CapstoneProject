@@ -89,6 +89,7 @@ const GymPlanBoxMain = styled.div`
       margin: 0px;
       grid-column: 1 / 1;
       grid-row: 1;
+      word-break: break-word;
    }
    p {
       grid-column: 1 / 1;
