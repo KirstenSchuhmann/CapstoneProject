@@ -15,15 +15,16 @@ export {
 
 const ContentBlock = styled.section`
    border-radius: 15px;
-   padding: 13px;
+   padding: 0 20px;
    min-width: 300px;
    max-width: 700px;
-   margin: 1.5rem auto;
+   margin: 0 auto;
    overflow: hidden;
 `;
 
 const ContentInformation = styled.p`
    font-size: 20px;
+   line-height: 40px;
    font-weight: 600;
 `;
 
@@ -42,13 +43,14 @@ const TextInformation = styled.h2`
 const Headline = styled.h1`
    font-size: 20px;
    text-align: center;
+   margin-top: 20px;
 `;
 
 const Introductiontext = styled.p`
    position: relative;
    text-align: center;
    font-size: 15px;
-   margin: 0 16px 0;
+   margin: 0 15px 0;
 `;
 
 const StyledLink = styled(Link)`

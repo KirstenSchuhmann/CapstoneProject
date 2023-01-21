@@ -65,6 +65,7 @@ export default function OverviewAllGymPlans({ gymPlans = [], onDeletePlan }) {
 
 const GymPlanTitle = styled.h3`
    border-bottom: 2px dotted #d8d3d3;
+   word-break: break-word;
 `;
 
 const PlaceholderIfNoContent = styled.p`
