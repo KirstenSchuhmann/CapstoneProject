@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export {
    StyledPlan,
+   ExerciseSet,
    SectionsOfGymPlan,
    InputStyling,
    GetBackToMainPage,
@@ -65,7 +66,7 @@ const InputStyling = styled.p`
    padding: 2px 10px;
    border-radius: 10px;
    //text-align: center;
-   margin: 0 8px 0 0;
+   margin: 0 8px 3px 0;
    font-size: 14px;
 `;
 
@@ -73,4 +74,8 @@ const X = styled.p`
    display: inline-block;
    font-size: 14px;
    margin-right: 8px;
+`;
+
+const ExerciseSet = styled.div`
+   border-bottom: 0.5px solid #919191;
 `;

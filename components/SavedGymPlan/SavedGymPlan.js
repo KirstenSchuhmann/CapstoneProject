@@ -10,6 +10,7 @@ import { DeleteIconTrashButton, EditGymPlanButton } from '../ButtonStyling';
 
 import {
    StyledPlan,
+   ExerciseSet,
    SectionsOfGymPlan,
    InputStyling,
    GetBackToMainPage,
@@ -173,7 +174,7 @@ export default function SavedWorkoutRoutine({
                      <h4> {section.name} </h4>
 
                      {section.exerciseSets.map((exerciseSet) => (
-                        <div key={exerciseSet.id}>
+                        <ExerciseSet key={exerciseSet.id}>
                            <InputStyling>{exerciseSet.sets}</InputStyling>
                            <X> x </X>
                            <InputStyling>{exerciseSet.reps}</InputStyling>
@@ -183,7 +184,7 @@ export default function SavedWorkoutRoutine({
                            </InputStyling>
 
                            <InputStyling>{exerciseSet.exercise}</InputStyling>
-                        </div>
+                        </ExerciseSet>
                      ))}
                   </SectionsOfGymPlan>
                ))}
