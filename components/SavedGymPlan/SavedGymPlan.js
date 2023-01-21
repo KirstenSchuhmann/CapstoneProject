@@ -11,10 +11,11 @@ import { DeleteIconTrashButton, EditGymPlanButton } from '../ButtonStyling';
 import {
    StyledPlan,
    SectionsOfGymPlan,
-   StyledExerciseSet,
    InputStyling,
    GetBackToMainPage,
    InputContext,
+   StyledNotes,
+   X,
 } from './SavedGymPlanStyling';
 
 export default function SavedWorkoutRoutine({
@@ -30,7 +31,10 @@ export default function SavedWorkoutRoutine({
    // and using the state from _app.js would cause a bug.
 
    function handleAddSection(sectionName) {
-      setSections([...sections, { name: sectionName, exerciseSets: [] }]);
+      setSections([
+         ...sections,
+         { id: nanoid(), name: sectionName, exerciseSets: [] },
+      ]);
    }
 
    function handleAddExerciseSet(sectionIndex) {
@@ -133,8 +137,8 @@ export default function SavedWorkoutRoutine({
             <StyledPlan>
                <GetBackToMainPage onClick={() => history.back()}>
                   <svg
-                     height='16'
-                     width='16'
+                     height='30'
+                     width='30'
                      xmlns='http://www.w3.org/2000/svg'
                      version='1.1'
                      viewBox='0 0 1024 1024'>
@@ -150,29 +154,28 @@ export default function SavedWorkoutRoutine({
                      width={25}
                   />
                </EditGymPlanButton>
-               <p> edit </p>
 
                <DeleteButtonPositioning onClick={() => onDeletePlan()}>
                   <svg
                      xmlns='http://www.w3.org/2000/svg'
                      fill='currentColor'
                      class='bi bi-trash3'
-                     viewBox='0 0 19 19'>
+                     viewBox='0 0 20 19'>
                      <path d='M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z' />
                   </svg>
                </DeleteButtonPositioning>
                <h2> {gymPlan.title} </h2>
 
-               <p> {gymPlan.notes} </p>
+               <StyledNotes> {gymPlan.notes} </StyledNotes>
 
                {gymPlan.sections?.map((section, sectionIndex) => (
                   <SectionsOfGymPlan key={sectionIndex}>
                      <h4> {section.name} </h4>
 
                      {section.exerciseSets.map((exerciseSet) => (
-                        <StyledExerciseSet key={exerciseSet.id}>
+                        <div key={exerciseSet.id}>
                            <InputStyling>{exerciseSet.sets}</InputStyling>
-                           <p> x </p>
+                           <X> x </X>
                            <InputStyling>{exerciseSet.reps}</InputStyling>
                            <InputStyling>
                               {exerciseSet.weight}
@@ -180,7 +183,7 @@ export default function SavedWorkoutRoutine({
                            </InputStyling>
 
                            <InputStyling>{exerciseSet.exercise}</InputStyling>
-                        </StyledExerciseSet>
+                        </div>
                      ))}
                   </SectionsOfGymPlan>
                ))}
@@ -194,8 +197,8 @@ const DeleteButtonPositioning = styled(DeleteIconTrashButton)`
    position: relative;
    width: 45px;
    height: 45px;
-   top: -80px;
-   left: 10px;
+   left: 50px;
+   top: 5px;
 
    border-radius: 50%;
 

@@ -3,32 +3,32 @@ import styled from 'styled-components';
 export {
    StyledPlan,
    SectionsOfGymPlan,
-   StyledExerciseSet,
    InputStyling,
    GetBackToMainPage,
    InputContext,
+   StyledNotes,
+   X,
 };
 
 const InputContext = styled.p`
    display: inline;
 `;
-4;
 
 const GetBackToMainPage = styled.button`
-   display: inline;
-   height: 3em;
-   width: 100px;
+   display: flex;
+   gap: 10px;
+   align-items: center;
    border: none;
-   letter-spacing: 1px;
-   cursor: pointer;
+   position: relative;
+   left: -8px;
    background-color: #f8f8f8;
    letter-spacing: 1px;
 `;
 
 const StyledPlan = styled.section`
-   margin: 2rem auto;
+   margin: 1rem auto;
    padding: 1rem;
-   width: 85%;
+   width: 90%;
 
    box-shadow: 3px 2px 5px 0px rgb(168 168 168 / 32%),
       10px 10px 16px 7px rgb(166 166 166 / 30%);
@@ -37,17 +37,14 @@ const StyledPlan = styled.section`
    border-radius: 20px;
 
    h2 {
-      font-size: 1.5rem;
-      margin: 0;
-      text-align: center;
-   }
-
-   p {
-      font-size: 1rem;
-      margin: 0.25rem;
-      text-align: center;
+      font-size: 22px;
    }
 `;
+
+const StyledNotes = styled.p`
+   font-size: 16px;
+`;
+
 const SectionsOfGymPlan = styled.section`
    padding: 10px;
    margin: 15px 0px 15px 0px;
@@ -56,25 +53,24 @@ const SectionsOfGymPlan = styled.section`
    border-radius: 10px;
 
    h4 {
-      margin: 5px 0 10px 0px;
-      font-size: 1rem;
-   }
-`;
-const StyledExerciseSet = styled.div`
-   display: flex;
-   flex-flow: row wrap;
-   align-items: center;
-
-   p {
-      font-size: small;
-      margin: 0px 5px 10px 0px;
-      font-size: 15px;
+      margin: 5px 0 5px 0px;
+      font-size: 18px;
    }
 `;
 
 const InputStyling = styled.p`
+   display: inline-block;
    background-color: #efefef;
    border: 1px solid #dfe0e2;
-   padding: 7px;
+   padding: 2px 10px;
    border-radius: 10px;
+   //text-align: center;
+   margin: 0 8px 0 0;
+   font-size: 14px;
+`;
+
+const X = styled.p`
+   display: inline-block;
+   font-size: 14px;
+   margin-right: 8px;
 `;

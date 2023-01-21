@@ -15,11 +15,9 @@ const EditGymPlanButton = styled.button`
    width: 45px;
    height: 45px;
    border-radius: 50%;
-
    float: right;
    top: 5px;
-   left: -45px;
-
+   left: -50px;
    border: none;
    background-color: white;
 
@@ -76,7 +74,6 @@ const DeleteIconTrashButton = styled.button`
    float: right;
    border: none;
    background-color: white;
-
    box-shadow: inset -1px -4px 2px 0px rgb(211 197 197 / 32%),
       0px 2px 17px -8px rgb(242 238 238 / 27%);
 
