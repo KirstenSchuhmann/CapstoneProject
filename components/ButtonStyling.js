@@ -79,7 +79,7 @@ const DeleteIconTrashButton = styled.button`
 
    svg {
       position: relative;
-      top: 6px;
+      top: 2px;
       right: -1px;
    }
 `;

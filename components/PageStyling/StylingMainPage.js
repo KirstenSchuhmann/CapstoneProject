@@ -67,15 +67,16 @@ const StyledOverviewOfPlans = styled.section`
 
 const GymPlanBoxMain = styled.div`
    grid-row: 1;
+   display: grid;
+   place-self: start center;
+   grid-template-columns: 2;
+   grid-template-rows: 2;
+
    border-radius: 10px;
    padding: 10px;
    height: 104px;
    width: 160px;
    margin: 20px;
-   display: grid;
-   grid-template-columns: 2;
-   grid-template-rows: 2;
-   place-self: start center;
 
    align-items: center;
    background-color: #f1f1f1;
@@ -91,10 +92,11 @@ const GymPlanBoxMain = styled.div`
       grid-column: 1 / 1;
       grid-row: 2 / 2;
       margin: 0%;
-      place-self: end;
+      place-self: start;
    }
    button {
       grid-column: 2 / 2;
+      place-self: start end;
    }
 
    a {
