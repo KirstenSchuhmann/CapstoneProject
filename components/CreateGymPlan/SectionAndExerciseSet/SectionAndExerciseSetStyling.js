@@ -81,7 +81,7 @@ const StyledExerciseSet = styled.div`
    transition: transform 600ms ease;
    height: 30px;
    display: grid;
-   grid-template-columns: 15% 10px 15% 25% 38.5% 20%;
+   grid-template-columns: 15% 2% 15% 25% 38.5% 20%;
    margin: 10px 0 10px 0;
    grid-template-rows: 1fr;
    align-items: center;
@@ -127,23 +127,31 @@ const StyledExerciseSet = styled.div`
    input[label='reps'] {
       grid-column: 3 / 3;
       grid-row: 1;
+      min-width: 35px;
    }
 
    input[label='weight'] {
       grid-column: 4 / 4;
       grid-row: 1;
+      min-width: 40px;
    }
    input[label='exercise'] {
       grid-column: 5 / 5;
       grid-row: 1;
+      min-width: 60px;
    }
 
    button {
       grid-column: 6 / 6;
-      margin-left: 7px;
+
       grid-row: 1;
+
+      position: relative;
+      left: 9px;
+
       width: 100px;
       font-size: 17px;
+
       font-weight: 600;
       font-family: 'Satoshi-Variable';
       height: 30px;
