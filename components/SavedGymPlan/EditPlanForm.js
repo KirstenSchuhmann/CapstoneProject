@@ -15,10 +15,6 @@ import {
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 
-const CancelEdit = styled.button`
-   margin: 10px;
-`;
-
 export default function EditPlanForm({
    onEditSubmit,
    sections,
