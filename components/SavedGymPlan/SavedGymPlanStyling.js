@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export {
    StyledPlan,
+   ExerciseSet,
    SectionsOfGymPlan,
    InputStyling,
    GetBackToMainPage,
@@ -54,9 +55,13 @@ const SectionsOfGymPlan = styled.section`
    border-radius: 10px;
 
    h4 {
-      margin: 5px 0 5px 0px;
+      margin: 2px 0 2px 0px;
       font-size: 18px;
    }
+`;
+
+const ExerciseSet = styled.div`
+   border-bottom: 1px solid #d6d6d6;
 `;
 
 const InputStyling = styled.p`
@@ -65,8 +70,8 @@ const InputStyling = styled.p`
    border: 1px solid #dfe0e2;
    padding: 2px 10px;
    border-radius: 10px;
-   //text-align: center;
-   margin: 0 8px 0 0;
+
+   margin: 0 8px 5px 0;
    font-size: 14px;
 `;
 

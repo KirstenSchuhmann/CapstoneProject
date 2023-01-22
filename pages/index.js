@@ -86,7 +86,7 @@ export default function Home({ gymPlans = [], onDeletePlan }) {
             </Link>
             <StyledLink href='/CreatePlan'></StyledLink>
             <ContentInformation> Have a look at all plans: </ContentInformation>
-            <Link href={'/CreatePlan'}>
+            <Link href={'/overview-of-saved-gym-plans'}>
                <ListOfAllPlans> 📝 </ListOfAllPlans>
             </Link>
          </ContentBlock>
