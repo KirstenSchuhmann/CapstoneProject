@@ -19,11 +19,7 @@ import {
    X,
 } from './SavedGymPlanStyling';
 
-export default function SavedWorkoutRoutine({
-   gymPlan,
-   onUpdatedPlan,
-   onDeletePlan,
-}) {
+export default function SavedGymPlan({ gymPlan, onUpdatedPlan, onDeletePlan }) {
    const [edit, setEdit] = useState(false);
    // this state is for for the edit mode, to add / delete content in the gymPlan
    const [sections, setSections] = useState(gymPlan.sections);

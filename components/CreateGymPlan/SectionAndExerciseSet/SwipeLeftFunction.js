@@ -1,9 +1,6 @@
 import { useRef } from 'react';
 
-import {
-   StyledExerciseSet,
-   SwipeToDeleteInfo,
-} from './SectionAndExerciseSetStyling';
+import { StyledExerciseSet } from './SectionAndExerciseSetStyling';
 
 export default function SwipeExerciseToLeft({ children }) {
    const ref = useRef();
