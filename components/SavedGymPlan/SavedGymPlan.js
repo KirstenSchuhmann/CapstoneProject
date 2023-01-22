@@ -78,7 +78,6 @@ export default function SavedWorkoutRoutine({
       }
    }
 
-   // Submit Funktion
    function handleEditSubmit(event) {
       event.preventDefault();
 

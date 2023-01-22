@@ -77,7 +77,6 @@ export default function CreateGymPlanForm({
                name='title'
                placeholder='e.g. Block W1'
                aria-label='Type plan name'
-               label='planTitle'
                maxLength={30}
                autoComplete='off'
                required></GymPlanTitle>
@@ -87,7 +86,6 @@ export default function CreateGymPlanForm({
                placeholder='...safe notes for later.'
                name='notes'
                aria-label='Type plan name'
-               label='notes'
                autoComplete='off'
                maxLength={350}
             />

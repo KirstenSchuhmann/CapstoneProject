@@ -31,8 +31,6 @@ function MyApp({ Component, pageProps }) {
       );
    }
 
-   // createPlan: Funktionen um Sections & Exercises hinzuzufügen
-
    function handleAddSection(sectionName) {
       setSections([
          ...sections,
