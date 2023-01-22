@@ -47,7 +47,7 @@ const AddExerciseSet = styled.button`
    width: 100%;
    height: 30px;
    font-size: 17px;
-   margin: 5px auto 2px;
+   margin: 10px auto 2px;
    border-radius: 5px;
    border: 1px white;
    border-color: transparent;
@@ -79,10 +79,10 @@ const StyledExerciseSet = styled.div`
    touch-action: none;
    scroll-snap-type: mandatory;
    transition: transform 600ms ease;
-   height: 45px;
+   height: 30px;
    display: grid;
-   grid-template-columns: 15% 10px 15% 25% 39.5% 20%;
-   margin: 10px 0 0 0;
+   grid-template-columns: 15% 10px 15% 25% 38.5% 20%;
+   margin: 10px 0 10px 0;
    grid-template-rows: 1fr;
    align-items: center;
    text-align: center;
@@ -99,6 +99,7 @@ const StyledExerciseSet = styled.div`
       border-radius: 5px;
       border: 1.5px solid lightgray;
       text-align: center;
+      font-size: 13px;
 
       ::placeholder {
          color: grey;
@@ -135,19 +136,17 @@ const StyledExerciseSet = styled.div`
    input[label='exercise'] {
       grid-column: 5 / 5;
       grid-row: 1;
-      // margin-right: 5px;
    }
 
    button {
       grid-column: 6 / 6;
-      margin-left: 4px;
+      margin-left: 7px;
       grid-row: 1;
       width: 100px;
       font-size: 17px;
       font-weight: 600;
       font-family: 'Satoshi-Variable';
       height: 30px;
-
       background-color: red;
       color: white;
       border-radius: 5px;

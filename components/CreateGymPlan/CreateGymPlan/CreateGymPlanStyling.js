@@ -62,6 +62,8 @@ const GymPlanTitle = styled.input`
    border-bottom: 2px solid #9d9d9d;
    width: 100%;
 
+   font-size: 20px;
+
    ::placeholder {
       font-size: 22.5px;
       position: relative;
