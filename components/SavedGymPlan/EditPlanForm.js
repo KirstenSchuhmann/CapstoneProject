@@ -24,7 +24,6 @@ export default function EditPlanForm({
    onDeleteSection,
    onDeleteSet,
 }) {
-   // To Create Buttons
    const createSectionName = [
       'Warm-Up',
       'Squat',

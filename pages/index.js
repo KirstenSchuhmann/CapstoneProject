@@ -1,5 +1,3 @@
-// ---> Main Page - Shows overview of all the capacity of this app
-
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import styled from 'styled-components';

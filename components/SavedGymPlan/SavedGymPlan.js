@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 import EditPlanForm from './EditPlanForm';
 
-// import { DeleteButton } from '../CreateGymPlan/SectionAndExerciseSet/SectionAndExerciseSetStyling';
-
 import { DeleteIconTrashButton, EditGymPlanButton } from '../ButtonStyling';
 
 import {
@@ -20,8 +18,10 @@ import {
 } from './SavedGymPlanStyling';
 
 export default function SavedGymPlan({ gymPlan, onUpdatedPlan, onDeletePlan }) {
+   // this state is for for the edit mode, to add / delete content in the gymPlan:
    const [edit, setEdit] = useState(false);
-   // this state is for for the edit mode, to add / delete content in the gymPlan
+
+   // new state, so the edit functions are referring to this one:
    const [sections, setSections] = useState(gymPlan.sections);
 
    // functions copied & pasted from _app.js, cause lifting them down wouldn't work with the new State
@@ -121,8 +121,6 @@ export default function SavedGymPlan({ gymPlan, onUpdatedPlan, onDeletePlan }) {
                   gymPlan={gymPlan}
                   edit={edit}
                   setEdit={setEdit}
-                  // Currently, functions exist in the same way, as they do in app.js
-
                   onDeleteSection={handleDeleteSection}
                   onAddExerciseSet={handleAddExerciseSet}
                   onAddSection={handleAddSection}

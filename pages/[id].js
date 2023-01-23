@@ -1,5 +1,3 @@
-// Page to view a saved Workout Routine
-
 import { useRouter } from 'next/router';
 
 import Footer from '../components/Footer';

@@ -59,7 +59,6 @@ export default function CreateGymPlanForm({
       location.reload();
    }
 
-   // To Create Buttons
    const createSectionName = [
       'Warm-Up',
       'Squat',

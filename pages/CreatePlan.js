@@ -1,5 +1,4 @@
 import Footer from '../components/Footer';
-import Header from '../components/Header';
 import styled from 'styled-components';
 import CreateGymPlanForm from '../components/CreateGymPlan/CreateGymPlan/CreateGymPlanForm';
 
