@@ -40,7 +40,6 @@ export default function EditPlanForm({
                type='text'
                name='editedTitle'
                aria-label='Type plan name'
-               label='editedTitle'
                maxLength={30}
                defaultValue={gymPlan.title}
                required></GymPlanTitle>
@@ -49,7 +48,6 @@ export default function EditPlanForm({
             <StyledNotes
                placeholder='...safe notes for later.'
                name='editedNotes'
-               label='editedNotes'
                defaultValue={gymPlan.notes}
                aria-label='Type plan name'
                maxLength={300}

@@ -53,8 +53,6 @@ export default function CreateGymPlanForm({
          sections: updatedSections,
       };
 
-      console.log(newPlan, 'PLAN');
-
       onCreatePlan(newPlan);
       location.reload();
    }
@@ -111,4 +109,3 @@ export default function CreateGymPlanForm({
       </StyledForm>
    );
 }
-//

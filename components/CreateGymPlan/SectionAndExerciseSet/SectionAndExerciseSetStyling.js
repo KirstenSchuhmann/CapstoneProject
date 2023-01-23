@@ -82,7 +82,7 @@ const StyledExerciseSet = styled.div`
    height: 30px;
    display: grid;
    grid-template-columns: 15% 2% 15% 25% 38.5% 20%;
-   margin: 10px 0 10px 0;
+   margin: 10px 0;
    grid-template-rows: 1fr;
    align-items: center;
    text-align: center;
