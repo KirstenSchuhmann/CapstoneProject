@@ -1,59 +1,100 @@
-// ---> Main Page - Shows overview of all the capacity of this app
-
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import Link from 'next/link';
 import styled from 'styled-components';
+import Link from 'next/link';
 
-export default function Home({ gymPlans }) {
+import {
+   DeleteIconTrashButton,
+   ListOfAllPlans,
+   CreateGymPlanButton,
+} from '../components/ButtonStyling';
+
+import {
+   ContentBlock,
+   ContentInformation,
+   PlaceholderText,
+   TextInformation,
+   Headline,
+   Introductiontext,
+   StyledLink,
+   StyledOverviewOfPlans,
+   GymPlanBoxMain,
+} from '../components/PageStyling/StylingMainPage';
+
+export default function Home({ gymPlans = [], onDeletePlan }) {
    return (
       <>
          <Header headline='Lift up your Training' />
-         <StyledOverviewOfPlans>
-            {gymPlans.map(({ id, title }) => (
-               <StyledPlan key={id}>
-                  <Link href={`${id}`}>
-                     <h4> {title} </h4>
-                     <p> see more... </p>
-                  </Link>
-               </StyledPlan>
-            ))}
-         </StyledOverviewOfPlans>
+         <Headline> Lift up your strength to the next level! </Headline>
+
+         <Introductiontext>
+            Get rid of excel and notebooks. <br />
+            Use now Lift-Up to save your workout <br />
+            routines and never lose your plan.
+         </Introductiontext>
+
+         {gymPlans.length === 0 ? (
+            <PlaceholderText>
+               Start now and add a new
+               <br /> workout routine to your gym plans
+            </PlaceholderText>
+         ) : (
+            <>
+               <StyledOverviewOfPlans>
+                  <TextInformation>
+                     Latest gym plans you've saved:
+                  </TextInformation>
+                  {gymPlans
+                     .map(({ id, title }) => (
+                        <GymPlanBoxMain key={id}>
+                           <Link href={`${id}`}>
+                              <h4> {title} </h4>
+                              <p> see more... </p>
+                           </Link>
+                           <DeleteButtonPosition
+                              type='button'
+                              onClick={() => onDeletePlan(id)}>
+                              <svg
+                                 xmlns='http://www.w3.org/2000/svg'
+                                 fill='currentColor'
+                                 className='bi bi-trash3'
+                                 viewBox='0 0 19 19'>
+                                 <path d='M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z' />
+                              </svg>
+                           </DeleteButtonPosition>
+                        </GymPlanBoxMain>
+                     ))
+                     .slice(0, 2)}
+
+                  {gymPlans.length >= 2 && (
+                     <GymPlanBoxMain>
+                        <Link href='/overview-of-saved-gym-plans'>
+                           <p> ... click here to see them all.</p>
+                        </Link>
+                     </GymPlanBoxMain>
+                  )}
+               </StyledOverviewOfPlans>
+            </>
+         )}
+
+         <ContentBlock>
+            <ContentInformation> Add new Plan: </ContentInformation>
+            <Link href={'/CreatePlan'}>
+               <CreateGymPlanButton>+</CreateGymPlanButton>
+            </Link>
+            <StyledLink href='/CreatePlan'></StyledLink>
+            <ContentInformation> Have a look at all plans: </ContentInformation>
+            <Link href={'/overview-of-saved-gym-plans'}>
+               <ListOfAllPlans> 📝 </ListOfAllPlans>
+            </Link>
+         </ContentBlock>
 
          <Footer />
       </>
    );
 }
 
-const StyledOverviewOfPlans = styled.section`
-   display: grid;
-   grid-template-rows: 1;
-   place-content: center start;
-   overflow-y: scroll;
-   height: 10rem;
-   width: 100vw;
-   box-shadow: rgba(30, 48, 64, 0.25) 0px 10px 20px -20px inset,
-      rgba(0, 0, 0, 0.2) 20px 20px 15px -25px inset;
-`;
-
-const StyledPlan = styled.div`
-   grid-row: 1;
-   border-radius: 10px;
-   padding: 15px;
-   height: 6rem;
-   width: 200px;
-   margin: 20px;
-   background: pink;
-   display: flex;
-   justify-content: space-around;
-   text-align: center;
-   align-items: center;
-   background-color: #f1f1f1;
-   box-shadow: #ccd1d6 0px 10px 20px -20px inset;
-   font-size: 18px;
-
-   a {
-      color: #1d314c;
-      text-decoration: none;
-   }
+const DeleteButtonPosition = styled(DeleteIconTrashButton)`
+   float: right;
+   position: relative;
 `;

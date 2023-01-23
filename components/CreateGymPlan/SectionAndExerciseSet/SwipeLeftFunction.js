@@ -6,12 +6,14 @@ export default function SwipeExerciseToLeft({ children }) {
    const ref = useRef();
    let touchX;
 
-   // Event Listener für  Mausbewegung links / rechts
    const onPointerMove = (event) => {
       const clientX = event.clientX;
 
       if (clientX - touchX < -50) {
          ref.current.style.transform = 'translate(-120px)';
+         setTimeout(() => {
+            if (ref.current) ref.current.style.transform = 'translate(0px)';
+         }, 3000);
       } else ref.current.style.transform = 'translate(0px)';
    };
 

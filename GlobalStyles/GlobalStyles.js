@@ -22,6 +22,11 @@ const GlobalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
+
+    button {
+        cursor: pointer;
+    }
 `;
 
 export default GlobalStyles;
